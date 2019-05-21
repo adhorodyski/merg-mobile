@@ -2,12 +2,12 @@ import React, { PureComponent } from 'react'
 import { View, TouchableHighlight, Image, Text } from 'react-native'
 import styled from 'styled-components'
 
-const FacebookLogo = require('../../assets/social-media/facebook.png')
-const TwitterLogo = require('../../assets/social-media/twitter.png')
-const InstagramLogo = require('../../assets/social-media/instagram.png')
-const SpotifyLogo = require('../../assets/social-media/spotify.png')
-const TumblrLogo = require('../../assets/social-media/tumblr.png')
-const YoutubeLogo = require('../../assets/social-media/youtube.png')
+const FacebookLogo = require('../../../assets/social-media/facebook.png')
+const TwitterLogo = require('../../../assets/social-media/twitter.png')
+const InstagramLogo = require('../../../assets/social-media/instagram.png')
+const SpotifyLogo = require('../../../assets/social-media/spotify.png')
+const TumblrLogo = require('../../../assets/social-media/tumblr.png')
+const YoutubeLogo = require('../../../assets/social-media/youtube.png')
 
 const ResultTileStyled = styled.View`
   width: 100%;
@@ -51,7 +51,7 @@ const FollowersCounter = styled.Text`
 
 const CounterSpan = styled.Text`
   font-size: 13px;
-  font-weight: bold;
+  font-weight: normal;
   color: #818181;
   margin: 0 0 auto 0;
 `
@@ -85,7 +85,7 @@ const ResultTileActions = styled.View`
 const Button = styled.TouchableHighlight`
   width: 75px;
   height: 30px;
-  background: #6332C4;
+  background: #59BEFF;
   border: none;
   border-radius: 10px;
   display: flex;

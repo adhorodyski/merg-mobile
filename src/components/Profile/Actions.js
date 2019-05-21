@@ -6,7 +6,7 @@ const StyledWrapper = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 10px auto;
+  margin: 5px auto;
 `
 
 const Button = styled.TouchableHighlight`

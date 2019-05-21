@@ -10,7 +10,7 @@ class ExploreScreen extends PureComponent {
   render() {
     return (
       <Main>
-        <Greeting firstName='Adam' />
+        <Greeting />
         <Searchbox />
         <Tags />
         <SearchResults />

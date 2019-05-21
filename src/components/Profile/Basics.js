@@ -1,11 +1,12 @@
 import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
 import { View, Text, Image } from 'react-native'
 import styled from 'styled-components'
 
 const StyledWrapper = styled.View`
   display: flex;
   flex-direction: row;
-  margin: 10px auto;
+  margin: 5px auto;
   padding: 10px;
 `
 
@@ -35,17 +36,16 @@ const Name = styled.Text`
 
 const Username = styled.Text`
   font-size: 15px;
-  font-weight: normal;
   color: #808080;
-
-  &:before {
-    content: '@';
-    opacity: 0.5;
-  }
 `
 
 class Basics extends PureComponent {
   render() {
+    const {
+      nameDisplayed,
+      username
+    } = this.props
+    
     return (
       <StyledWrapper>
         <AvatarWrap>
@@ -53,10 +53,10 @@ class Basics extends PureComponent {
         </AvatarWrap>
         <NamesWrap>
           <Name>
-            Adam Horodyski
+            {nameDisplayed}
           </Name>
           <Username>
-            adhorodyski
+            {username}
           </Username>
         </NamesWrap>
       </StyledWrapper>
@@ -64,4 +64,9 @@ class Basics extends PureComponent {
   }
 }
 
-export default Basics
+const mapStateToProps = state => ({
+  nameDisplayed: state.loggedUser.nameDisplayed,
+  username: state.loggedUser.username
+})
+
+export default connect(mapStateToProps)(Basics)

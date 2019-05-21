@@ -2,12 +2,12 @@ import React, { PureComponent } from 'react'
 import { Text, View } from 'react-native'
 import styled from 'styled-components'
 
-const FacebookLogo = require('../../assets/social-media/facebook.png')
-const TwitterLogo = require('../../assets/social-media/twitter.png')
-const InstagramLogo = require('../../assets/social-media/instagram.png')
-const YoutubeLogo = require('../../assets/social-media/youtube.png')
-const SpotifyLogo = require('../../assets/social-media/spotify.png')
-const TumblrLogo = require('../../assets/social-media/tumblr.png')
+const FacebookLogo = require('../../../assets/social-media/facebook.png')
+const TwitterLogo = require('../../../assets/social-media/twitter.png')
+const InstagramLogo = require('../../../assets/social-media/instagram.png')
+const YoutubeLogo = require('../../../assets/social-media/youtube.png')
+const SpotifyLogo = require('../../../assets/social-media/spotify.png')
+const TumblrLogo = require('../../../assets/social-media/tumblr.png')
 
 const StyledWrapper = styled.View`
   display: flex;

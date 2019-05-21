@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
 import { Text, View, Image } from 'react-native'
 import styled from 'styled-components'
 
@@ -45,15 +46,11 @@ const Span = styled.Text`
 `
 
 class Greeting extends PureComponent {
-  logoutUser = () => {
-    console.log('logged out!')
-  }
-
   render() {
     const {
       firstName
     } = this.props
-
+    
     return (
       <StyledWrapper>
         <AvatarContainer>
@@ -67,4 +64,8 @@ class Greeting extends PureComponent {
   }
 }
 
-export default Greeting
+const mapStateToProps = state => ({
+  firstName: state.loggedUser.firstName
+})
+
+export default connect(mapStateToProps)(Greeting)

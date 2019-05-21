@@ -1,4 +1,6 @@
 import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
+import { fetchLoggedUser } from '../../actions/loggedUserActions'
 import { Text, View, Image, ScrollView, FlatList } from 'react-native'
 import styled from 'styled-components'
 
@@ -31,14 +33,19 @@ export const StyledText = styled.Text`
 `
 
 class HomeScreen extends PureComponent {
+  componentDidMount = () => {
+    this.props.fetchLoggedUser()
+  }
+
   render() {
     return (
       <Main>
-        <Greeting firstName='Adam' />
+        <Greeting />
         <Ocean />
       </Main>
     )
   }
 }
 
-export default HomeScreen
+
+export default connect(null, { fetchLoggedUser })(HomeScreen)

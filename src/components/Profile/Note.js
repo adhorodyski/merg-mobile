@@ -4,8 +4,9 @@ import styled from 'styled-components'
 
 const StyledText = styled.Text`
   font-size: 14px;
+  color: #333333;
   padding: 0 20px;
-  margin: 10px auto;
+  margin: 5px auto;
 `
 
 class Note extends PureComponent {
