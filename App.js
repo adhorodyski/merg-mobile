@@ -1,15 +1,15 @@
-import React from 'react';
+import React from 'react'
 import {
   createMaterialTopTabNavigator,
   createAppContainer
-} from 'react-navigation';
+} from 'react-navigation'
 
-import HomeScreen, { Icon } from './src/Home/Home';
-import ExploreScreen from './src/Explore/Explore';
-import ProfileScreen from './src/Profile/Profile';
-const HomeIcon = require('./assets/home.png');
-const ExploreIcon = require('./assets/explore.png');
-const ProfileIcon = require('./assets/profile.png');
+import HomeScreen, { Icon } from './src/Home/Home'
+import ExploreScreen from './src/Explore/Explore'
+import ProfileScreen from './src/Profile/Profile'
+const HomeIcon = require('./assets/home.png')
+const ExploreIcon = require('./assets/explore.png')
+const ProfileIcon = require('./assets/profile.png')
 
 const MainNavigator = createMaterialTopTabNavigator({
   Home: {
@@ -24,7 +24,7 @@ const MainNavigator = createMaterialTopTabNavigator({
     screen: ExploreScreen,
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (
-        <Icon source={ExploreIcon}/>
+        <Icon source={ExploreIcon} />
       )
     }
   },
@@ -32,7 +32,7 @@ const MainNavigator = createMaterialTopTabNavigator({
     screen: ProfileScreen,
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (
-        <Icon source={ProfileIcon}/>
+        <Icon source={ProfileIcon} />
       )
     }
   },
@@ -48,10 +48,19 @@ const MainNavigator = createMaterialTopTabNavigator({
       },
       style: {
         backgroundColor: '#f5f5f5',
+        borderTopWidth: 1,
+        borderTopColor: 'rgba(51, 51, 51, 0.1)'
       }
     }
   }
-});
+})
 
-const App = createAppContainer(MainNavigator);
-export default App;
+const Navigation = createAppContainer(MainNavigator)
+
+class App extends React.Component {
+  render() {
+    return <Navigation />
+  }
+}
+
+export default App

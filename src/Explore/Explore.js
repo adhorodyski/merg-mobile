@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { PureComponent } from 'react'
 
-import { StyledView, StyledText } from '../Home/Home'
+import { StyledText, Main } from '../Home/Home'
+import Greeting from '../Home/Greeting'
 
-class ExploreScreen extends React.Component {
+class ExploreScreen extends PureComponent {
   render() {
     return (
-      <StyledView>
+      <Main>
+        <Greeting firstName='Adam' />
         <StyledText>Explore</StyledText>
-      </StyledView>
-    );
+      </Main>
+    )
   }
 }
 
-export default ExploreScreen;
+export default ExploreScreen

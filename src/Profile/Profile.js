@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { PureComponent } from 'react'
 
 import { StyledView, StyledText } from '../Home/Home'
 
-class ProfileScreen extends React.Component {
+class ProfileScreen extends PureComponent {
   render() {
     return (
       <StyledView>
         <StyledText>Profile</StyledText>
       </StyledView>
-    );
+    )
   }
 }
 
-export default ProfileScreen;
+export default ProfileScreen

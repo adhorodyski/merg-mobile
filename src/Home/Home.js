@@ -1,6 +1,16 @@
-import React from 'react';
-import { Text, View, Image } from 'react-native';
-import styled from 'styled-components';
+import React, { PureComponent } from 'react'
+import { Text, View, Image, ScrollView, FlatList } from 'react-native'
+import styled from 'styled-components'
+
+import Greeting from './Greeting'
+import Ocean from './Ocean'
+
+export const Main = styled.ScrollView`
+min-height: 700px;
+width: auto;
+max-width: 615px;
+background: #f5f5f5;
+`
 
 export const Icon = styled.Image`
   height: 30px;
@@ -13,22 +23,35 @@ export const StyledView = styled.View`
   height: 100%;
   justify-content: center;
   background: #ffffff;
-`;
+`
 
 export const StyledText = styled.Text`
   text-align: center;
   font-size: 50px;
   font-weight: bold;
-`;
+`
 
-class HomeScreen extends React.Component {
+class HomeScreen extends PureComponent {
+  static navigationOptions = {
+    title: 'Home',
+    headerStyle: {
+      backgroundColor: '#f4511e',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+  }
+  
   render() {
     return (
-      <StyledView>
+      <Main>
+        <Greeting firstName='Adam' />
+        <Ocean />
         <StyledText>Home</StyledText>
-      </StyledView>
-    );
+      </Main>
+    )
   }
 }
 
-export default HomeScreen;
+export default HomeScreen
