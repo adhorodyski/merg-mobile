@@ -32,23 +32,11 @@ export const StyledText = styled.Text`
 `
 
 class HomeScreen extends PureComponent {
-  static navigationOptions = {
-    title: 'Home',
-    headerStyle: {
-      backgroundColor: '#f4511e',
-    },
-    headerTintColor: '#fff',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
-  }
-  
   render() {
     return (
       <Main>
         <Greeting firstName='Adam' />
         <Ocean />
-        <StyledText>Home</StyledText>
       </Main>
     )
   }
