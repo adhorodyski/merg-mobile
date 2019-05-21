@@ -1,13 +1,18 @@
 import React, { PureComponent } from 'react'
 
-import { StyledView, StyledText } from '../Home/Home'
+import { Main } from '../Home/Home'
+import Greeting from '../Home/Greeting'
+import River from './River'
+import About from './About'
 
 class ProfileScreen extends PureComponent {
   render() {
     return (
-      <StyledView>
-        <StyledText>Profile</StyledText>
-      </StyledView>
+      <Main>
+        <Greeting firstName='Adam' />
+        <About />
+        <River />
+      </Main>
     )
   }
 }

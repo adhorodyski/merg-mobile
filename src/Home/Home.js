@@ -6,10 +6,9 @@ import Greeting from './Greeting'
 import Ocean from './Ocean'
 
 export const Main = styled.ScrollView`
-min-height: 700px;
-width: auto;
-max-width: 615px;
-background: #f5f5f5;
+  width: auto;
+  max-width: 615px;
+  background: #f5f5f5;
 `
 
 export const Icon = styled.Image`

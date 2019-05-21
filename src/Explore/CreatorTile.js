@@ -121,7 +121,7 @@ class CreatorTile extends PureComponent {
               <Name>Adam Horodyski</Name>
               <FollowersCounter ownProfile={ownProfile}>
                 <CounterSpan>
-                  245.645 people
+                  245.645 followers
                 </CounterSpan>
               </FollowersCounter>
             </FlexView>
