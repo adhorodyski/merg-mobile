@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { View, Text, Image } from 'react-native'
-import styled from 'styled-components'
+import styled from 'styled-components/native'
 
 const StyledWrapper = styled.View`
   display: flex;
@@ -39,13 +39,17 @@ const Username = styled.Text`
   color: #808080;
 `
 
+const Sp = styled.Text`
+  opacity: 0.3;
+`
+
 class Basics extends PureComponent {
   render() {
     const {
       nameDisplayed,
       username
     } = this.props
-    
+
     return (
       <StyledWrapper>
         <AvatarWrap>
@@ -56,6 +60,7 @@ class Basics extends PureComponent {
             {nameDisplayed}
           </Name>
           <Username>
+            <Sp>@</Sp>
             {username}
           </Username>
         </NamesWrap>

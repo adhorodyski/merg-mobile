@@ -16,8 +16,8 @@ const StyledWrapper = styled.View`
 `
 
 const Provider = styled.Image`
-  height: 32px;
-  width: 32px;
+  height: 25px;
+  width: 25px;
   margin: 0 10px;
 `
 

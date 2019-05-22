@@ -7,30 +7,30 @@ const StyledWrapper = styled.View`
   width: 100%;
   height: 50px;
   background: #f5f5f5;
+  margin: 10px 0;
   display: flex;
   flex-direction: row;
-  margin-top: 20px;
   padding: 0 5px;
 `
 
 const AvatarContainer = styled.View`
   height: 100%;
-  width: 36px;
+  width: 40px;
   margin-left: 5px;
   display: flex;
   align-self: flex-start;
 `
 
 const Avatar = styled.Image`
-  height: 36px;
-  width: 36px;
+  height: 40px;
+  width: 40px;
   background: #FFFFFF;
   margin: auto;
-  border-radius: 18px;
+  border-radius: 20px;
 `
 
 const P = styled.Text`
-  font-size: 15px;
+  font-size: 16px;
   font-weight: bold;
   color: #808080;
   margin: auto 0 auto 10px;
@@ -39,7 +39,7 @@ const P = styled.Text`
 
 const Span = styled.Text`
   color: #6332C4;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: bold;
   margin: auto 0;
   align-self: flex-start;
@@ -50,7 +50,7 @@ class Greeting extends PureComponent {
     const {
       firstName
     } = this.props
-    
+
     return (
       <StyledWrapper>
         <AvatarContainer>

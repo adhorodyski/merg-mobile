@@ -10,12 +10,14 @@ const TumblrLogo = require('../../../assets/social-media/tumblr.png')
 const YoutubeLogo = require('../../../assets/social-media/youtube.png')
 
 const ResultTileStyled = styled.View`
-  width: 100%;
+  width: 95%;
+  margin: 0 auto;
+  margin-bottom: 10px;
   min-height: 100px;
   background: #FAFAFA;
   display: flex;
-  border-top-width: 1px;
-  border-top-color: rgba(51, 51, 51, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 3px rgba(33, 33, 33, 0.03);
 `
 
 const ResultTileInfo = styled.View`

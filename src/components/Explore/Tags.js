@@ -26,7 +26,7 @@ class Tags extends PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      tags: ['music', 'SF', 'sport', 'technology', 'vlogs', 'fashion', 'travel', 'AI', 'sorry-zuck']
+      tags: ['Music', 'Sport', 'Technology', 'Food', 'Nature', 'Television', 'Lifestyle', 'Vlogs', 'Fashion', 'Travel', 'AI', 'SorryZuck']
     }
   }
 
