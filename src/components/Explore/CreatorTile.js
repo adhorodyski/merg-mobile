@@ -29,7 +29,7 @@ const ResultTileInfo = styled.View`
 const Avatar = styled.Image`
   height: 35px;
   width: 35px;
-  background: #FFFFFF;
+  background: #F0F0F0;
   margin: auto 10px auto 0;
   border-radius: 18px;
 `
@@ -92,6 +92,7 @@ const Button = styled.TouchableHighlight`
   border-radius: 10px;
   display: flex;
   margin: auto 0;
+  box-shadow: 0 2px 2px rgba(89, 190, 255, 0.4);
 `
 
 const BtnText = styled.Text`

@@ -17,6 +17,7 @@ const Button = styled.TouchableHighlight`
   border-radius: 10px;
   display: flex;
   margin: auto 20px;
+  box-shadow: 0 2px 2px rgba(89, 190, 255, 0.4);
 `
 
 const BtnText = styled.Text`

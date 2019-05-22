@@ -3,16 +3,21 @@ import { View, Text, Image, TouchableHighlight } from 'react-native'
 import styled from 'styled-components'
 
 export const ResultTile = styled.View`
+  width: 95%;
+  margin: 0 auto;
+  margin-bottom: 10px;
   min-height: 180px;
   background: #FFFFFF;
-  border-top-width: 1px;
-  border-top-color: rgba(51, 51, 51, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 3px rgba(33, 33, 33, 0.03);
 `
 
 const Header = styled.View`
   height: 45px;
   width: 100%;
   background: #FAFAFA;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -20,9 +25,9 @@ const Header = styled.View`
 
 const TitleSection = styled.View`
   height: 45px;
-  background: #FAFAFA;
   display: flex;
   flex-direction: row;
+  border-top-left-radius: 10px;
 `
 
 const AvatarContainer = styled.View`
@@ -35,14 +40,13 @@ const AvatarContainer = styled.View`
 const Avatar = styled.Image`
   height: 36px;
   width: 36px;
-  background: #FFFFFF;
+  background: #F0F0F0;
   margin: auto;
   border-radius: 18px;
 `
 
 const H4 = styled.Text`
   font-size: 13px;
-  font-weight: normal;
   margin: auto auto auto 0;
   color: #333333;
 `
@@ -61,10 +65,11 @@ const TimeP = styled.Text`
 `
 
 const CardTitle = styled.TouchableHighlight`
-  width: 100px;
+  width: 80px;
   height: 45px;
   background: #F0F0F0;
   border: none;
+  border-top-right-radius: 10px;
   display: flex;
 `
 
@@ -80,12 +85,12 @@ export class TileHeader extends PureComponent {
           <AvatarContainer>
               <Avatar />
           </AvatarContainer>
-          <H4>Adam Horodyski</H4>
+          <H4>Mystery Guitar Man</H4>
         </TitleSection>
         <CardTitle>
           <FlexWrap>
-            <H3>Twitter</H3>
-            <TimeP>5 minutes ago</TimeP>
+            <H3>Instagram</H3>
+            <TimeP>5 min</TimeP>
           </FlexWrap>
         </CardTitle>
       </Header>

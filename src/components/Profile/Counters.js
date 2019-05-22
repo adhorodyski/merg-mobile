@@ -27,13 +27,18 @@ const SmallSpan = styled.Text`
   text-align: center;
 `
 
+const S = styled.Text`
+  font-size: 13;
+  color: #818181;
+`
+
 class Counters extends PureComponent {
   render() {
     return (
       <StyledWrapper>
         <CountWrap>
           <NumSpan>
-            87.626.228
+            87.6 <S>M</S>
           </NumSpan>
           <SmallSpan>
             followers
@@ -41,7 +46,7 @@ class Counters extends PureComponent {
         </CountWrap>
         <CountWrap>
           <NumSpan>
-            251
+            1.1 <S>K</S>
           </NumSpan>
           <SmallSpan>
             follows

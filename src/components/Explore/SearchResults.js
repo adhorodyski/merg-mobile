@@ -1,8 +1,12 @@
 import React, { PureComponent } from 'react'
-import { View, TextInput } from 'react-native'
+import { View } from 'react-native'
 import styled from 'styled-components'
 
 import CreatorTile from './CreatorTile'
+
+const StyledView = styled.View`
+  margin-bottom: 50px;
+`
 
 class SearchResults extends PureComponent {
   constructor(props) {
@@ -24,9 +28,9 @@ class SearchResults extends PureComponent {
 
   render() {
     return (
-      <View>
+      <StyledView>
         { this.renderResults() }
-      </View>
+      </StyledView>
     )
   }
 }

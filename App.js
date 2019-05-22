@@ -8,7 +8,7 @@ import {
   StackActions,
   NavigationActions
 } from 'react-navigation'
-import { Image, TouchableHighlight } from 'react-native'
+import { Image, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import HomeScreen, { Icon } from './src/components/Home/Home'
@@ -20,6 +20,18 @@ const HomeIcon = require('./assets/home.png')
 const ExploreIcon = require('./assets/explore.png')
 const ProfileIcon = require('./assets/profile.png')
 const SettingsIcon = require('./assets/settings.png')
+
+const StyledTouchable = styled.TouchableOpacity`
+width: 40px;
+height: 40px;
+margin: 0 10px;
+`
+
+const HeaderButton = styled.Image`
+height: 30px;
+width: 30px;
+margin: auto;
+`
 
 const MainNavigator = createMaterialTopTabNavigator({
   Home: {
@@ -54,28 +66,18 @@ const MainNavigator = createMaterialTopTabNavigator({
       showIcon: true,
       showLabel: false,
       indicatorStyle: {
-        backgroundColor: '#F5F5F5'
+        backgroundColor: '#FFFFFF'
       },
       style: {
-        backgroundColor: '#f5f5f5',
-        borderTopWidth: 1,
-        borderTopColor: 'rgba(51, 51, 51, 0.1)'
+        backgroundColor: '#FFFFFF',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 3
       }
     }
   }
 })
-
-const StyledTouchable = styled.TouchableHighlight`
-  width: 40px;
-  height: 40px;
-  margin: 0 10px;
-`
-
-const HeaderButton = styled.Image`
-  height: 30px;
-  width: 30px;
-  margin: auto;
-`
 
 const StackNavigator = createStackNavigator({
   MainNavigator: {
@@ -88,8 +90,12 @@ const StackNavigator = createStackNavigator({
           fontSize: 20
         },
         headerStyle: {
-          borderBottomWidth: 1,
-          borderBottomColor: 'rgba(51, 51, 51, 0.1)'
+          borderBottomWidth: 0,
+          backgroundColor: '#FFFFFF',
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 2 },
+          shadowOpacity: 0.03,
+          shadowRadius: 3
         },
         headerLeft: (
           <StyledTouchable>
@@ -100,7 +106,6 @@ const StackNavigator = createStackNavigator({
         headerRight: (
           <StyledTouchable
             onPress={() => {
-              console.log('take be to the Settings tab!')
               const pushAction = StackActions.push({
                 routeName: 'Settings'
               })
