@@ -54,7 +54,7 @@ const H4 = styled.Text`
 const H3 = styled.Text`
   font-size: 12px;
   margin: auto auto 0 auto;
-  font-weight: normal;
+  color: #333333;
 `
 
 const TimeP = styled.Text`
