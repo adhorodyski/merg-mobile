@@ -1,13 +1,9 @@
 import React, { PureComponent } from 'react'
-import { TouchableOpacity } from 'react-native'
+import { Text, TouchableOpacity } from 'react-native'
 import { StackActions, withNavigation } from 'react-navigation'
 import styled from 'styled-components/native'
 
-import { StyledView } from './Personal'
-
-const Container = styled(StyledView)`
-  margin: 10px auto 30px auto;
-`
+import { Main } from '../Home/Home'
 
 const Touch = styled.TouchableOpacity`
   display: flex;
@@ -30,21 +26,24 @@ const StyledLabel = styled.Text`
   display: flex;
 `
 
-class Logout extends PureComponent {
+class MergingScreen extends PureComponent {
   render() {
     const { navigation } = this.props
     return (
-      <Container>
-          <Touch onPress={() => {
-            navigation.navigate('PrimaryChoice')
-          }}>
-            <StyledLabel>
-              Sign out
-            </StyledLabel>
-          </Touch>
-      </Container>
+      <Main>
+        <Touch onPress={() => {
+          const pushAction = StackActions.push({
+            routeName: 'Welcome'
+          })
+          navigation.dispatch(pushAction)
+        }}>
+          <StyledLabel>
+            go welcome
+          </StyledLabel>
+        </Touch>
+      </Main>
     )
   }
 }
 
-export default withNavigation(Logout)
+export default withNavigation(MergingScreen)

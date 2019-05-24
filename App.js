@@ -4,13 +4,19 @@ import { Provider } from 'react-redux'
 import {
   createMaterialTopTabNavigator,
   createStackNavigator,
+  createSwitchNavigator,
   createAppContainer,
-  StackActions,
-  NavigationActions
+  StackActions
 } from 'react-navigation'
 import { Image, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
+import PrimaryChoiceScreen from './src/components/Auth/PrimaryChoice'
+import SignInScreen from './src/components/Auth/SignIn'
+import RegularRegisterScreen from './src/components/Auth/RegularRegister'
+import CreatorRegisterScreen from './src/components/Auth/CreatorRegister'
+import MergingScreen from './src/components/Merging/Merging'
+import WelcomeScreen from './src/components/Merging/Welcome'
 import HomeScreen, { Icon } from './src/components/Home/Home'
 import ExploreScreen from './src/components/Explore/Explore'
 import ProfileScreen from './src/components/Profile/Profile'
@@ -22,15 +28,15 @@ const ProfileIcon = require('./assets/profile.png')
 const SettingsIcon = require('./assets/settings.png')
 
 const StyledTouchable = styled.TouchableOpacity`
-width: 40px;
-height: 40px;
-margin: 0 10px;
+  width: 40px;
+  height: 40px;
+  margin: 0 10px;
 `
 
 const HeaderButton = styled.Image`
-height: 30px;
-width: 30px;
-margin: auto;
+  height: 30px;
+  width: 30px;
+  margin: auto;
 `
 
 const MainNavigator = createMaterialTopTabNavigator({
@@ -79,7 +85,7 @@ const MainNavigator = createMaterialTopTabNavigator({
   }
 })
 
-const StackNavigator = createStackNavigator({
+const AppStack = createStackNavigator({
   MainNavigator: {
     screen: MainNavigator,
     navigationOptions: ({ navigation }) => {
@@ -135,7 +141,117 @@ const StackNavigator = createStackNavigator({
   }
 })
 
-const Navigation = createAppContainer(StackNavigator)
+const AuthStack = createStackNavigator({
+  PrimaryChoice: {
+    screen: PrimaryChoiceScreen,
+    navigationOptions: ({ navigation }) => {
+      return {
+        headerTitleStyle: {
+          fontSize: 20
+        },
+        headerStyle: {
+          borderBottomWidth: 1,
+          borderBottomColor: 'rgba(51, 51, 51, 0.1)'
+        },
+        headerLeft: (
+          <StyledTouchable>
+            <HeaderButton
+              source={MergeIcon} />
+          </StyledTouchable>
+        ),
+      }
+    }
+  },
+  SignIn: {
+    screen: SignInScreen,
+    navigationOptions: ({ navigation }) => {
+      return {
+        headerTitle: 'Sign in',
+        headerTitleStyle: {
+          fontSize: 20
+        },
+        headerStyle: {
+          borderBottomWidth: 1,
+          borderBottomColor: 'rgba(51, 51, 51, 0.1)'
+        }
+      }
+    }
+  },
+  RegularRegister: {
+    screen: RegularRegisterScreen,
+    navigationOptions: ({ navigation }) => {
+      return {
+        headerTitle: 'Regular registration',
+        headerTitleStyle: {
+          fontSize: 20
+        },
+        headerStyle: {
+          borderBottomWidth: 1,
+          borderBottomColor: 'rgba(51, 51, 51, 0.1)'
+        }
+      }
+    }
+  },
+  CreatorRegister: {
+    screen: CreatorRegisterScreen,
+    navigationOptions: ({ navigation }) => {
+      return {
+        headerTitle: 'Creator registration',
+        headerTitleStyle: {
+          fontSize: 20
+        },
+        headerStyle: {
+          borderBottomWidth: 1,
+          borderBottomColor: 'rgba(51, 51, 51, 0.1)'
+        }
+      }
+    }
+  }
+})
+
+const MergingStack = createStackNavigator({
+  Merging: {
+    screen: MergingScreen,
+    navigationOptions: ({ navigation }) => {
+      return {
+        headerTitle: 'Merging',
+        headerTitleStyle: {
+          fontSize: 20
+        },
+        headerStyle: {
+          borderBottomWidth: 1,
+          borderBottomColor: 'rgba(51, 51, 51, 0.1)'
+        }
+      }
+    }
+  },
+  Welcome: {
+    screen: WelcomeScreen,
+    navigationOptions: ({ navigation }) => {
+      return {
+        headerTitle: 'Welcome',
+        headerTitleStyle: {
+          fontSize: 20
+        },
+        headerStyle: {
+          borderBottomWidth: 1,
+          borderBottomColor: 'rgba(51, 51, 51, 0.1)'
+        }
+      }
+    }
+  }
+})
+
+const Navigation = createAppContainer(createSwitchNavigator(
+  {
+    Auth: AuthStack,
+    Merging: MergingStack,
+    App: AppStack
+  },
+  {
+    initialRouteName: 'App'
+  }
+))
 
 class App extends PureComponent {
   render() {

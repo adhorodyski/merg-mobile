@@ -8,8 +8,6 @@ import Greeting from './Greeting'
 import Ocean from './Ocean'
 
 export const Main = styled.ScrollView`
-  width: auto;
-  max-width: 615px;
   background: #f5f5f5;
 `
 
