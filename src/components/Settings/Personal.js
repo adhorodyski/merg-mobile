@@ -42,7 +42,7 @@ const FixedLabel = styled(Label)`
   margin: 15px 10px auto 0;
 `
 
-const Input = styled.TextInput`
+export const Input = styled.TextInput`
   background: transparent;
   height: 100%;
   width: 65%;
@@ -55,7 +55,7 @@ const InputHigh = styled(Input)`
   padding: 15px 0;
 `
 
-const Button = styled.TouchableHighlight`
+export const Button = styled.TouchableOpacity`
   width: 100px;
   height: 30px;
   background: #59BEFF;
@@ -66,7 +66,7 @@ const Button = styled.TouchableHighlight`
   box-shadow: 0 2px 2px rgba(89, 190, 255, 0.4);
 `
 
-const BtnText = styled.Text`
+export const BtnText = styled.Text`
   font-size: 14px;
   font-weight: bold;
   color: #FAFAFA;

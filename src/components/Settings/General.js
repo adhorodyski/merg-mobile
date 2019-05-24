@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { Text, View, TextInput, Picker } from 'react-native'
+import { Text, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { StyledView, Title, Tile, Label } from './Personal'

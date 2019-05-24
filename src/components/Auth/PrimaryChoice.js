@@ -18,7 +18,7 @@ const Touch = styled.TouchableOpacity`
   border-radius: 10px;
   background: white;
   padding: 10px;
-  box-shadow: 0 3px 2px rgba(33, 33, 33, 0.04);
+  box-shadow: 0 4px 3px rgba(33, 33, 33, 0.03);
 `
 
 const TouchEmpty = styled(Touch)`
