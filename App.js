@@ -13,7 +13,7 @@ import styled from 'styled-components/native'
 
 import PrimaryChoiceScreen from './src/components/Auth/PrimaryChoice'
 import SignInScreen from './src/components/Auth/SignIn'
-import RegularRegisterScreen from './src/components/Auth/RegularRegister'
+import FollowerRegisterScreen from './src/components/Auth/FollowerRegister'
 import CreatorRegisterScreen from './src/components/Auth/CreatorRegister'
 import MergingScreen from './src/components/Merging/Merging'
 import WelcomeScreen from './src/components/Merging/Welcome'
@@ -177,11 +177,11 @@ const AuthStack = createStackNavigator({
       }
     }
   },
-  RegularRegister: {
-    screen: RegularRegisterScreen,
+  FollowerRegister: {
+    screen: FollowerRegisterScreen,
     navigationOptions: ({ navigation }) => {
       return {
-        headerTitle: 'Regular registration',
+        headerTitle: 'Follower',
         headerTitleStyle: {
           fontSize: 20
         },
@@ -196,7 +196,7 @@ const AuthStack = createStackNavigator({
     screen: CreatorRegisterScreen,
     navigationOptions: ({ navigation }) => {
       return {
-        headerTitle: 'Creator registration',
+        headerTitle: 'Creator',
         headerTitleStyle: {
           fontSize: 20
         },

@@ -6,32 +6,30 @@ import { Ionicons } from '@expo/vector-icons'
 
 import { Main } from '../Home/Home'
 import {
-  StyledView,
-  Title,
   Tile,
   Input,
   Button,
   BtnText
 } from '../Settings/Personal'
 
-const Form = styled.View`
+export const Form = styled.View`
   padding: 20px;
   display: flex;
   margin: 180px 0;
 `
 
-const StyledInput = styled(Input)`
+export const StyledInput = styled(Input)`
   width: 100%;
   padding: 0 0 0 40px;
 `
 
-const Icon = styled(Ionicons)`
+export const IconMail = styled(Ionicons)`
   position: absolute;
   top: 15px;
   left: 20px;
 `
 
-const IconLock = styled(Icon)`
+export const IconLock = styled(IconMail)`
   left: 22px;
 `
 
@@ -42,15 +40,26 @@ class SignInScreen extends PureComponent {
       <Main>
         <Form>
           <Tile>
-            <Icon name="ios-mail" size={20} color="rgba(33, 33, 33, 0.4)" />
+            <IconMail
+              name="ios-at"
+              size={20}
+              color="rgba(33, 33, 33, 0.4)" />
             <StyledInput
+              returnKeyType={'next'}
+              onSubmitEditing={() => {
+                this.refs.password.focus()
+              }}
               keyboardType={'email-address'}
               textContentType={'emailAddress'}
               placeholder='doe@mail.com' />
           </Tile>
           <Tile>
-            <IconLock name="ios-lock" size={20} color="rgba(33, 33, 33, 0.4)" />
+            <IconLock
+              name="ios-lock"
+              size={20}
+              color="rgba(33, 33, 33, 0.4)" />
             <StyledInput
+              ref='password'
               secureTextEntry={true}
               textContentType={'password'}
               placeholder='• • • • • • •|' />

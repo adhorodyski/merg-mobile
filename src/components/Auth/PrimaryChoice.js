@@ -42,22 +42,22 @@ const Img = styled.Image`
 `
 
 const StyledLabel = styled.Text`
-color: #818181;
-text-align: center;
-margin: 10px auto 0 auto;
-font-size: 13px;
-display: flex;
-max-width: 140px;
+  color: #818181;
+  text-align: center;
+  margin: 10px auto 0 auto;
+  font-size: 13px;
+  display: flex;
+  max-width: 140px;
 `
 
-const StyledLabelWide = styled(StyledLabel)`
-max-width: 100%;
+export const StyledLabelWide = styled(StyledLabel)`
+  max-width: 100%;
 `
 
 const StyledSuperLabel = styled(StyledLabel)`
-font-size: 18px;
-font-weight: bold;
-color: #333333;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333333;
 `
 
 class PrimaryChoiceScreen extends PureComponent {
@@ -69,7 +69,7 @@ class PrimaryChoiceScreen extends PureComponent {
           <ButtonsGroup>
             <Touch onPress={() => {
                 const pushAction = StackActions.push({
-                  routeName: 'RegularRegister'
+                  routeName: 'FollowerRegister'
                 })
                 navigation.dispatch(pushAction)
               }}>

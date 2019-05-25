@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { Text, TouchableOpacity, Dimensions, KeyboardAvoidingView } from 'react-native'
+import { KeyboardAvoidingView } from 'react-native'
 import { withNavigation } from 'react-navigation'
 import styled from 'styled-components/native'
 
@@ -23,7 +23,7 @@ const AdjustedLabel = styled(StyledLabelWide)`
   margin: 10px 0 5px 0;
 `
 
-class CreatorRegisterScreen extends PureComponent {
+class FollowerRegisterScreen extends PureComponent {
   render() {
     const { navigation } = this.props
     return (
@@ -43,8 +43,8 @@ class CreatorRegisterScreen extends PureComponent {
                   this.refs.username.focus()
                 }}
                 blurOnSubmit={false}
-                textContentType={'nickname'}
-                placeholder='your well-known name' />
+                textContentType={'givenName'}
+                placeholder='first name' />
             </Tile>
             <Tile>
               <IconMail
@@ -53,11 +53,11 @@ class CreatorRegisterScreen extends PureComponent {
                 color="rgba(33, 33, 33, 0.4)" />
               <StyledInput
                 ref='username'
+                returnKeyType={'next'}
                 onSubmitEditing={() => {
                   this.refs.email.focus()
                 }}
                 blurOnSubmit={false}
-                returnKeyType={'next'}
                 textContentType={'username'}
                 placeholder='username' />
             </Tile>
@@ -68,11 +68,11 @@ class CreatorRegisterScreen extends PureComponent {
                 color="rgba(33, 33, 33, 0.4)" />
               <StyledInput
                 ref='email'
+                returnKeyType={'next'}
                 onSubmitEditing={() => {
                   this.refs.password.focus()
                 }}
                 blurOnSubmit={false}
-                returnKeyType={'next'}
                 keyboardType={'email-address'}
                 textContentType={'emailAddress'}
                 placeholder='e-mail' />
@@ -89,11 +89,11 @@ class CreatorRegisterScreen extends PureComponent {
                 color="rgba(33, 33, 33, 0.4)" />
               <StyledInput
                 ref='password'
+                returnKeyType={'next'}
                 onSubmitEditing={() => {
                   this.refs.confirmPassword.focus()
                 }}
                 blurOnSubmit={false}
-                returnKeyType={'next'}
                 secureTextEntry={true}
                 textContentType={'password'}
                 placeholder='password' />
@@ -110,10 +110,10 @@ class CreatorRegisterScreen extends PureComponent {
                 placeholder='confirm password' />
             </Tile>
             <Button onPress={() => {
-                navigation.navigate('Merging')
+                navigation.navigate('Home')
               }}>
               <BtnText>
-                continue
+                sign up
               </BtnText>
             </Button>
             <AdjustedLabel>
@@ -126,4 +126,4 @@ class CreatorRegisterScreen extends PureComponent {
   }
 }
 
-export default withNavigation(CreatorRegisterScreen)
+export default withNavigation(FollowerRegisterScreen)
