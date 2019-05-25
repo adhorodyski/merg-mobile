@@ -1,27 +1,21 @@
 import React, { PureComponent } from 'react'
-import { TouchableOpacity } from 'react-native'
+import { Text, TouchableOpacity } from 'react-native'
 import { StackActions, withNavigation } from 'react-navigation'
 import styled from 'styled-components/native'
 
-import { StyledView } from './Personal'
-
-const Container = styled(StyledView)`
-  margin: 10px auto 30px auto;
-`
+import { StyledViewMargin2 } from '../Reusable/UI'
 
 const Touch = styled.TouchableOpacity`
   display: flex;
   align-self: center;
+  align-items: center;
   text-align: center;
   max-width: 95%;
   height: 40px;
-  display: flex;
-  align-self: center;
-  align-items: center;
 `
 
-const StyledLabel = styled.Text`
-  color: #59BEFF;
+export const StyledLabel = styled.Text`
+  color: #2645ec;
   padding: 10px 20px;
   margin: 0;
   line-height: 20px;
@@ -34,15 +28,15 @@ class Logout extends PureComponent {
   render() {
     const { navigation } = this.props
     return (
-      <Container>
-          <Touch onPress={() => {
-            navigation.navigate('PrimaryChoice')
-          }}>
-            <StyledLabel>
-              Sign out
-            </StyledLabel>
-          </Touch>
-      </Container>
+      <StyledViewMargin2>
+        <Touch onPress={() => {
+          navigation.navigate('PrimaryChoice')
+        }}>
+          <StyledLabel>
+            Sign out
+          </StyledLabel>
+        </Touch>
+      </StyledViewMargin2>
     )
   }
 }

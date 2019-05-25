@@ -1,29 +1,11 @@
 import React, { PureComponent } from 'react'
-import { Text, View, TextInput, Picker } from 'react-native'
-import styled from 'styled-components/native'
 
-import { StyledView, Title, Label, TouchableOpacity } from './Personal'
-
-const LinkLabel = styled(Label)`
-  color: #333333;
-  font-size: 16px;
-  max-width: 100%;
-`
-
-const Tile = styled.TouchableOpacity`
-  width: 100%;
-  min-height: 50px;
-  margin: 0 auto;
-  margin-bottom: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 0 20px;
-  background: #FAFAFA;
-  border: none;
-  border-radius: 10px;
-  box-shadow: 0 4px 3px rgba(33, 33, 33, 0.03);
-`
+import {
+  Tile,
+  Title,
+  StyledView,
+  BigLabel
+} from '../Reusable/UI'
 
 class Legal extends PureComponent {
   render() {
@@ -31,22 +13,22 @@ class Legal extends PureComponent {
       <StyledView>
         <Title>Legal</Title>
         <Tile>
-          <LinkLabel>Terms</LinkLabel>
+          <BigLabel>Terms</BigLabel>
         </Tile>
         <Tile>
-          <LinkLabel>Privacy Policy</LinkLabel>
+          <BigLabel>Privacy Policy</BigLabel>
         </Tile>
         <Tile>
-          <LinkLabel>About</LinkLabel>
+          <BigLabel>About</BigLabel>
         </Tile>
         <Tile>
-          <LinkLabel>Work</LinkLabel>
+          <BigLabel>Work</BigLabel>
         </Tile>
         <Tile>
-          <LinkLabel>Developers</LinkLabel>
+          <BigLabel>Developers</BigLabel>
         </Tile>
         <Tile>
-          <LinkLabel>Support</LinkLabel>
+          <BigLabel>Support</BigLabel>
         </Tile>
       </StyledView>
     )

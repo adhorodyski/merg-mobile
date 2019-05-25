@@ -1,6 +1,4 @@
 import React, { PureComponent } from 'react'
-import { Text, View } from 'react-native'
-import styled from 'styled-components'
 
 import { Main } from '../Home/Home'
 import Picture from './Picture'

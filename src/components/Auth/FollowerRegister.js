@@ -5,11 +5,12 @@ import styled from 'styled-components/native'
 
 import { Main } from '../Home/Home'
 import {
-  Tile,
   Button,
-  BtnText
-} from '../Settings/Personal'
-import { Form, StyledInput, IconMail, IconLock } from './SignIn'
+  BtnText,
+  Tile,
+  WideInput
+} from '../Reusable/UI'
+import { Form, IconMail, IconLock } from './SignIn'
 import { StyledLabelWide } from './PrimaryChoice'
 
 const AdjustedForm = styled(Form)`
@@ -37,7 +38,7 @@ class FollowerRegisterScreen extends PureComponent {
                 name="ios-contact"
                 size={20}
                 color="rgba(33, 33, 33, 0.4)" />
-              <StyledInput
+              <WideInput
                 returnKeyType={'next'}
                 onSubmitEditing={() => {
                   this.refs.username.focus()
@@ -51,7 +52,7 @@ class FollowerRegisterScreen extends PureComponent {
                 name="ios-contact"
                 size={20}
                 color="rgba(33, 33, 33, 0.4)" />
-              <StyledInput
+              <WideInput
                 ref='username'
                 returnKeyType={'next'}
                 onSubmitEditing={() => {
@@ -66,7 +67,7 @@ class FollowerRegisterScreen extends PureComponent {
                 name="ios-at"
                 size={20}
                 color="rgba(33, 33, 33, 0.4)" />
-              <StyledInput
+              <WideInput
                 ref='email'
                 returnKeyType={'next'}
                 onSubmitEditing={() => {
@@ -87,7 +88,7 @@ class FollowerRegisterScreen extends PureComponent {
                 name="ios-lock"
                 size={20}
                 color="rgba(33, 33, 33, 0.4)" />
-              <StyledInput
+              <WideInput
                 ref='password'
                 returnKeyType={'next'}
                 onSubmitEditing={() => {
@@ -103,7 +104,7 @@ class FollowerRegisterScreen extends PureComponent {
                 name="ios-lock"
                 size={20}
                 color="rgba(33, 33, 33, 0.4)" />
-              <StyledInput
+              <WideInput
                 ref='confirmPassword'
                 secureTextEntry={true}
                 textContentType={'password'}

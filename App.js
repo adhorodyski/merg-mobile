@@ -249,7 +249,7 @@ const Navigation = createAppContainer(createSwitchNavigator(
     App: AppStack
   },
   {
-    initialRouteName: 'App'
+    initialRouteName: 'Auth'
   }
 ))
 

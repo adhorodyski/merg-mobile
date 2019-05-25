@@ -1,8 +1,11 @@
 import React, { PureComponent } from 'react'
-import { Text, View } from 'react-native'
-import styled from 'styled-components/native'
 
-import { StyledView, Title, Tile, Label } from './Personal'
+import {
+  Tile,
+  Title,
+  StyledView,
+  SmallLabel
+} from '../Reusable/UI'
 
 class General extends PureComponent {
   render() {
@@ -10,10 +13,10 @@ class General extends PureComponent {
       <StyledView>
         <Title>General</Title>
         <Tile>
-          <Label>Language</Label>
+          <SmallLabel>Language</SmallLabel>
         </Tile>
         <Tile>
-          <Label>Location</Label>
+          <SmallLabel>Location</SmallLabel>
         </Tile>
       </StyledView>
     )
