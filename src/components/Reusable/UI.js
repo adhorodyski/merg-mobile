@@ -110,3 +110,22 @@ export const Avatar = styled.Image`
   margin: 10px auto;
   border-radius: 40px;
 `
+
+export const Scrollable = styled.ScrollView`
+  height: 50px;
+  margin: 0 10px;
+  display: flex;
+`
+
+export const ScrollTag = styled.TouchableHighlight`
+  height: 100%;
+  padding: 0 8px;
+  display: flex;
+  justify-content: center;
+`
+
+export const ScrollWord = styled.Text`
+  color: #818181;
+  font-size: 16px;
+  font-weight: bold;
+`
