@@ -12,7 +12,7 @@ class Tags extends PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      tags: ['Music', 'Sport', 'Technology', 'Food', 'Nature', 'Television', 'Lifestyle', 'Vlogs', 'Fashion', 'Travel', 'AI', 'SorryZuck']
+      tags: ['Music', 'Sport', 'Technology', 'Food', 'Nature', 'Television', 'Lifestyle', 'Vlogs', 'Fashion', 'Travel', 'AI', 'Games']
     }
   }
 
@@ -40,6 +40,10 @@ class Tags extends PureComponent {
   render() {
     return (
       <Scrollable
+        ref={scrollView => { this.scrollView = scrollView }}
+        onContentSizeChange={() => {
+          this.scrollView.scrollTo({ x: 5 })
+        }}
         horizontal={true}
         showsHorizontalScrollIndicator={false}>
         { this.renderTags() }

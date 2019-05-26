@@ -32,13 +32,13 @@ const Avatar = styled.Image`
 const P = styled.Text`
   font-size: 16px;
   font-weight: bold;
-  color: #808080;
+  color: #818181;
   margin: auto 0 auto 10px;
   align-self: flex-start;
 `
 
 const Span = styled.Text`
-  color: #6332C4;
+  color: #2947F2;
   font-size: 16px;
   font-weight: bold;
   margin: auto 0;

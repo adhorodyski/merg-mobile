@@ -18,12 +18,12 @@ export const StyledViewMargin2 = styled(StyledView)`
 export const Button = styled.TouchableOpacity`
   width: 100px;
   height: 30px;
-  background: #2446ff;
+  background: #2947F2;
   border: none;
   border-radius: 10px;
   display: flex;
   margin: 10px auto;
-  box-shadow: 0 2px 2px rgba(36, 70, 255, 0.3);
+  box-shadow: 0 2px 2px rgba(41, 71, 242, 0.3);
 `
 
 export const BtnText = styled.Text`
@@ -94,12 +94,14 @@ export const BigLabel = styled(SmallLabel)`
   max-width: 100%;
 `
 
-export const CenterBlueLabel = styled(SmallLabel)`
+export const DarkLabel = styled(SmallLabel)`
   display: flex;
   align-self: center;
   text-align: center;
   max-width: 95%;
-  color: #2645ec;
+  color: #2947F2;
+  margin: 0;
+  padding: 10px 20px;
 `
 
 export const Avatar = styled.Image`

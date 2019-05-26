@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 
 import {
   StyledViewMargin,
-  CenterBlueLabel,
+  DarkLabel,
   Avatar
 } from '../Reusable/UI'
 
@@ -11,7 +11,7 @@ class Picture extends PureComponent {
     return (
       <StyledViewMargin>
         <Avatar />
-        <CenterBlueLabel>Update your profile picture</CenterBlueLabel>
+        <DarkLabel>Update your profile picture</DarkLabel>
       </StyledViewMargin>
     )
   }

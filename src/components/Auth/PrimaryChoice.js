@@ -4,8 +4,8 @@ import { StackActions, withNavigation } from 'react-navigation'
 import styled from 'styled-components/native'
 
 import { Main } from '../Home/Home'
-const DescribeRegular = require('../../../assets/describe-regular.png')
-const DescribeCreator = require('../../../assets/describe-creator.png')
+const DescribeRegular = require('../../../assets/follower.png')
+const DescribeCreator = require('../../../assets/creator.png')
 
 const Flex = styled.View`
   margin: 80px auto 10px auto;

@@ -9,6 +9,7 @@ import {
   StackActions
 } from 'react-navigation'
 import { Image, TouchableOpacity } from 'react-native'
+import { Ionicons } from '@expo/vector-icons'
 import styled from 'styled-components/native'
 
 import PrimaryChoiceScreen from './src/components/Auth/PrimaryChoice'
@@ -22,9 +23,9 @@ import ExploreScreen from './src/components/Explore/Explore'
 import ProfileScreen from './src/components/Profile/Profile'
 import SettingsScreen from './src/components/Settings/Settings'
 const MergeIcon = require('./assets/branding/logo-short-colors.png')
-const HomeIcon = require('./assets/home.png')
-const ExploreIcon = require('./assets/explore.png')
-const ProfileIcon = require('./assets/profile.png')
+// const HomeIcon = require('./assets/home.png')
+// const ExploreIcon = require('./assets/explore.png')
+// const ProfileIcon = require('./assets/profile.png')
 const SettingsIcon = require('./assets/settings.png')
 
 const StyledTouchable = styled.TouchableOpacity`
@@ -44,7 +45,10 @@ const MainNavigator = createMaterialTopTabNavigator({
     screen: HomeScreen,
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (
-        <Icon source={HomeIcon} />
+        <Ionicons
+          name="md-home"
+          size={25}
+          color="#000" />
       )
     }
   },
@@ -52,7 +56,10 @@ const MainNavigator = createMaterialTopTabNavigator({
     screen: ExploreScreen,
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (
-        <Icon source={ExploreIcon} />
+        <Ionicons
+          name="md-compass"
+          size={25}
+          color="#000" />
       )
     }
   },
@@ -60,7 +67,10 @@ const MainNavigator = createMaterialTopTabNavigator({
     screen: ProfileScreen,
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (
-        <Icon source={ProfileIcon} />
+        <Ionicons
+          name="md-contact"
+          size={25}
+          color="#000" />
       )
     }
   },
@@ -68,6 +78,7 @@ const MainNavigator = createMaterialTopTabNavigator({
   defaultNavigationOptions: {
     swipeEnabled: true,
     tabBarPosition: 'bottom',
+    animationEnabled: true,
     tabBarOptions: {
       showIcon: true,
       showLabel: false,

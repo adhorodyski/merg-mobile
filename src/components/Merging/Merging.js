@@ -9,9 +9,9 @@ import {
   BtnText,
   Scrollable,
   ScrollTag,
-  ScrollWord
+  ScrollWord,
+  DarkLabel
 } from '../Reusable/UI'
-import { StyledLabel } from '../Settings/Logout'
 const FacebookLogo = require('../../../assets/social-media/facebook.png')
 const TwitterLogo = require('../../../assets/social-media/twitter.png')
 const InstagramLogo = require('../../../assets/social-media/instagram.png')
@@ -19,15 +19,8 @@ const SpotifyLogo = require('../../../assets/social-media/spotify.png')
 const TumblrLogo = require('../../../assets/social-media/tumblr.png')
 const YoutubeLogo = require('../../../assets/social-media/youtube.png')
 
-const LabelContainer = styled.View`
-  display: flex;
-  align-items: center;
-  max-width: 95%;
-  margin: 20px 10px;
-`
-
-const Label = styled(StyledLabel)`
-  text-align: center;
+const StyledMain = styled(Main)`
+  padding-top: 30px;
 `
 
 const CenteredGrid = styled.View`
@@ -55,8 +48,7 @@ const Img = styled.Image`
 `
 
 const StyledScrollable = styled(Scrollable)`
-  margin: 0 20px;
-  margin-bottom: 20px;
+  margin: 0 30px 20px 30px;
   height: 80px;
 `
 
@@ -64,7 +56,7 @@ class MergingScreen extends PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      tags: ['Music', 'Sport', 'Technology', 'Food', 'Nature', 'Television', 'Lifestyle', 'Vlogs', 'Fashion', 'Travel', 'AI', 'SorryZuck']
+      tags: ['Music', 'Sport', 'Technology', 'Food', 'Nature', 'Television', 'Lifestyle', 'Vlogs', 'Fashion', 'Travel', 'AI', 'Games']
     }
   }
 
@@ -92,51 +84,53 @@ class MergingScreen extends PureComponent {
   render() {
     const { navigation } = this.props
     return (
-      <Main>
-        <LabelContainer>
-          <Label>
-            Choose streams to merge for your followers
-          </Label>
-          <CenteredGrid>
-            <Cell>
-              <Img source={FacebookLogo} />
-            </Cell>
-            <Cell>
-              <Img source={TwitterLogo} />
-            </Cell>
-            <Cell>
-              <Img source={InstagramLogo} />
-            </Cell>
-            <Cell>
-              <Img source={SpotifyLogo} />
-            </Cell>
-            <Cell>
-              <Img source={TumblrLogo} />
-            </Cell>
-            <Cell>
-              <Img source={YoutubeLogo} />
-            </Cell>
-          </CenteredGrid>
-          <Label>
-            Pick some tags which fits your content
-          </Label>
-          <StyledScrollable
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}>
-            { this.renderTags() }
-          </StyledScrollable>
-          <Button onPress={() => {
-            const pushAction = StackActions.push({
-              routeName: 'Welcome'
-            })
-            navigation.dispatch(pushAction)
-          }}>
-            <BtnText>
-              continue
-            </BtnText>
-          </Button>
-        </LabelContainer>
-      </Main>
+      <StyledMain>
+        <DarkLabel>
+          Choose streams to merge for your followers
+        </DarkLabel>
+        <CenteredGrid>
+          <Cell>
+            <Img source={FacebookLogo} />
+          </Cell>
+          <Cell>
+            <Img source={TwitterLogo} />
+          </Cell>
+          <Cell>
+            <Img source={InstagramLogo} />
+          </Cell>
+          <Cell>
+            <Img source={YoutubeLogo} />
+          </Cell>
+          <Cell>
+            <Img source={SpotifyLogo} />
+          </Cell>
+          <Cell>
+            <Img source={TumblrLogo} />
+          </Cell>
+        </CenteredGrid>
+        <DarkLabel>
+          Pick tags which fits your content
+        </DarkLabel>
+        <StyledScrollable
+          ref={scrollView => { this.scrollView = scrollView }}
+          onContentSizeChange={() => {
+            this.scrollView.scrollTo({ x: 5 })
+          }}
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}>
+          { this.renderTags() }
+        </StyledScrollable>
+        <Button onPress={() => {
+          const pushAction = StackActions.push({
+            routeName: 'Welcome'
+          })
+          navigation.dispatch(pushAction)
+        }}>
+          <BtnText>
+            continue
+          </BtnText>
+        </Button>
+      </StyledMain>
     )
   }
 }
