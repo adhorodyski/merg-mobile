@@ -2,6 +2,8 @@ import React, { PureComponent } from 'react'
 import { View, Text, TouchableHighlight } from 'react-native'
 import styled from 'styled-components'
 
+import { Button, BtnText } from '../Reusable/UI'
+
 const StyledWrapper = styled.View`
   display: flex;
   flex-direction: row;
@@ -9,40 +11,24 @@ const StyledWrapper = styled.View`
   margin: 5px auto;
 `
 
-const Button = styled.TouchableHighlight`
-  width: 100px;
-  height: 30px;
-  background: #59BEFF;
-  border: none;
-  border-radius: 10px;
-  display: flex;
+const StyledButton = styled(Button)`
   margin: auto 20px;
-  box-shadow: 0 2px 2px rgba(89, 190, 255, 0.4);
-`
-
-const BtnText = styled.Text`
-  font-size: 14px;
-  font-weight: bold;
-  color: #FAFAFA;
-  text-align: center;
-  margin: auto;
-  line-height: 30px;
 `
 
 class Actions extends PureComponent {
   render() {
     return (
       <StyledWrapper>
-        <Button>
+        <StyledButton>
           <BtnText>
             merge
           </BtnText>
-        </Button>
-        <Button>
+        </StyledButton>
+        <StyledButton>
           <BtnText>
             talk to
           </BtnText>
-        </Button>
+        </StyledButton>
       </StyledWrapper>
     )
   }

@@ -2,6 +2,8 @@ import React, { PureComponent } from 'react'
 import { View, TouchableHighlight, Image, Text } from 'react-native'
 import styled from 'styled-components'
 
+import { Button, BtnText } from '../Reusable/UI'
+
 const FacebookLogo = require('../../../assets/social-media/facebook.png')
 const TwitterLogo = require('../../../assets/social-media/twitter.png')
 const InstagramLogo = require('../../../assets/social-media/instagram.png')
@@ -9,7 +11,7 @@ const SpotifyLogo = require('../../../assets/social-media/spotify.png')
 const TumblrLogo = require('../../../assets/social-media/tumblr.png')
 const YoutubeLogo = require('../../../assets/social-media/youtube.png')
 
-const ResultTileStyled = styled.View`
+const StyledResultTile = styled.View`
   width: 95%;
   margin: 0 auto;
   margin-bottom: 10px;
@@ -20,7 +22,7 @@ const ResultTileStyled = styled.View`
   box-shadow: 0 4px 3px rgba(33, 33, 33, 0.03);
 `
 
-const ResultTileInfo = styled.View`
+const TopWrapper = styled.View`
   height: 60px;
   padding: 0 10px;
   display: flex;
@@ -63,7 +65,7 @@ const FlexView = styled.View`
   align-self: center;
 `
 
-const MergedWithGroup = styled.View`
+const MergedGroup = styled.View`
   display: flex;
   flex-direction: row;
   margin-left: 45px;
@@ -76,7 +78,7 @@ const Provider = styled.Image`
   margin-right: 10px;
 `
 
-const ResultTileActions = styled.View`
+const BottomWrapper = styled.View`
   height: 40px;
   padding: 0 10px;
   display: flex;
@@ -84,24 +86,9 @@ const ResultTileActions = styled.View`
   flex-direction: row;
 `
 
-const Button = styled.TouchableHighlight`
+const StyledButton = styled(Button)`
   width: 75px;
-  height: 30px;
-  background: #59BEFF;
-  border: none;
-  border-radius: 10px;
-  display: flex;
   margin: auto 0;
-  box-shadow: 0 2px 2px rgba(89, 190, 255, 0.4);
-`
-
-const BtnText = styled.Text`
-  font-size: 14px;
-  font-weight: bold;
-  color: #FAFAFA;
-  text-align: center;
-  align-self: center;
-  line-height: 30px;
 `
 
 class CreatorTile extends PureComponent {
@@ -116,8 +103,8 @@ class CreatorTile extends PureComponent {
   render() {
     const { isFollowing, ownProfile } = this.state
     return (
-      <ResultTileStyled>
-        <ResultTileInfo>
+      <StyledResultTile>
+        <TopWrapper>
           <InfoContainer>
             <Avatar />
             <FlexView>
@@ -129,26 +116,26 @@ class CreatorTile extends PureComponent {
               </FollowersCounter>
             </FlexView>
           </InfoContainer>
-        </ResultTileInfo>
-        <ResultTileActions>
-          <MergedWithGroup>
+        </TopWrapper>
+        <BottomWrapper>
+          <MergedGroup>
             <Provider source={FacebookLogo} />
             <Provider source={TwitterLogo} />
             <Provider source={InstagramLogo} />
             <Provider source={YoutubeLogo} />
             <Provider source={SpotifyLogo} />
             <Provider source={TumblrLogo} />
-          </MergedWithGroup>
+          </MergedGroup>
           {
             !ownProfile &&
-            <Button>
+            <StyledButton>
               <BtnText>
                 merge
               </BtnText>
-            </Button>
+            </StyledButton>
           }
-        </ResultTileActions>
-      </ResultTileStyled>
+        </BottomWrapper>
+      </StyledResultTile>
     )
   }
 }

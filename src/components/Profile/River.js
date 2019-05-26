@@ -21,9 +21,10 @@ class River extends PureComponent {
 
     return count.map(e => {
       return (
-        <ResultTile key={e}>
+        <View key={e}>
           <TileHeader />
-        </ResultTile>
+          <ResultTile />
+        </View>
       )
     })
   }

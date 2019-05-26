@@ -113,6 +113,13 @@ export const Avatar = styled.Image`
   border-radius: 40px;
 `
 
+export const AvatarSmall = styled(Avatar)`
+  height: 40px;
+  width: 40px;
+  margin: auto 10px;
+  border-radius: 20px;
+`
+
 export const Scrollable = styled.ScrollView`
   height: 50px;
   margin: 0 10px;
