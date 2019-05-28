@@ -1,4 +1,5 @@
 import { FETCH_LOGGED_USER } from './types'
+import * as base from '../variables'
 
 export const fetchLoggedUser = () => dispatch => {
   const user = {

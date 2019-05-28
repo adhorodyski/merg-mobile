@@ -1,4 +1,10 @@
 import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
+import {
+  getLoginEmail,
+  getLoginPassword,
+  loginUser
+} from '../../actions/loginFormActions'
 import { TouchableOpacity, KeyboardAvoidingView } from 'react-native'
 import { withNavigation } from 'react-navigation'
 import styled from 'styled-components/native'
@@ -29,6 +35,19 @@ export const IconLock = styled(IconMail)`
 `
 
 class SignInScreen extends PureComponent {
+  handleEmail = value => {
+    this.props.getLoginEmail(value)
+  }
+
+  handlePassword = value => {
+    this.props.getLoginPassword(value)
+  }
+
+  submitLogin = () => {
+    const { navigation } = this.props
+    this.props.loginUser(navigation)
+  }
+
   render() {
     const { navigation } = this.props
     return (
@@ -43,6 +62,7 @@ class SignInScreen extends PureComponent {
                 size={20}
                 color="rgba(33, 33, 33, 0.4)" />
               <WideInput
+                onChangeText={value => this.handleEmail(value)}
                 returnKeyType={'next'}
                 onSubmitEditing={() => {
                   this.refs.password.focus()
@@ -57,14 +77,13 @@ class SignInScreen extends PureComponent {
                 size={20}
                 color="rgba(33, 33, 33, 0.4)" />
               <WideInput
+                onChangeText={value => this.handlePassword(value)}
                 ref='password'
                 secureTextEntry={true}
                 textContentType={'password'}
                 placeholder='• • • • • • •|' />
             </Tile>
-            <Button onPress={() => {
-                navigation.navigate('Home')
-              }}>
+            <Button onPress={this.submitLogin}>
               <BtnText>
                 sign in
               </BtnText>
@@ -76,4 +95,16 @@ class SignInScreen extends PureComponent {
   }
 }
 
-export default withNavigation(SignInScreen)
+const mapStateToProps = state => ({
+  email: state.loginForm.email,
+  password: state.loginForm.password
+})
+
+export default withNavigation(connect(
+  mapStateToProps,
+  {
+    getLoginEmail,
+    getLoginPassword,
+    loginUser
+  }
+)(SignInScreen))

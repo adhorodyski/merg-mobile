@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import { View, Text, Image, TouchableHighlight } from 'react-native'
 import styled from 'styled-components'
+import { Ionicons } from '@expo/vector-icons'
 
 import { AvatarSmall } from '../Reusable/UI'
 
@@ -34,6 +35,13 @@ const TimeP = styled.Text`
   margin: auto auto auto 10px;
 `
 
+const Icon = styled(Ionicons)`
+  display: flex;
+  align-self: flex-end;
+  padding: 10px;
+  margin: auto 10px auto auto;
+`
+
 export class TileHeader extends PureComponent {
   render() {
     return (
@@ -41,6 +49,10 @@ export class TileHeader extends PureComponent {
         <AvatarSmall />
         <H4>Mystery Guitar Man</H4>
         <TimeP>5 min</TimeP>
+        <Icon
+          name="ios-arrow-dropright"
+          size={20}
+          color="rgba(33, 33, 33, 0.4)" />
       </Header>
     )
   }
