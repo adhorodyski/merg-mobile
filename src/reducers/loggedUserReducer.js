@@ -3,6 +3,7 @@ import { FETCH_LOGGED_USER } from '../actions/types'
 const initialState = {
   firstName: '',
   username: '',
+  email: '',
   creator: false,
   profilePic: '',
   about: '',
@@ -17,6 +18,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         firstName: action.payload.firstName,
         username: action.payload.username,
+        email: action.payload.email,
         creator: action.payload.creator,
         profilePic: action.payload.profilePic,
         about: action.payload.about,

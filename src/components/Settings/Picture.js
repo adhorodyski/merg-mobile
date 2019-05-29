@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
 
 import {
   StyledViewMargin,
@@ -8,13 +9,18 @@ import {
 
 class Picture extends PureComponent {
   render() {
+    const { profilePic } = this.props
     return (
       <StyledViewMargin>
-        <Avatar />
+        <Avatar source={{uri: profilePic}} />
         <DarkLabel>Update your profile picture</DarkLabel>
       </StyledViewMargin>
     )
   }
 }
 
-export default Picture
+const mapStateToProps = state => ({
+  profilePic: state.loggedUser.profilePic
+})
+
+export default connect(mapStateToProps)(Picture)
