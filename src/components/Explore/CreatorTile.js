@@ -100,18 +100,56 @@ class CreatorTile extends PureComponent {
     }
   }
 
+  componentDidMount = () => {
+    const { loggedUsername, result: { local: { username } } } = this.props
+
+    this.setState(
+      { ownProfile: (loggedUsername === username) && true },
+      () => { this.checkFollow() }
+    )
+  }
+
+  checkFollow = async () => {
+    const { isFollowing } = this.state
+    const { follows, result: { _id } } = this.props
+
+    for await (const e of follows) {
+      if(e.creatorID === _id) {
+        this.setState({
+          isFollowing: !isFollowing
+        })
+      }
+    }
+  }
+
   render() {
     const { isFollowing, ownProfile } = this.state
+    const {
+      result: {
+        facebook,
+        twitter,
+        instagram,
+        youtube,
+        spotify,
+        tumblr,
+        local: {
+          photo,
+          nameDisplayed,
+          followers
+        }
+      }
+    } = this.props
+
     return (
       <StyledResultTile>
         <TopWrapper>
           <InfoContainer>
-            <Avatar />
+            <Avatar source={{uri: photo}} />
             <FlexView>
-              <Name>Adam Horodyski</Name>
+              <Name>{nameDisplayed}</Name>
               <FollowersCounter ownProfile={ownProfile}>
                 <CounterSpan>
-                  245.645 followers
+                  {followers.length} followers
                 </CounterSpan>
               </FollowersCounter>
             </FlexView>
@@ -119,12 +157,12 @@ class CreatorTile extends PureComponent {
         </TopWrapper>
         <BottomWrapper>
           <MergedGroup>
-            <Provider source={FacebookLogo} />
-            <Provider source={TwitterLogo} />
-            <Provider source={InstagramLogo} />
-            <Provider source={YoutubeLogo} />
-            <Provider source={SpotifyLogo} />
-            <Provider source={TumblrLogo} />
+            {facebook && <Provider source={FacebookLogo} />}
+            {twitter && <Provider source={TwitterLogo} />}
+            {instagram && <Provider source={InstagramLogo} />}
+            {youtube && <Provider source={YoutubeLogo} />}
+            {spotify && <Provider source={SpotifyLogo} />}
+            {tumblr && <Provider source={TumblrLogo} />}
           </MergedGroup>
           {
             !ownProfile &&

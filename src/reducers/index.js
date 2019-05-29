@@ -6,6 +6,7 @@ import registerFormReducer from './registerFormReducer'
 import registerCreatorFormReducer from './registerCreatorFormReducer'
 import settingsReducer from './settingsReducer'
 import listsReducer from './listsReducer'
+import exploreReducer from './exploreReducer'
 
 export default combineReducers({
   auth: authReducer,
@@ -14,5 +15,6 @@ export default combineReducers({
   registerForm: registerFormReducer,
   registerCreatorForm: registerCreatorFormReducer,
   settings: settingsReducer,
-  lists: listsReducer
+  lists: listsReducer,
+  explore: exploreReducer
 })

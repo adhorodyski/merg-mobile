@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { fetchAuth } from '../../actions/authActions'
 import { fetchLoggedUser } from '../../actions/loggedUserActions'
 import { fetchCreators } from '../../actions/listsActions'
+import { loadCreatorsChunk } from '../../actions/exploreActions'
 
 import { Main } from '../Home/Home'
 import Greeting from '../Home/Greeting'
@@ -15,6 +16,7 @@ class ExploreScreen extends PureComponent {
     await this.props.fetchAuth()
     await this.props.fetchLoggedUser()
     await this.props.fetchCreators()
+    await this.props.loadCreatorsChunk()
   }
 
   render() {
@@ -34,6 +36,7 @@ export default connect(
   {
     fetchAuth,
     fetchLoggedUser,
-    fetchCreators
+    fetchCreators,
+    loadCreatorsChunk
   }
 )(ExploreScreen)

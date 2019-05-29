@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
 import { View, Text, TouchableHighlight } from 'react-native'
 import styled from 'styled-components'
 
@@ -9,19 +10,12 @@ import {
 } from '../Reusable/UI'
 
 class Tags extends PureComponent {
-  constructor(props) {
-    super(props)
-    this.state = {
-      tags: ['Music', 'Sport', 'Technology', 'Food', 'Nature', 'Television', 'Lifestyle', 'Vlogs', 'Fashion', 'Travel', 'AI', 'Games']
-    }
-  }
-
   onPress = e => {
     console.log(e)
   }
 
   renderTags = () => {
-    const { tags } = this.state
+    const { tags } = this.props
 
     return tags.map(tag => {
       return (
@@ -52,4 +46,8 @@ class Tags extends PureComponent {
   }
 }
 
-export default Tags
+const mapStateToProps = state => ({
+  tags: state.explore.tags
+})
+
+export default connect(mapStateToProps)(Tags)

@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
 import { View } from 'react-native'
 import styled from 'styled-components'
 
@@ -9,20 +10,15 @@ const StyledView = styled.View`
 `
 
 class SearchResults extends PureComponent {
-  constructor(props) {
-    super(props)
-    this.state = {
-      creators: ['Tom', 'Jerry', 'Mat', 'Zuck', 'Jonny', 'Igi', 'Janet']
-    }
-  }
-
   renderResults = () => {
-    const { creators } = this.state
+    const { results, follows, loggedUsername } = this.props
 
-    return creators.map(e => {
-      return (
-        <CreatorTile key={e} />
-      )
+    return results.map((result, key) => {
+      return <CreatorTile
+                result={result}
+                follows={follows}
+                loggedUsername={loggedUsername}
+                key={key} />
     })
   }
 
@@ -35,4 +31,10 @@ class SearchResults extends PureComponent {
   }
 }
 
-export default SearchResults
+const mapStateToProps = state => ({
+  results: state.explore.results,
+  follows: state.loggedUser.follows,
+  loggedUsername: state.loggedUser.username
+})
+
+export default connect(mapStateToProps)(SearchResults)
