@@ -5,7 +5,7 @@ import {
   Title,
   StyledView,
   BigLabel
-} from '../Reusable/UI'
+} from '../Shared/UI'
 
 class Legal extends PureComponent {
   render() {

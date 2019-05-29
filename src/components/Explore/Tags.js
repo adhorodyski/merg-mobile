@@ -7,7 +7,7 @@ import {
   Scrollable,
   ScrollTag,
   ScrollWord
-} from '../Reusable/UI'
+} from '../Shared/UI'
 
 class Tags extends PureComponent {
   onPress = e => {

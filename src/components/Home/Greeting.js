@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Text, View, Image } from 'react-native'
 import styled from 'styled-components'
 
-import { AvatarSmall } from '../Reusable/UI'
+import { AvatarSmall } from '../Shared/UI'
 
 const StyledWrapper = styled.View`
   width: 100%;

@@ -3,7 +3,7 @@ import { View, Text, Image, TouchableHighlight } from 'react-native'
 import styled from 'styled-components'
 import { Ionicons } from '@expo/vector-icons'
 
-import { AvatarSmall } from '../Reusable/UI'
+import { AvatarSmall } from '../Shared/UI'
 
 export const ResultTile = styled.View`
   width: 95%;

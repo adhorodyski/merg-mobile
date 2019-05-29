@@ -19,7 +19,7 @@ import {
   InputHigh,
   SmallLabel,
   FixedSmallLabel
-} from '../Reusable/UI'
+} from '../Shared/UI'
 
 class Personal extends PureComponent {
   componentDidMount = () => {

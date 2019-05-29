@@ -3,7 +3,7 @@ import { Text, TouchableOpacity } from 'react-native'
 import { StackActions, withNavigation } from 'react-navigation'
 import styled from 'styled-components/native'
 
-import { StyledViewMargin2, DarkLabel } from '../Reusable/UI'
+import { StyledViewMargin2, DarkLabel } from '../Shared/UI'
 
 const Touch = styled.TouchableOpacity`
   display: flex;

@@ -16,7 +16,7 @@ import {
   Button,
   BtnText,
   WideInput
-} from '../Reusable/UI'
+} from '../Shared/UI'
 
 export const Form = styled.View`
   padding: 20px;

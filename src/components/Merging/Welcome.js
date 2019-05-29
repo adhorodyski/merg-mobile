@@ -8,7 +8,7 @@ import {
   Button,
   BtnText,
   DarkLabel
-} from '../Reusable/UI'
+} from '../Shared/UI'
 const FacebookLogo = require('../../../assets/social-media/facebook.png')
 const TwitterLogo = require('../../../assets/social-media/twitter.png')
 const InstagramLogo = require('../../../assets/social-media/instagram.png')

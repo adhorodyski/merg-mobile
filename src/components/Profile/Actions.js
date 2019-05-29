@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { View, Text, TouchableHighlight } from 'react-native'
 import styled from 'styled-components'
 
-import { Button, BtnText } from '../Reusable/UI'
+import { Button, BtnText } from '../Shared/UI'
 
 const StyledWrapper = styled.View`
   display: flex;

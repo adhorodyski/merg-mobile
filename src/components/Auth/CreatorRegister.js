@@ -18,7 +18,7 @@ import {
   BtnText,
   Tile,
   WideInput
-} from '../Reusable/UI'
+} from '../Shared/UI'
 import { Form, IconMail, IconLock } from './SignIn'
 import { StyledLabelWide } from './PrimaryChoice'
 

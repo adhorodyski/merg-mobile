@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { View, TouchableHighlight, Image, Text } from 'react-native'
 import styled from 'styled-components'
 
-import { Button, BtnText } from '../Reusable/UI'
+import { Button, BtnText } from '../Shared/UI'
 
 const FacebookLogo = require('../../../assets/social-media/facebook.png')
 const TwitterLogo = require('../../../assets/social-media/twitter.png')

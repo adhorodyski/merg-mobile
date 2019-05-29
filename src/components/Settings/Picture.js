@@ -5,7 +5,7 @@ import {
   StyledViewMargin,
   DarkLabel,
   Avatar
-} from '../Reusable/UI'
+} from '../Shared/UI'
 
 class Picture extends PureComponent {
   render() {

@@ -5,7 +5,7 @@ import {
   Title,
   StyledView,
   SmallLabel
-} from '../Reusable/UI'
+} from '../Shared/UI'
 
 class General extends PureComponent {
   render() {
