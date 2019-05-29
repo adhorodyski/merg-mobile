@@ -23,9 +23,6 @@ import ExploreScreen from './src/components/Explore/Explore'
 import ProfileScreen from './src/components/Profile/Profile'
 import SettingsScreen from './src/components/Settings/Settings'
 const MergeIcon = require('./assets/branding/logo-short-colors.png')
-// const HomeIcon = require('./assets/home.png')
-// const ExploreIcon = require('./assets/explore.png')
-// const ProfileIcon = require('./assets/profile.png')
 const SettingsIcon = require('./assets/settings.png')
 
 const StyledTouchable = styled.TouchableOpacity`
@@ -253,14 +250,14 @@ const MergingStack = createStackNavigator({
   }
 })
 
-const Navigation = createAppContainer(createSwitchNavigator(
+const Stacks = createAppContainer(createSwitchNavigator(
   {
     Auth: AuthStack,
     Merging: MergingStack,
     App: AppStack
   },
   {
-    initialRouteName: 'Auth'
+    initialRouteName: 'App'
   }
 ))
 
@@ -268,7 +265,7 @@ class App extends PureComponent {
   render() {
     return (
       <Provider store={store}>
-        <Navigation />
+        <Stacks />
       </Provider>
     )
   }
