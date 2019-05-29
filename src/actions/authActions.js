@@ -9,7 +9,7 @@ export const fetchAuth = () => dispatch => {
   .then(data => {
     dispatch({
       type: FETCH_AUTH,
-      payload: data
+      payload: data.authData
     })
   })
   .catch(err => console.log(err))

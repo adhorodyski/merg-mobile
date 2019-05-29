@@ -37,11 +37,11 @@ const Span = styled.Text`
 
 class Greeting extends PureComponent {
   render() {
-    const { firstName } = this.props
+    const { firstName, profilePic } = this.props
 
     return (
       <StyledWrapper>
-        <StyledAvatarSmall />
+        <StyledAvatarSmall source={{uri: profilePic}} />
         <P>
           Hello, <Span>{firstName}</Span>
         </P>
@@ -51,7 +51,8 @@ class Greeting extends PureComponent {
 }
 
 const mapStateToProps = state => ({
-  firstName: state.loggedUser.firstName
+  firstName: state.loggedUser.firstName,
+  profilePic: state.loggedUser.profilePic
 })
 
 export default connect(mapStateToProps)(Greeting)

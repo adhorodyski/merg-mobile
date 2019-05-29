@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
 import { Text } from 'react-native'
 import styled from 'styled-components'
 
@@ -11,12 +12,17 @@ const StyledText = styled.Text`
 
 class Note extends PureComponent {
   render() {
+    const { about } = this.props
     return (
       <StyledText>
-        Follow people, not profiles.
+        {about}
       </StyledText>
     )
   }
 }
 
-export default Note
+const mapStateToProps = state => ({
+  about: state.loggedUser.about
+})
+
+export default connect(mapStateToProps)(Note)

@@ -16,16 +16,12 @@ const NamesWrap = styled.View`
   margin: auto 0;
 `
 
-const AvatarWrap = styled.View`
-  display: flex;
-  margin-right: 10px;
-`
-
 const Avatar = styled.Image`
   height: 50px;
   width: 50px;
+  display: flex;
   background: #FFFFFF;
-  margin: auto;
+  margin: auto 10px auto auto;
   border-radius: 25px;
 `
 
@@ -46,18 +42,17 @@ const Sp = styled.Text`
 class Basics extends PureComponent {
   render() {
     const {
-      nameDisplayed,
-      username
+      firstName,
+      username,
+      profilePic
     } = this.props
 
     return (
       <StyledWrapper>
-        <AvatarWrap>
-          <Avatar />
-        </AvatarWrap>
+        <Avatar source={{uri: profilePic}} />
         <NamesWrap>
           <Name>
-            {nameDisplayed}
+            {firstName}
           </Name>
           <Username>
             <Sp>@</Sp>
@@ -70,8 +65,9 @@ class Basics extends PureComponent {
 }
 
 const mapStateToProps = state => ({
-  nameDisplayed: state.loggedUser.nameDisplayed,
-  username: state.loggedUser.username
+  firstName: state.loggedUser.firstName,
+  username: state.loggedUser.username,
+  profilePic: state.loggedUser.profilePic
 })
 
 export default connect(mapStateToProps)(Basics)
