@@ -26,9 +26,9 @@ export const StyledText = styled.Text`
 `
 
 class HomeScreen extends PureComponent {
-  componentDidMount = () => {
-    this.props.fetchAuth()
-    this.props.fetchLoggedUser()
+  componentDidMount = async () => {
+    await this.props.fetchAuth()
+    await this.props.fetchLoggedUser()
   }
 
   render() {

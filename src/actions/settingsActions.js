@@ -27,7 +27,7 @@ export const sendPersonalForm = e => async (dispatch, getState) => {
     aboutValue
   } = getState().settings.personal
 
-  fetch(`${base.API_URL}/api/settings/personal`, {
+  await fetch(`${base.API_URL}/api/settings/personal`, {
     credentials: 'include',
     method: 'post',
     headers: {

@@ -1,8 +1,8 @@
 import { FETCH_AUTH } from './types'
 import * as base from '../variables'
 
-export const fetchAuth = () => dispatch => {
-  fetch(`${base.API_URL}/api/authProfile`)
+export const fetchAuth = () => async dispatch => {
+  await fetch(`${base.API_URL}/api/authProfile`)
   .then(res => {
     return res.json()
   })

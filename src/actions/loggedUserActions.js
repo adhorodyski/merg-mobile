@@ -1,8 +1,8 @@
 import { FETCH_LOGGED_USER } from './types'
 import * as base from '../variables'
 
-export const fetchLoggedUser = () => dispatch => {
-  fetch(`${base.API_URL}/api/self`)
+export const fetchLoggedUser = () => async dispatch => {
+  await fetch(`${base.API_URL}/api/self`)
   .then(res => {
     return res.json()
   })

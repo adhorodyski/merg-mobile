@@ -8,7 +8,7 @@ import {
 } from './types'
 import * as base from '../variables'
 
-export const registerCreator = navigation => (dispatch, getState) => {
+export const registerCreator = navigation => async (dispatch, getState) => {
   const {
     nameDisplayed,
     email,
@@ -17,7 +17,7 @@ export const registerCreator = navigation => (dispatch, getState) => {
     passwordMatch
   } = getState().registerCreatorForm
 
-  fetch(
+  await fetch(
     `${base.API_URL}/api/user/creator/register`, {
     credentials: 'include',
     method: 'post',

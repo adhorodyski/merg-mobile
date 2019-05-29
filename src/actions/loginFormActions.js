@@ -5,14 +5,14 @@ import {
 } from './types'
 import * as base from '../variables'
 
-export const loginUser = navigation => (dispatch, getState) => {
+export const loginUser = navigation => async (dispatch, getState) => {
   const { email, password } = getState().loginForm
   const form = {
     email: email,
     password: password
   }
 
-  fetch(`${base.API_URL}/api/user/login`, {
+  await fetch(`${base.API_URL}/api/user/login`, {
     credentials: 'include',
     method: 'post',
     headers: {
