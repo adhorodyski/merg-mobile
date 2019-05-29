@@ -35,21 +35,14 @@ export const IconLock = styled(IconMail)`
 `
 
 class SignInScreen extends PureComponent {
-  handleEmail = value => {
-    this.props.getLoginEmail(value)
-  }
-
-  handlePassword = value => {
-    this.props.getLoginPassword(value)
-  }
-
-  submitLogin = () => {
-    const { navigation } = this.props
-    this.props.loginUser(navigation)
-  }
-
   render() {
-    const { navigation } = this.props
+    const {
+      navigation,
+      getLoginEmail,
+      getLoginPassword,
+      loginUser
+    } = this.props
+    
     return (
       <Main>
         <KeyboardAvoidingView
@@ -62,7 +55,7 @@ class SignInScreen extends PureComponent {
                 size={20}
                 color="rgba(33, 33, 33, 0.4)" />
               <WideInput
-                onChangeText={value => this.handleEmail(value)}
+                onChangeText={value => getLoginEmail(value)}
                 returnKeyType={'next'}
                 onSubmitEditing={() => {
                   this.refs.password.focus()
@@ -77,13 +70,13 @@ class SignInScreen extends PureComponent {
                 size={20}
                 color="rgba(33, 33, 33, 0.4)" />
               <WideInput
-                onChangeText={value => this.handlePassword(value)}
+                onChangeText={value => getLoginPassword(value)}
                 ref='password'
                 secureTextEntry={true}
                 textContentType={'password'}
                 placeholder='• • • • • • •|' />
             </Tile>
-            <Button onPress={this.submitLogin}>
+            <Button onPress={() => loginUser(navigation)}>
               <BtnText>
                 sign in
               </BtnText>

@@ -34,33 +34,17 @@ const AdjustedLabel = styled(StyledLabelWide)`
 `
 
 class CreatorRegisterScreen extends PureComponent {
-  handleNameDisplayed = value => {
-    this.props.getCreatorRegisterNameDisplayed(value)
-  }
-
-  handleUsername = value => {
-    this.props.getCreatorRegisterUsername(value)
-  }
-
-  handleEmail = value => {
-    this.props.getCreatorRegisterEmail(value)
-  }
-
-  handlePassword = value => {
-    this.props.getCreatorRegisterPassword(value)
-  }
-
-  handlePasswordMatch = value => {
-    this.props.getCreatorRegisterPasswordMatch(value)
-  }
-
-  submitRegister = () => {
-    const { navigation } = this.props
-    this.props.registerCreator(navigation)
-  }
-
   render() {
-    const { navigation } = this.props
+    const {
+      navigation,
+      getCreatorRegisterNameDisplayed,
+      getCreatorRegisterUsername,
+      getCreatorRegisterEmail,
+      getCreatorRegisterPassword,
+      getCreatorRegisterPasswordMatch,
+      registerCreator
+    } = this.props
+
     return (
       <Main>
         <KeyboardAvoidingView
@@ -74,7 +58,7 @@ class CreatorRegisterScreen extends PureComponent {
                 color="rgba(33, 33, 33, 0.4)" />
               <WideInput
                 returnKeyType={'next'}
-                onChangeText={value => this.handleNameDisplayed(value)}
+                onChangeText={value => getCreatorRegisterNameDisplayed(value)}
                 onSubmitEditing={() => {
                   this.refs.username.focus()
                 }}
@@ -89,7 +73,7 @@ class CreatorRegisterScreen extends PureComponent {
                 color="rgba(33, 33, 33, 0.4)" />
               <WideInput
                 ref='username'
-                onChangeText={value => this.handleUsername(value)}
+                onChangeText={value => getCreatorRegisterUsername(value)}
                 onSubmitEditing={() => {
                   this.refs.email.focus()
                 }}
@@ -105,7 +89,7 @@ class CreatorRegisterScreen extends PureComponent {
                 color="rgba(33, 33, 33, 0.4)" />
               <WideInput
                 ref='email'
-                onChangeText={value => this.handleEmail(value)}
+                onChangeText={value => getCreatorRegisterEmail(value)}
                 onSubmitEditing={() => {
                   this.refs.password.focus()
                 }}
@@ -127,7 +111,7 @@ class CreatorRegisterScreen extends PureComponent {
                 color="rgba(33, 33, 33, 0.4)" />
               <WideInput
                 ref='password'
-                onChangeText={value => this.handlePassword(value)}
+                onChangeText={value => getCreatorRegisterPassword(value)}
                 onSubmitEditing={() => {
                   this.refs.confirmPassword.focus()
                 }}
@@ -144,12 +128,12 @@ class CreatorRegisterScreen extends PureComponent {
                 color="rgba(33, 33, 33, 0.4)" />
               <WideInput
                 ref='confirmPassword'
-                onChangeText={value => this.handlePasswordMatch(value)}
+                onChangeText={value => getCreatorRegisterPasswordMatch(value)}
                 secureTextEntry={true}
                 textContentType={'password'}
                 placeholder='confirm password' />
             </Tile>
-            <Button onPress={this.submitRegister}>
+            <Button onPress={() => registerCreator(navigation)}>
               <BtnText>
                 continue
               </BtnText>

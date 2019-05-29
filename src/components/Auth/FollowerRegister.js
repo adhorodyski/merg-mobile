@@ -34,33 +34,17 @@ const AdjustedLabel = styled(StyledLabelWide)`
 `
 
 class FollowerRegisterScreen extends PureComponent {
-  handleFirstName = value => {
-    this.props.getRegisterFirstName(value)
-  }
-
-  handleUsername = value => {
-    this.props.getRegisterUsername(value)
-  }
-
-  handleEmail = value => {
-    this.props.getRegisterEmail(value)
-  }
-
-  handlePassword = value => {
-    this.props.getRegisterPassword(value)
-  }
-
-  handlePasswordMatch = value => {
-    this.props.getRegisterPasswordMatch(value)
-  }
-
-  submitRegister = () => {
-    const { navigation } = this.props
-    this.props.registerUser(navigation)
-  }
-
   render() {
-    const { navigation } = this.props
+    const {
+      navigation,
+      getRegisterFirstName,
+      getRegisterUsername,
+      getRegisterEmail,
+      getRegisterPassword,
+      getRegisterPasswordMatch,
+      submitRegister
+    } = this.props
+
     return (
       <Main>
         <KeyboardAvoidingView
@@ -74,7 +58,7 @@ class FollowerRegisterScreen extends PureComponent {
                 color="rgba(33, 33, 33, 0.4)" />
               <WideInput
                 returnKeyType={'next'}
-                onChangeText={value => this.handleFirstName(value)}
+                onChangeText={value => getRegisterFirstName(value)}
                 onSubmitEditing={() => {
                   this.refs.username.focus()
                 }}
@@ -90,7 +74,7 @@ class FollowerRegisterScreen extends PureComponent {
               <WideInput
                 ref='username'
                 returnKeyType={'next'}
-                onChangeText={value => this.handleUsername(value)}
+                onChangeText={value => getRegisterUsername(value)}
                 onSubmitEditing={() => {
                   this.refs.email.focus()
                 }}
@@ -106,7 +90,7 @@ class FollowerRegisterScreen extends PureComponent {
               <WideInput
                 ref='email'
                 returnKeyType={'next'}
-                onChangeText={value => this.handleEmail(value)}
+                onChangeText={value => getRegisterEmail(value)}
                 onSubmitEditing={() => {
                   this.refs.password.focus()
                 }}
@@ -128,7 +112,7 @@ class FollowerRegisterScreen extends PureComponent {
               <WideInput
                 ref='password'
                 returnKeyType={'next'}
-                onChangeText={value => this.handlePassword(value)}
+                onChangeText={value => getRegisterPassword(value)}
                 onSubmitEditing={() => {
                   this.refs.confirmPassword.focus()
                 }}
@@ -145,11 +129,11 @@ class FollowerRegisterScreen extends PureComponent {
               <WideInput
                 ref='confirmPassword'
                 secureTextEntry={true}
-                onChangeText={value => this.handlePasswordMatch(value)}
+                onChangeText={value => getRegisterPasswordMatch(value)}
                 textContentType={'password'}
                 placeholder='confirm password' />
             </Tile>
-            <Button onPress={this.submitRegister}>
+            <Button onPress={() => submitRegister(navigation)}>
               <BtnText>
                 sign up
               </BtnText>
