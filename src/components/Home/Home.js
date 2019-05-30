@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { fetchAuth } from '../../actions/authActions'
 import { fetchLoggedUser } from '../../actions/loggedUserActions'
+import { fetchFullOcean, loadOceanChunk } from '../../actions/userOceanActions'
 import { Text, View, Image, ScrollView, FlatList } from 'react-native'
 import styled from 'styled-components'
 
@@ -29,6 +30,8 @@ class HomeScreen extends PureComponent {
   componentDidMount = async () => {
     await this.props.fetchAuth()
     await this.props.fetchLoggedUser()
+    await this.props.fetchFullOcean()
+    await this.props.loadOceanChunk()
   }
 
   render() {
@@ -42,4 +45,12 @@ class HomeScreen extends PureComponent {
 }
 
 
-export default connect(null, { fetchAuth, fetchLoggedUser })(HomeScreen)
+export default connect(
+  null,
+  {
+    fetchAuth,
+    fetchLoggedUser,
+    fetchFullOcean,
+    loadOceanChunk
+  }
+)(HomeScreen)

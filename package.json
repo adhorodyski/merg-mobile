@@ -19,7 +19,8 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "remote-redux-devtools": "^0.5.16",
-    "styled-components": "^4.2.0"
+    "styled-components": "^4.2.0",
+    "underscore": "^1.9.1"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0"
