@@ -5,7 +5,7 @@ import { fetchLoggedUser } from '../../actions/loggedUserActions'
 import { fetchCreators } from '../../actions/listsActions'
 import { loadCreatorsChunk } from '../../actions/exploreActions'
 
-import { Main } from '../Home/Home'
+import { Main } from '../Shared/UI'
 import Greeting from '../Home/Greeting'
 import Searchbox from './Searchbox'
 import Tags from './Tags'

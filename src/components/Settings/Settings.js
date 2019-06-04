@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { fetchAuth } from '../../actions/authActions'
 import { fetchLoggedUser } from '../../actions/loggedUserActions'
 
-import { Main } from '../Home/Home'
+import { Main } from '../Shared/UI'
 import Picture from './Picture'
 import Personal from './Personal'
 import General from './General'

@@ -12,8 +12,8 @@ import { Text, TouchableOpacity, Dimensions, KeyboardAvoidingView } from 'react-
 import { withNavigation } from 'react-navigation'
 import styled from 'styled-components/native'
 
-import { Main } from '../Home/Home'
 import {
+  Main,
   Button,
   BtnText,
   Tile,

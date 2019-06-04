@@ -3,8 +3,8 @@ import { View, Image, TouchableOpacity } from 'react-native'
 import { StackActions, withNavigation } from 'react-navigation'
 import styled from 'styled-components/native'
 
-import { Main } from '../Home/Home'
 import {
+  Main,
   Button,
   BtnText,
   Scrollable,

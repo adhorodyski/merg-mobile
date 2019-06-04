@@ -1,6 +1,11 @@
 import React, { PureComponent } from 'react'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import styled from 'styled-components'
+import { palette } from './palette'
+
+export const Main = styled.ScrollView`
+  background: ${palette.mediumGray};
+`
 
 export const StyledView = styled.View`
   width: 95%;
@@ -18,7 +23,7 @@ export const StyledViewMargin2 = styled(StyledView)`
 export const Button = styled.TouchableOpacity`
   width: 100px;
   height: 30px;
-  background: #2947F2;
+  background: ${palette.mediumBlue};
   border: none;
   border-radius: 10px;
   display: flex;
@@ -29,7 +34,7 @@ export const Button = styled.TouchableOpacity`
 export const BtnText = styled.Text`
   font-size: 14px;
   font-weight: bold;
-  color: #FAFAFA;
+  color: ${palette.lightGray};
   text-align: center;
   margin: auto;
   line-height: 30px;
@@ -44,7 +49,7 @@ export const Tile = styled.View`
   flex-direction: row;
   justify-content: space-between;
   padding: 0 20px;
-  background: #FAFAFA;
+  background: ${palette.lightGray};
   border: none;
   border-radius: 10px;
   box-shadow: 0 4px 3px rgba(33, 33, 33, 0.03);
@@ -53,7 +58,7 @@ export const Tile = styled.View`
 export const Title = styled.Text`
   font-size: 24px;
   font-weight: bold;
-  color: #333333;
+  color: ${palette.darkText};
   margin: 10px;
 `
 
@@ -63,7 +68,7 @@ export const Input = styled.TextInput`
   width: 65%;
   font-weight: bold;
   font-size: 16px;
-  color: #333333;
+  color: ${palette.darkText};
 `
 
 export const InputHigh = styled(Input)`
@@ -79,7 +84,7 @@ export const SmallLabel = styled.Text`
   font-size: 13px;
   line-height: 20px;
   font-weight: bold;
-  color: #818181;
+  color: ${palette.lightText};
   margin: auto 10px auto 0;
   max-width: 100px;
 `
@@ -89,7 +94,7 @@ export const FixedSmallLabel = styled(SmallLabel)`
 `
 
 export const BigLabel = styled(SmallLabel)`
-  color: #333333;
+  color: ${palette.darkText};
   font-size: 16px;
   max-width: 100%;
 `
@@ -99,7 +104,7 @@ export const DarkLabel = styled(SmallLabel)`
   align-self: center;
   text-align: center;
   max-width: 95%;
-  color: #2947F2;
+  color: ${palette.mediumBlue};
   margin: 0;
   padding: 10px 20px;
 `
@@ -108,7 +113,7 @@ export const Avatar = styled.Image`
   height: 75px;
   width: 75px;
   display: flex;
-  background: #FFFFFF;
+  background: ${palette.white};
   margin: 10px auto;
   border-radius: 40px;
 `
@@ -134,7 +139,7 @@ export const ScrollTag = styled.TouchableHighlight`
 `
 
 export const ScrollWord = styled.Text`
-  color: #818181;
+  color: ${palette.lightText};
   font-size: 16px;
   font-weight: bold;
 `

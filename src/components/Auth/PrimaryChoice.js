@@ -3,7 +3,7 @@ import { Text, View, Image, TouchableOpacity, ScrollView } from 'react-native'
 import { StackActions, withNavigation } from 'react-navigation'
 import styled from 'styled-components/native'
 
-import { Main } from '../Home/Home'
+import { Main } from '../Shared/UI'
 const DescribeRegular = require('../../../assets/follower.png')
 const DescribeCreator = require('../../../assets/creator.png')
 

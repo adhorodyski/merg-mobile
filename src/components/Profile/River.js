@@ -32,7 +32,7 @@ class River extends PureComponent {
   render() {
     return (
       <Results>
-        { this.renderOcean() }
+        { console.log('river') }
       </Results>
     )
   }

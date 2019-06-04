@@ -6,12 +6,9 @@ import { fetchFullOcean, loadOceanChunk } from '../../actions/userOceanActions'
 import { Text, View, Image, ScrollView, FlatList } from 'react-native'
 import styled from 'styled-components'
 
+import { Main } from '../Shared/UI'
 import Greeting from './Greeting'
 import Ocean from './Ocean'
-
-export const Main = styled.ScrollView`
-  background: #f5f5f5;
-`
 
 export const StyledView = styled.View`
   display: flex;
@@ -43,7 +40,6 @@ class HomeScreen extends PureComponent {
     )
   }
 }
-
 
 export default connect(
   null,

@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
-import { View, Text, Image, TouchableHighlight } from 'react-native'
+import { View, Text } from 'react-native'
 import styled from 'styled-components'
+import { palette } from './palette'
 import { Ionicons } from '@expo/vector-icons'
 
 import { AvatarSmall } from '../Shared/UI'
@@ -9,8 +10,8 @@ export const ResultTile = styled.View`
   width: 95%;
   margin: 0 auto;
   margin-bottom: 20px;
-  min-height: 180px;
-  background: #FFFFFF;
+  min-height: 140px;
+  background: ${palette.white};
   border-radius: 10px;
   box-shadow: 0 4px 3px rgba(33, 33, 33, 0.03);
 `
@@ -26,11 +27,11 @@ const H4 = styled.Text`
   font-size: 13px;
   font-weight: bold;
   margin: auto 0;
-  color: #333333;
+  color: ${palette.darkText};
 `
 
 const TimeP = styled.Text`
-  color: #818181;
+  color: ${palette.lightText};
   font-size: 12px;
   margin: auto auto auto 10px;
 `
@@ -44,11 +45,20 @@ const Icon = styled(Ionicons)`
 
 export class TileHeader extends PureComponent {
   render() {
+    const {
+      url,
+      time,
+      user: {
+        firstName,
+        profilePic
+      }
+    } = this.props
+
     return (
       <Header>
-        <AvatarSmall />
-        <H4>Mystery Guitar Man</H4>
-        <TimeP>5 min</TimeP>
+        <AvatarSmall source={{uri: profilePic}} />
+        <H4>{firstName}</H4>
+        <TimeP>{time}</TimeP>
         <Icon
           name="ios-arrow-dropright"
           size={20}

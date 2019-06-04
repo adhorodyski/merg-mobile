@@ -10,8 +10,8 @@ import { withNavigation } from 'react-navigation'
 import styled from 'styled-components/native'
 import { Ionicons } from '@expo/vector-icons'
 
-import { Main } from '../Home/Home'
 import {
+  Main,
   Tile,
   Button,
   BtnText,
@@ -42,7 +42,7 @@ class SignInScreen extends PureComponent {
       getLoginPassword,
       loginUser
     } = this.props
-    
+
     return (
       <Main>
         <KeyboardAvoidingView
