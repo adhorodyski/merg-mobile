@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
 
-import { ResultTile, TileHeader } from '../Shared/PostContainer'
+import TileHeader, { ResultTile } from '../Shared/PostContainer'
 import TwitterPost from '../Shared/TwitterPost'
 import TumblrPost from '../Shared/TumblrPost'
 import InstagramPost from '../Shared/InstagramPost'

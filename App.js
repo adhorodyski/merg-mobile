@@ -37,10 +37,41 @@ const HeaderButton = styled.Image`
   margin: auto;
 `
 
-const MainNavigator = createMaterialTopTabNavigator({
+const HomeStack = createStackNavigator({
   Home: {
     screen: HomeScreen,
     navigationOptions: {
+      header: null
+    }
+  },
+  ProfileOverlay: {
+    screen: ProfileScreen,
+    navigationOptions: {
+      header: null
+    }
+  }
+})
+
+const ExploreStack = createStackNavigator({
+  Explore: {
+    screen: ExploreScreen,
+    navigationOptions: {
+      header: null
+    }
+  },
+  ProfileOverlay: {
+    screen: ProfileScreen,
+    navigationOptions: {
+      header: null
+    }
+  }
+})
+
+const MainNavigator = createMaterialTopTabNavigator({
+  Home: {
+    screen: HomeStack,
+    navigationOptions: {
+      header: null,
       tabBarIcon: ({ tintColor }) => (
         <Ionicons
           name="md-home"
@@ -50,7 +81,7 @@ const MainNavigator = createMaterialTopTabNavigator({
     }
   },
   Explore: {
-    screen: ExploreScreen,
+    screen: ExploreStack,
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (
         <Ionicons
@@ -70,7 +101,7 @@ const MainNavigator = createMaterialTopTabNavigator({
           color="#000" />
       )
     }
-  },
+  }
 }, {
   defaultNavigationOptions: {
     swipeEnabled: true,

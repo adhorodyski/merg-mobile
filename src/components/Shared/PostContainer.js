@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, TouchableWithoutFeedback } from 'react-native'
+import { withNavigation, StackActions } from 'react-navigation'
 import styled from 'styled-components'
 import { palette } from './palette'
 import { Ionicons } from '@expo/vector-icons'
@@ -16,9 +17,12 @@ export const ResultTile = styled.View`
   box-shadow: 0 4px 3px rgba(33, 33, 33, 0.03);
 `
 
-const Header = styled.View`
+const Header = styled.TouchableWithoutFeedback`
   height: 50px;
   width: 100%;
+`
+
+const StyledHeaderInsider = styled.View`
   display: flex;
   flex-direction: row;
 `
@@ -43,27 +47,41 @@ const Icon = styled(Ionicons)`
   margin: auto 10px auto auto;
 `
 
-export class TileHeader extends PureComponent {
+class TileHeader extends PureComponent {
   render() {
     const {
+      navigation,
       url,
       time,
       user: {
         firstName,
+        username,
         profilePic
       }
     } = this.props
-
+    
     return (
-      <Header>
-        <AvatarSmall source={{uri: profilePic}} />
-        <H4>{firstName}</H4>
-        <TimeP>{time}</TimeP>
-        <Icon
-          name="ios-arrow-dropright"
-          size={20}
-          color="rgba(33, 33, 33, 0.4)" />
+      <Header onPress={() => {
+        const pushAction = StackActions.push({
+          routeName: 'ProfileOverlay',
+          params: {
+            username: username,
+          }
+        })
+        navigation.dispatch(pushAction)
+      }}>
+        <StyledHeaderInsider>
+          <AvatarSmall source={{uri: profilePic}} />
+          <H4>{firstName}</H4>
+          <TimeP>{time}</TimeP>
+          <Icon
+            name="ios-arrow-dropright"
+            size={20}
+            color="rgba(33, 33, 33, 0.4)" />
+        </StyledHeaderInsider>
       </Header>
     )
   }
 }
+
+export default withNavigation(TileHeader)

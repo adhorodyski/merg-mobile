@@ -1,5 +1,11 @@
 import React, { PureComponent } from 'react'
-import { View, TouchableHighlight, Image, Text } from 'react-native'
+import {
+  View,
+  TouchableWithoutFeedback,
+  Image,
+  Text
+} from 'react-native'
+import { withNavigation, StackActions } from 'react-navigation'
 import styled from 'styled-components'
 
 import { Button, BtnText } from '../Shared/UI'
@@ -125,6 +131,7 @@ class CreatorTile extends PureComponent {
   render() {
     const { isFollowing, ownProfile } = this.state
     const {
+      navigation,
       result: {
         facebook,
         twitter,
@@ -135,6 +142,7 @@ class CreatorTile extends PureComponent {
         local: {
           photo,
           nameDisplayed,
+          username,
           followers
         }
       }
@@ -143,17 +151,28 @@ class CreatorTile extends PureComponent {
     return (
       <StyledResultTile>
         <TopWrapper>
-          <InfoContainer>
-            <Avatar source={{uri: photo}} />
-            <FlexView>
-              <Name>{nameDisplayed}</Name>
-              <FollowersCounter ownProfile={ownProfile}>
-                <CounterSpan>
-                  {followers.length} followers
-                </CounterSpan>
-              </FollowersCounter>
-            </FlexView>
-          </InfoContainer>
+          <TouchableWithoutFeedback
+            onPress={() => {
+              const pushAction = StackActions.push({
+                routeName: 'ProfileOverlay',
+                params: {
+                  username: username,
+                }
+              })
+              navigation.dispatch(pushAction)
+          }}>
+            <InfoContainer>
+              <Avatar source={{uri: photo}} />
+              <FlexView>
+                <Name>{nameDisplayed}</Name>
+                <FollowersCounter ownProfile={ownProfile}>
+                  <CounterSpan>
+                    {followers.length} followers
+                  </CounterSpan>
+                </FollowersCounter>
+              </FlexView>
+            </InfoContainer>
+          </TouchableWithoutFeedback>
         </TopWrapper>
         <BottomWrapper>
           <MergedGroup>
@@ -178,4 +197,4 @@ class CreatorTile extends PureComponent {
   }
 }
 
-export default CreatorTile
+export default withNavigation(CreatorTile)

@@ -110,19 +110,19 @@ export const DarkLabel = styled(SmallLabel)`
 `
 
 export const Avatar = styled.Image`
-  height: 75px;
-  width: 75px;
+  height: 70px;
+  width: 70px;
   display: flex;
   background: ${palette.white};
   margin: 10px auto;
-  border-radius: 40px;
+  border-radius: 35px;
 `
 
 export const AvatarSmall = styled(Avatar)`
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   margin: auto 10px;
-  border-radius: 20px;
+  border-radius: 15px;
 `
 
 export const Scrollable = styled.ScrollView`

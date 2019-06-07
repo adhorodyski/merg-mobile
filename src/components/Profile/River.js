@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components'
 
-import { ResultTile, TileHeader } from '../Shared/PostContainer'
+import TileHeader, { ResultTile } from '../Shared/PostContainer'
 
 const Results = styled.View`
   margin-bottom: 50px;
