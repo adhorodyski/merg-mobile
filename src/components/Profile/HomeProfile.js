@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { withNavigation } from 'react-navigation'
-import { fetchAuth } from '../../actions/authActions'
 import {
   fetchPathUser,
   fetchFullRiver,
@@ -12,11 +11,10 @@ import { Main } from '../Shared/UI'
 import River from './River'
 import About from './About'
 
-class ProfileScreen extends PureComponent {
+class HomeProfileScreen extends PureComponent {
   componentDidMount = async () => {
-    const { username } = this.props.user
-    const mode = 'PROFILE'
-    await this.props.fetchAuth()
+    const { username } = this.props.navigation.state.params
+    const mode = 'HOME'
     await this.props.fetchPathUser(username, mode)
     await this.props.fetchFullRiver(mode)
     await this.props.loadRiverChunk(mode)
@@ -34,16 +32,15 @@ class ProfileScreen extends PureComponent {
 }
 
 mapStateToProps = state => ({
-  user: state.loggedUser.user,
-  river: state.loggedUser.river
+  user: state.homeUser.user,
+  river: state.homeUser.river
 })
 
 export default withNavigation(connect(
   mapStateToProps,
   {
-    fetchAuth,
     fetchPathUser,
     fetchFullRiver,
     loadRiverChunk
   }
-)(ProfileScreen))
+)(HomeProfileScreen))

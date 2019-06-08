@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react'
-import { connect } from 'react-redux'
 import { View, Text, Image } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -64,10 +63,4 @@ class Basics extends PureComponent {
   }
 }
 
-const mapStateToProps = state => ({
-  firstName: state.pathUser.user.firstName,
-  username: state.pathUser.user.username,
-  profilePic: state.pathUser.user.profilePic
-})
-
-export default connect(mapStateToProps)(Basics)
+export default Basics

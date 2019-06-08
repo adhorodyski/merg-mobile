@@ -23,14 +23,41 @@ const Provider = styled.Image`
 
 class MergedWithGroup extends PureComponent {
   render() {
+    const {
+      facebook,
+      twitter,
+      instagram,
+      youtube,
+      spotify,
+      tumblr
+    } = this.props
+
     return (
       <StyledWrapper>
-      <Provider source={FacebookLogo} aria-label='Facebook' />
-      <Provider source={TwitterLogo} aria-label='Twitter' />
-      <Provider source={InstagramLogo} aria-label='Instagram' />
-      <Provider source={YoutubeLogo} aria-label='Youtube' />
-      <Provider source={SpotifyLogo} aria-label='Spotify' />
-      <Provider source={TumblrLogo} aria-label='Tumblr' />
+        {
+          facebook &&
+          <Provider source={FacebookLogo} aria-label='Facebook' />
+        }
+        {
+          twitter &&
+          <Provider source={TwitterLogo} aria-label='Twitter' />
+        }
+        {
+          instagram &&
+          <Provider source={InstagramLogo} aria-label='Instagram' />
+        }
+        {
+          youtube &&
+          <Provider source={YoutubeLogo} aria-label='Youtube' />
+        }
+        {
+          spotify &&
+          <Provider source={SpotifyLogo} aria-label='Spotify' />
+        }
+        {
+          tumblr &&
+          <Provider source={TumblrLogo} aria-label='Tumblr' />
+        }
       </StyledWrapper>
     )
   }

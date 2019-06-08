@@ -21,6 +21,8 @@ import WelcomeScreen from './src/components/Merging/Welcome'
 import HomeScreen, { Icon } from './src/components/Home/Home'
 import ExploreScreen from './src/components/Explore/Explore'
 import ProfileScreen from './src/components/Profile/Profile'
+import HomeProfileScreen from './src/components/Profile/HomeProfile'
+import ExploreProfileScreen from './src/components/Profile/ExploreProfile'
 import SettingsScreen from './src/components/Settings/Settings'
 const MergeIcon = require('./assets/branding/logo-short-colors.png')
 const SettingsIcon = require('./assets/settings.png')
@@ -45,7 +47,7 @@ const HomeStack = createStackNavigator({
     }
   },
   ProfileOverlay: {
-    screen: ProfileScreen,
+    screen: HomeProfileScreen,
     navigationOptions: {
       header: null
     }
@@ -60,7 +62,7 @@ const ExploreStack = createStackNavigator({
     }
   },
   ProfileOverlay: {
-    screen: ProfileScreen,
+    screen: ExploreProfileScreen,
     navigationOptions: {
       header: null
     }

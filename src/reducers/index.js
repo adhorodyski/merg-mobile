@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux'
 import authReducer from './authReducer'
 import loggedUserReducer from './loggedUserReducer'
-import pathUserReducer from './pathUserReducer'
+import homeUserReducer from './homeUserReducer'
+import exploreUserReducer from './exploreUserReducer'
 import loginFormReducer from './loginFormReducer'
 import registerFormReducer from './registerFormReducer'
 import registerCreatorFormReducer from './registerCreatorFormReducer'
@@ -13,7 +14,8 @@ import userOceanReducer from './userOceanReducer'
 export default combineReducers({
   auth: authReducer,
   loggedUser: loggedUserReducer,
-  pathUser: pathUserReducer,
+  homeUser: homeUserReducer,
+  exploreUser: exploreUserReducer,
   loginForm: loginFormReducer,
   registerForm: registerFormReducer,
   registerCreatorForm: registerCreatorFormReducer,

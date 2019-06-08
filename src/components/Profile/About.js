@@ -15,13 +15,42 @@ const StyledWrapper = styled.View`
 
 class About extends PureComponent {
   render() {
+    const {
+      user: {
+        firstName,
+        username,
+        profilePic,
+        about,
+        followers,
+        follows,
+        facebook,
+        twitter,
+        instagram,
+        youtube,
+        spotify,
+        tumblr
+      }
+    } = this.props
+
     return (
       <StyledWrapper>
-        <Basics />
-        <Note />
-        <Counters />
+        <Basics
+          firstName={firstName}
+          username={username}
+          profilePic={profilePic} />
+        <Note
+          about={about} />
+        <Counters
+          followers={followers}
+          follows={follows} />
         <Actions />
-        <MergedWithGroup />
+        <MergedWithGroup
+          facebook={facebook}
+          twitter={twitter}
+          instagram={instagram}
+          youtube={youtube}
+          spotify={spotify}
+          tumblr={tumblr} />
       </StyledWrapper>
     )
   }

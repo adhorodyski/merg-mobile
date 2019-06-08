@@ -9,7 +9,7 @@ import {
 import * as base from '../variables'
 
 export const hydrateInitial = () => (dispatch, getState) => {
-  const { firstName, username, email, about } = getState().loggedUser
+  const { firstName, username, email, about } = getState().loggedUser.user
   const initialState = {
     name: firstName,
     username: username,

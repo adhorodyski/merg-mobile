@@ -33,8 +33,8 @@ class SearchResults extends PureComponent {
 
 const mapStateToProps = state => ({
   results: state.explore.results,
-  follows: state.loggedUser.follows,
-  loggedUsername: state.loggedUser.username
+  follows: state.loggedUser.user.follows,
+  loggedUsername: state.loggedUser.user.username
 })
 
 export default connect(mapStateToProps)(SearchResults)

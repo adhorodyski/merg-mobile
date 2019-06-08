@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react'
-import { connect } from 'react-redux'
 import { Text } from 'react-native'
 import styled from 'styled-components'
 
@@ -21,8 +20,4 @@ class Note extends PureComponent {
   }
 }
 
-const mapStateToProps = state => ({
-  about: state.pathUser.user.about
-})
-
-export default connect(mapStateToProps)(Note)
+export default Note

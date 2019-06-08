@@ -20,7 +20,7 @@ class Picture extends PureComponent {
 }
 
 const mapStateToProps = state => ({
-  profilePic: state.loggedUser.profilePic
+  profilePic: state.loggedUser.user.profilePic
 })
 
 export default connect(mapStateToProps)(Picture)

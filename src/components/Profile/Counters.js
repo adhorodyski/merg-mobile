@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react'
-import { connect } from 'react-redux'
 import { Text, View } from 'react-native'
 import styled from 'styled-components'
 
@@ -36,11 +35,12 @@ const S = styled.Text`
 class Counters extends PureComponent {
   render() {
     const { followers, follows } = this.props
+    
     return (
       <StyledWrapper>
         <CountWrap>
           <NumSpan>
-            {followers.length} <S>M</S>
+            {followers && followers.length} <S>M</S>
           </NumSpan>
           <SmallSpan>
             followers
@@ -48,7 +48,7 @@ class Counters extends PureComponent {
         </CountWrap>
         <CountWrap>
           <NumSpan>
-            {follows.length} <S>K</S>
+            {follows && follows.length} <S>K</S>
           </NumSpan>
           <SmallSpan>
             follows
@@ -59,9 +59,4 @@ class Counters extends PureComponent {
   }
 }
 
-const mapStateToProps = state => ({
-  followers: state.loggedUser.followers,
-  follows: state.loggedUser.follows
-})
-
-export default connect(mapStateToProps)(Counters)
+export default Counters

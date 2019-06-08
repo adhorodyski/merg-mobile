@@ -51,8 +51,8 @@ class Greeting extends PureComponent {
 }
 
 const mapStateToProps = state => ({
-  firstName: state.loggedUser.firstName,
-  profilePic: state.loggedUser.profilePic
+  firstName: state.loggedUser.user.firstName,
+  profilePic: state.loggedUser.user.profilePic
 })
 
 export default connect(mapStateToProps)(Greeting)

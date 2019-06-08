@@ -14,7 +14,7 @@ import _ from 'underscore'
 
 export const fetchFullOcean = () => async (dispatch, getState) => {
   dispatch({ type: CLEAR_OCEAN })
-  const { follows } = getState().loggedUser
+  const { follows } = getState().loggedUser.user
   let ocean = []
 
   for await (const creator of follows) {

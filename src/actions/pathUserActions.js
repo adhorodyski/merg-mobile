@@ -1,7 +1,13 @@
 import {
-  FETCH_PATH_USER,
-  FETCH_FULL_RIVER,
-  LOAD_RIVER_CHUNK
+  FETCH_HOME_PATH_USER,
+  FETCH_HOME_FULL_RIVER,
+  LOAD_HOME_RIVER_CHUNK,
+  FETCH_EXPLORE_PATH_USER,
+  FETCH_EXPLORE_FULL_RIVER,
+  LOAD_EXPLORE_RIVER_CHUNK,
+  FETCH_LOGGED_PATH_USER,
+  FETCH_LOGGED_FULL_RIVER,
+  LOAD_LOGGED_RIVER_CHUNK
 } from './types'
 import * as base from '../variables'
 import _ from 'underscore'
@@ -91,33 +97,65 @@ export const getYoutubeStream = async user => {
 }
 
 // FETCH PATH USER
-export const fetchPathUser = username => async dispatch => {
+export const fetchPathUser = (username, mode) => async dispatch => {
   await fetch(`${base.API_URL}/api/${username}`)
   .then(res => { return res.json() })
   .then(data => {
-    dispatch({
-      type: FETCH_PATH_USER,
-      payload: data.basicInformations
-    })
+    if (mode === 'HOME') {
+      dispatch({
+        type: FETCH_HOME_PATH_USER,
+        payload: data.basicInformations
+      })
+    }
+    if (mode === 'EXPLORE') {
+      dispatch({
+        type: FETCH_EXPLORE_PATH_USER,
+        payload: data.basicInformations
+      })
+    }
+    if (mode === 'PROFILE') {
+      dispatch({
+        type: FETCH_LOGGED_PATH_USER,
+        payload: data.basicInformations
+      })
+    }
   })
   .catch(err => console.log(JSON.stringify(err)))
 }
 
 // FETCH FULL RIVER
-export const fetchFullRiver = () => async (dispatch, getState) => {
-  const { user } = getState().pathUser
-  const { follows } = getState().loggedUser
-  let river = []
-  let isFollowing = false
+export const fetchFullRiver = mode => async (dispatch, getState) => {
+  const { follows } = getState().loggedUser.user
 
-  for await (const match of follows) {
-    if (match.creatorUsername === user.username) {
-      isFollowing = match.isFollowing
+  // HOME
+  if (mode === 'HOME') {
+    const { user } = getState().homeUser
+    let river = []
+    let isFollowing = false
+
+    for await (const match of follows) {
+      if (match.creatorUsername === user.username) {
+        isFollowing = match.isFollowing
+        const promises = [
+          match.creatorTwitter && getTwitterStream(user),
+          match.creatorInstagram && getInstagramStream(user),
+          match.creatorTumblr && getTumblrStream(user),
+          match.creatorYoutube && getYoutubeStream(user)
+        ]
+
+        await Promise.all(_.compact(promises))
+        .then(res => {
+          river = river.concat(_.compact(_.union(...res)))
+        })
+      }
+    }
+
+    if (!isFollowing) {
       const promises = [
-        match.creatorTwitter && getTwitterStream(user),
-        match.creatorInstagram && getInstagramStream(user),
-        match.creatorTumblr && getTumblrStream(user),
-        match.creatorYoutube && getYoutubeStream(user)
+        user.twitter && getTwitterStream(user),
+        user.instagram && getInstagramStream(user),
+        user.tumblr && getTumblrStream(user),
+        user.youtube && getYoutubeStream(user)
       ]
 
       await Promise.all(_.compact(promises))
@@ -125,51 +163,152 @@ export const fetchFullRiver = () => async (dispatch, getState) => {
         river = river.concat(_.compact(_.union(...res)))
       })
     }
-  }
 
-  if (!isFollowing) {
-    const promises = [
-      user.twitter && getTwitterStream(user),
-      user.instagram && getInstagramStream(user),
-      user.tumblr && getTumblrStream(user),
-      user.youtube && getYoutubeStream(user)
-    ]
-
-    await Promise.all(_.compact(promises))
-    .then(res => {
-      river = river.concat(_.compact(_.union(...res)))
+    dispatch({
+      type: FETCH_HOME_FULL_RIVER,
+      payload: river,
+      isFollowing: isFollowing
     })
   }
 
-  dispatch({
-    type: FETCH_FULL_RIVER,
-    payload: river,
-    isFollowing: isFollowing
-  })
+  // EXPLORE
+  if (mode === 'EXPLORE') {
+    const { user } = getState().exploreUser
+    let river = []
+    let isFollowing = false
+
+    for await (const match of follows) {
+      if (match.creatorUsername === user.username) {
+        isFollowing = match.isFollowing
+        const promises = [
+          match.creatorTwitter && getTwitterStream(user),
+          match.creatorInstagram && getInstagramStream(user),
+          match.creatorTumblr && getTumblrStream(user),
+          match.creatorYoutube && getYoutubeStream(user)
+        ]
+
+        await Promise.all(_.compact(promises))
+        .then(res => {
+          river = river.concat(_.compact(_.union(...res)))
+        })
+      }
+    }
+
+    if (!isFollowing) {
+      const promises = [
+        user.twitter && getTwitterStream(user),
+        user.instagram && getInstagramStream(user),
+        user.tumblr && getTumblrStream(user),
+        user.youtube && getYoutubeStream(user)
+      ]
+
+      await Promise.all(_.compact(promises))
+      .then(res => {
+        river = river.concat(_.compact(_.union(...res)))
+      })
+    }
+
+    dispatch({
+      type: FETCH_EXPLORE_FULL_RIVER,
+      payload: river,
+      isFollowing: isFollowing
+    })
+  }
+
+  // PROFILE
+  if (mode === 'PROFILE') {
+    const { user } = getState().loggedUser
+    let river = []
+    let isFollowing = false
+
+    for await (const match of follows) {
+      if (match.creatorUsername === user.username) {
+        isFollowing = match.isFollowing
+        const promises = [
+          match.creatorTwitter && getTwitterStream(user),
+          match.creatorInstagram && getInstagramStream(user),
+          match.creatorTumblr && getTumblrStream(user),
+          match.creatorYoutube && getYoutubeStream(user)
+        ]
+
+        await Promise.all(_.compact(promises))
+        .then(res => {
+          river = river.concat(_.compact(_.union(...res)))
+        })
+      }
+    }
+
+    if (!isFollowing) {
+      const promises = [
+        user.twitter && getTwitterStream(user),
+        user.instagram && getInstagramStream(user),
+        user.tumblr && getTumblrStream(user),
+        user.youtube && getYoutubeStream(user)
+      ]
+
+      await Promise.all(_.compact(promises))
+      .then(res => {
+        river = river.concat(_.compact(_.union(...res)))
+      })
+    }
+
+    dispatch({
+      type: FETCH_LOGGED_FULL_RIVER,
+      payload: river,
+      isFollowing: isFollowing
+    })
+  }
 }
 
 // LOAD RIVER CHUNK
-export const loadRiverChunk = () => (dispatch, getState) => {
-  const { fullRiver, river } = getState().pathUser
-
+export const loadRiverChunk = mode => (dispatch, getState) => {
   const sortByDate = posts => {
     posts.sort((a, b) => {
       return new Date(b.convertedDate) - new Date(a.convertedDate)
     })
   }
-  sortByDate(fullRiver)
 
-  const getItems = () => {
+  const getItems = (fullPosts, actualPosts) => {
     let newPostsChunk = []
-    for (let i = 0; newPostsChunk.length < 7 && i < fullRiver.length; i++) {
-      if(!river.includes(fullRiver[i])) {
-        newPostsChunk.push(fullRiver[i])
+    for (let i = 0; newPostsChunk.length < 7 && i < fullPosts.length; i++) {
+      if(!actualPosts.includes(fullPosts[i])) {
+        newPostsChunk.push(fullPosts[i])
       }
     }
     return newPostsChunk
   }
 
-  let postsChunk = river.slice()
-  postsChunk = postsChunk.concat(getItems())
-  dispatch({ type: LOAD_RIVER_CHUNK, payload: postsChunk })
+  if (mode === 'HOME') {
+    const { fullRiver, river } = getState().homeUser
+    sortByDate(fullRiver)
+    let postsChunk = river.slice()
+    postsChunk = postsChunk.concat(getItems(fullRiver, river))
+
+    dispatch({
+      type: LOAD_HOME_RIVER_CHUNK,
+      payload: postsChunk
+    })
+  }
+  if (mode === 'EXPLORE') {
+    const { fullRiver, river } = getState().exploreUser
+    sortByDate(fullRiver)
+    let postsChunk = river.slice()
+    postsChunk = postsChunk.concat(getItems(fullRiver, river))
+
+    dispatch({
+      type: LOAD_EXPLORE_RIVER_CHUNK,
+      payload: postsChunk
+    })
+  }
+  if (mode === 'PROFILE') {
+    const { fullRiver, river } = getState().loggedUser
+    sortByDate(fullRiver)
+    let postsChunk = river.slice()
+    postsChunk = postsChunk.concat(getItems(fullRiver, river))
+
+    dispatch({
+      type: LOAD_LOGGED_RIVER_CHUNK,
+      payload: postsChunk
+    })
+  }
 }

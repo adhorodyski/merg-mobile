@@ -1,7 +1,7 @@
 import {
-  FETCH_PATH_USER,
-  FETCH_FULL_RIVER,
-  LOAD_RIVER_CHUNK
+  FETCH_HOME_PATH_USER,
+  FETCH_HOME_FULL_RIVER,
+  LOAD_HOME_RIVER_CHUNK
 } from '../actions/types'
 
 const initialState = {
@@ -13,20 +13,20 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch(action.type) {
-    case FETCH_PATH_USER:
+    case FETCH_HOME_PATH_USER:
       return {
         ...state,
         user: action.payload,
         fullRiver: [],
         river: []
       }
-    case FETCH_FULL_RIVER:
+    case FETCH_HOME_FULL_RIVER:
       return {
         ...state,
         fullRiver: action.payload,
         isFollowing: action.isFollowing
       }
-    case LOAD_RIVER_CHUNK:
+    case LOAD_HOME_RIVER_CHUNK:
       return {
         ...state,
         river: action.payload
