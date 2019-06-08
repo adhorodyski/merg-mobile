@@ -107,14 +107,19 @@ const MainNavigator = createMaterialTopTabNavigator({
     swipeEnabled: true,
     tabBarPosition: 'bottom',
     animationEnabled: true,
+    optimizationsEnabled: true,
+    lazy: true,
     tabBarOptions: {
       showIcon: true,
       showLabel: false,
       indicatorStyle: {
-        backgroundColor: '#FFFFFF'
+        display: 'none'
+      },
+      tabStyle: {
+        backgroundColor: 'transparent'
       },
       style: {
-        backgroundColor: '#FFFFFF',
+        backgroundColor: 'transparent',
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,

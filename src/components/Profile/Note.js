@@ -22,7 +22,7 @@ class Note extends PureComponent {
 }
 
 const mapStateToProps = state => ({
-  about: state.loggedUser.about
+  about: state.pathUser.user.about
 })
 
 export default connect(mapStateToProps)(Note)

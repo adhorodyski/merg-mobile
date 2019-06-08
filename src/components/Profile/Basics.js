@@ -65,9 +65,9 @@ class Basics extends PureComponent {
 }
 
 const mapStateToProps = state => ({
-  firstName: state.loggedUser.firstName,
-  username: state.loggedUser.username,
-  profilePic: state.loggedUser.profilePic
+  firstName: state.pathUser.user.firstName,
+  username: state.pathUser.user.username,
+  profilePic: state.pathUser.user.profilePic
 })
 
 export default connect(mapStateToProps)(Basics)
