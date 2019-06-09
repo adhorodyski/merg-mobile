@@ -7,8 +7,9 @@ import {
 } from 'react-native'
 import { withNavigation, StackActions } from 'react-navigation'
 import styled from 'styled-components'
+import { palette } from '../Shared/palette'
 
-import { Button, BtnText } from '../Shared/UI'
+import { PosedSelectButton, BtnText } from '../Shared/UI'
 
 const FacebookLogo = require('../../../assets/social-media/facebook.png')
 const TwitterLogo = require('../../../assets/social-media/twitter.png')
@@ -22,7 +23,7 @@ const StyledResultTile = styled.View`
   margin: 0 auto;
   margin-bottom: 10px;
   min-height: 100px;
-  background: #FAFAFA;
+  background: ${palette.lightGray};
   display: flex;
   border-radius: 10px;
   box-shadow: 0 4px 3px rgba(33, 33, 33, 0.03);
@@ -37,7 +38,7 @@ const TopWrapper = styled.View`
 const Avatar = styled.Image`
   height: 35px;
   width: 35px;
-  background: #F0F0F0;
+  background: ${palette.white};
   margin: auto 10px auto 0;
   border-radius: 18px;
 `
@@ -51,7 +52,7 @@ const InfoContainer = styled.View`
 const Name = styled.Text`
   font-size: 16px;
   font-weight: bold;
-  color: #333333;
+  color: ${palette.darkText};
   margin: auto 0 0 0;
 `
 
@@ -62,7 +63,7 @@ const FollowersCounter = styled.Text`
 const CounterSpan = styled.Text`
   font-size: 13px;
   font-weight: normal;
-  color: #818181;
+  color: ${palette.lightText};
   margin: 0 0 auto 0;
 `
 
@@ -92,7 +93,7 @@ const BottomWrapper = styled.View`
   flex-direction: row;
 `
 
-const StyledButton = styled(Button)`
+const StyledButton = styled(PosedSelectButton)`
   width: 75px;
   margin: auto 0;
 `
@@ -102,7 +103,8 @@ class CreatorTile extends PureComponent {
     super(props)
     this.state = {
       isFollowing: false,
-      ownProfile: false
+      ownProfile: false,
+      isPressed: false
     }
   }
 
@@ -115,21 +117,36 @@ class CreatorTile extends PureComponent {
     )
   }
 
+  handlePressIn = () => {
+    this.setState({ isPressed: true })
+  }
+
+  handlePressOut = () => {
+    this.setState({ isPressed: false })
+  }
+
+  onFollow = () => {
+    const { isFollowing } = this.state
+    this.setState({ isFollowing: !isFollowing })
+  }
+
   checkFollow = async () => {
     const { isFollowing } = this.state
     const { follows, result: { _id } } = this.props
 
     for await (const e of follows) {
       if(e.creatorID === _id) {
-        this.setState({
-          isFollowing: !isFollowing
-        })
+        this.setState({ isFollowing: !isFollowing })
       }
     }
   }
 
   render() {
-    const { isFollowing, ownProfile } = this.state
+    const {
+      isFollowing,
+      ownProfile,
+      isPressed
+    } = this.state
     const {
       navigation,
       result: {
@@ -185,9 +202,17 @@ class CreatorTile extends PureComponent {
           </MergedGroup>
           {
             !ownProfile &&
-            <StyledButton>
+            <StyledButton
+              isPressed={isPressed}
+              isFollowing={isFollowing}
+              pose={isPressed ? 'press' : 'init'}
+              onPressIn={this.handlePressIn}
+              onPressOut={this.handlePressOut}
+              onPress={() => this.onFollow()}
+              activeOpacity={1}
+              underlayColor={palette.darkBlue}>
               <BtnText>
-                merge
+                { isFollowing ? 'merged' : 'merge' }
               </BtnText>
             </StyledButton>
           }

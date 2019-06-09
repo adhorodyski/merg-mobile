@@ -68,6 +68,7 @@ const External = styled.Text`
 
 const Content = styled.Text`
   font-size: 16px;
+  font-weight: bold;
 `
 
 const TweetAvatar = styled.Image`

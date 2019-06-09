@@ -2,10 +2,11 @@ import React, { PureComponent } from 'react'
 import { Text, View, Image } from 'react-native'
 import { withNavigation } from 'react-navigation'
 import styled from 'styled-components/native'
+import { palette } from '../Shared/palette'
 
 import {
   Main,
-  Button,
+  PosedButton,
   BtnText,
   DarkLabel
 } from '../Shared/UI'
@@ -58,13 +59,28 @@ const Graphic = styled.Image`
   margin: 0 auto 50px auto;
 `
 
-const StyledButton = styled(Button)`
+const StyledButton = styled(PosedButton)`
   margin-bottom: 100px;
 `
 
 class WelcomeScreen extends PureComponent {
+  constructor(props) {
+    super(props)
+    this.state = { isPressed: false }
+  }
+
+  handlePressIn = () => {
+    this.setState({ isPressed: true })
+  }
+
+  handlePressOut = () => {
+    this.setState({ isPressed: false })
+  }
+
   render() {
     const { navigation } = this.props
+    const { isPressed } = this.props
+
     return (
       <StyledMain>
         <StyledDarkLabel>
@@ -97,7 +113,14 @@ class WelcomeScreen extends PureComponent {
         <DarkLabel>
           Let everyone get to know you better
         </DarkLabel>
-        <StyledButton onPress={() => {
+        <StyledButton
+          isPressed={isPressed}
+          pose={isPressed ? 'press' : 'init'}
+          onPressIn={this.handlePressIn}
+          onPressOut={this.handlePressOut}
+          activeOpacity={1}
+          underlayColor={palette.darkBlue}
+          onPress={() => {
           navigation.navigate('Home')
         }}>
           <BtnText>

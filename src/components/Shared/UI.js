@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
-import { View, Text, Image, TouchableOpacity } from 'react-native'
+import { View, Text, Image, TouchableHighlight } from 'react-native'
 import styled from 'styled-components'
+import posed from 'react-native-pose'
 import { palette } from './palette'
 
 export const Main = styled.ScrollView`
@@ -20,16 +21,47 @@ export const StyledViewMargin2 = styled(StyledView)`
   margin: 10px auto 30px auto;
 `
 
-export const Button = styled.TouchableOpacity`
+export const Button = styled.TouchableHighlight`
   width: 100px;
   height: 30px;
-  background: ${palette.mediumBlue};
+  background: ${p => p.isPressed ? palette.darkBlue : palette.mediumBlue};
   border: none;
   border-radius: 10px;
   display: flex;
   margin: 10px auto;
-  box-shadow: 0 2px 2px rgba(41, 71, 242, 0.3);
+  box-shadow: 0 2px 2px rgba(41, 71, 242, 0.4);
 `
+
+export const SelectButton = styled(Button)`
+  background: ${p => p.isFollowing ? palette.mediumBlue : palette.lightBlue};
+  box-shadow: 0 2px 2px ${p =>
+    p.isFollowing
+    ? 'rgba(41, 71, 242, 0.4)'
+    : 'rgba(89, 190, 255, 0.4)'};
+`
+
+export const ButtonSuccess = styled(Button)`
+  background: ${p => p.success ? palette.successGreen : palette.mediumBlue};
+  box-shadow: 0 2px 2px ${p =>
+    p.success
+    ? 'rgba(100, 232, 49, 0.4)'
+    : 'rgba(41, 71, 242, 0.4)'};
+`
+
+export const PosedButton = posed(Button)({
+  init: { scale: 1 },
+  press: { scale: 0.9 }
+})
+
+export const PosedSelectButton = posed(SelectButton)({
+  init: { scale: 1 },
+  press: { scale: 0.9 }
+})
+
+export const PosedButtonSuccess = posed(ButtonSuccess)({
+  init: { scale: 1 },
+  press: { scale: 0.9 }
+})
 
 export const BtnText = styled.Text`
   font-size: 14px;

@@ -5,15 +5,16 @@ import {
   getLoginPassword,
   loginUser
 } from '../../actions/loginFormActions'
-import { TouchableOpacity, KeyboardAvoidingView } from 'react-native'
+import { KeyboardAvoidingView } from 'react-native'
 import { withNavigation } from 'react-navigation'
 import styled from 'styled-components/native'
+import { palette } from '../Shared/palette'
 import { Ionicons } from '@expo/vector-icons'
 
 import {
   Main,
   Tile,
-  Button,
+  PosedButton,
   BtnText,
   WideInput
 } from '../Shared/UI'
@@ -35,7 +36,21 @@ export const IconLock = styled(IconMail)`
 `
 
 class SignInScreen extends PureComponent {
+  constructor(props) {
+    super(props)
+    this.state = { isPressed: false }
+  }
+
+  handlePressIn = () => {
+    this.setState({ isPressed: true })
+  }
+
+  handlePressOut = () => {
+    this.setState({ isPressed: false })
+  }
+
   render() {
+    const { isPressed } = this.state
     const {
       navigation,
       getLoginEmail,
@@ -76,11 +91,18 @@ class SignInScreen extends PureComponent {
                 textContentType={'password'}
                 placeholder='• • • • • • •|' />
             </Tile>
-            <Button onPress={() => loginUser(navigation)}>
+            <PosedButton
+              isPressed={isPressed}
+              pose={isPressed ? 'press' : 'init'}
+              onPressIn={this.handlePressIn}
+              onPressOut={this.handlePressOut}
+              onPress={() => loginUser(navigation)}
+              activeOpacity={1}
+              underlayColor={palette.darkBlue}>
               <BtnText>
                 sign in
               </BtnText>
-            </Button>
+            </PosedButton>
           </Form>
         </KeyboardAvoidingView>
       </Main>

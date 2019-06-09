@@ -2,10 +2,11 @@ import React, { PureComponent } from 'react'
 import { View, Image, TouchableOpacity } from 'react-native'
 import { StackActions, withNavigation } from 'react-navigation'
 import styled from 'styled-components/native'
+import { palette } from '../Shared/palette'
 
 import {
   Main,
-  Button,
+  PosedButton,
   BtnText,
   Scrollable,
   ScrollTag,
@@ -56,7 +57,8 @@ class MergingScreen extends PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      tags: ['Music', 'Sport', 'Technology', 'Food', 'Nature', 'Television', 'Lifestyle', 'Vlogs', 'Fashion', 'Travel', 'AI', 'Games']
+      tags: ['Music', 'Sport', 'Technology', 'Food', 'Nature', 'Television', 'Lifestyle', 'Vlogs', 'Fashion', 'Travel', 'AI', 'Games'],
+      isPressed: false
     }
   }
 
@@ -81,8 +83,18 @@ class MergingScreen extends PureComponent {
     })
   }
 
+  handlePressIn = () => {
+    this.setState({ isPressed: true })
+  }
+
+  handlePressOut = () => {
+    this.setState({ isPressed: false })
+  }
+
   render() {
     const { navigation } = this.props
+    const { isPressed } = this.state
+
     return (
       <StyledMain>
         <DarkLabel>
@@ -120,7 +132,14 @@ class MergingScreen extends PureComponent {
           showsHorizontalScrollIndicator={false}>
           { this.renderTags() }
         </StyledScrollable>
-        <Button onPress={() => {
+        <PosedButton
+          isPressed={isPressed}
+          pose={isPressed ? 'press' : 'init'}
+          onPressIn={this.handlePressIn}
+          onPressOut={this.handlePressOut}
+          activeOpacity={1}
+          underlayColor={palette.darkBlue}
+          onPress={() => {
           const pushAction = StackActions.push({
             routeName: 'Welcome'
           })
@@ -129,7 +148,7 @@ class MergingScreen extends PureComponent {
           <BtnText>
             continue
           </BtnText>
-        </Button>
+        </PosedButton>
       </StyledMain>
     )
   }

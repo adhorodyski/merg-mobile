@@ -11,10 +11,11 @@ import {
 import { Text, TouchableOpacity, Dimensions, KeyboardAvoidingView } from 'react-native'
 import { withNavigation } from 'react-navigation'
 import styled from 'styled-components/native'
+import { palette } from '../Shared/palette'
 
 import {
   Main,
-  Button,
+  PosedButton,
   BtnText,
   Tile,
   WideInput
@@ -34,7 +35,23 @@ const AdjustedLabel = styled(StyledLabelWide)`
 `
 
 class CreatorRegisterScreen extends PureComponent {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isPressed: false
+    }
+  }
+
+  handlePressIn = () => {
+    this.setState({ isPressed: true })
+  }
+
+  handlePressOut = () => {
+    this.setState({ isPressed: false })
+  }
+
   render() {
+    const { isPressed } = this.state
     const {
       navigation,
       getCreatorRegisterNameDisplayed,
@@ -133,11 +150,18 @@ class CreatorRegisterScreen extends PureComponent {
                 textContentType={'password'}
                 placeholder='confirm password' />
             </Tile>
-            <Button onPress={() => registerCreator(navigation)}>
+            <PosedButton
+              isPressed={isPressed}
+              pose={isPressed ? 'press' : 'init'}
+              onPressIn={this.handlePressIn}
+              onPressOut={this.handlePressOut}
+              activeOpacity={1}
+              underlayColor={palette.darkBlue}
+              onPress={() => registerCreator(navigation)}>
               <BtnText>
                 continue
               </BtnText>
-            </Button>
+            </PosedButton>
             <AdjustedLabel>
               By signing up, you agree to our Terms. In Privacy Policy you can learn how we store and use your data with things like cookies only to provide You the best possible service.
             </AdjustedLabel>

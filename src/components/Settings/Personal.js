@@ -8,10 +8,11 @@ import {
   updateAbout,
   sendPersonalForm
 } from '../../actions/settingsActions'
+import { palette } from '../Shared/palette'
 
 import {
   StyledView,
-  Button,
+  PosedButtonSuccess,
   BtnText,
   Tile,
   Title,
@@ -22,11 +23,25 @@ import {
 } from '../Shared/UI'
 
 class Personal extends PureComponent {
+  constructor(props) {
+    super(props)
+    this.state = { isPressed: false }
+  }
+
   componentDidMount = () => {
     this.props.hydrateInitial()
   }
 
+  handlePressIn = () => {
+    this.setState({ isPressed: true })
+  }
+
+  handlePressOut = () => {
+    this.setState({ isPressed: false })
+  }
+
   render() {
+    const { isPressed } = this.state
     const {
       nameValue,
       usernameValue,
@@ -73,11 +88,17 @@ class Personal extends PureComponent {
             placeholder='My little note!'
             defaultValue={aboutValue} />
         </Tile>
-        <Button
+        <PosedButtonSuccess
           success={success}
+          isPressed={isPressed}
+          pose={isPressed ? 'press' : 'init'}
+          onPressIn={this.handlePressIn}
+          onPressOut={this.handlePressOut}
+          activeOpacity={1}
+          underlayColor={palette.darkBlue}
           onPress={() => sendPersonalForm()}>
           <BtnText>save</BtnText>
-        </Button>
+        </PosedButtonSuccess>
       </StyledView>
     )
   }

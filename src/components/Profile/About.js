@@ -23,6 +23,7 @@ class About extends PureComponent {
         about,
         followers,
         follows,
+        isFollowing,
         facebook,
         twitter,
         instagram,
@@ -43,7 +44,8 @@ class About extends PureComponent {
         <Counters
           followers={followers}
           follows={follows} />
-        <Actions />
+        <Actions
+          isFollowing={isFollowing} />
         <MergedWithGroup
           facebook={facebook}
           twitter={twitter}
