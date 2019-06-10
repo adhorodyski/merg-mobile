@@ -59,7 +59,7 @@ class TileHeader extends PureComponent {
         profilePic
       }
     } = this.props
-    
+
     return (
       <Header onPress={() => {
         const pushAction = StackActions.push({

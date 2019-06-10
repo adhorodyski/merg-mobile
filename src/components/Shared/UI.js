@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { View, Text, Image, TouchableHighlight } from 'react-native'
+import { View, Text, Image, TouchableHighlight, Dimensions } from 'react-native'
 import styled from 'styled-components'
 import posed from 'react-native-pose'
 import { palette } from './palette'
@@ -11,6 +11,11 @@ export const Main = styled.ScrollView`
 export const StyledView = styled.View`
   width: 95%;
   margin: 0 auto;
+`
+
+export const EmptyTemplate = styled.View`
+  background: ${palette.mediumGray};
+  height: ${Dimensions.get('window').height};
 `
 
 export const StyledViewMargin = styled(StyledView)`

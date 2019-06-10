@@ -8,12 +8,17 @@ import {
   loadOceanChunk,
   refreshHome
 } from '../../actions/userOceanActions'
-import { Text, View, Image, ScrollView, FlatList } from 'react-native'
+import { Text, View, Image } from 'react-native'
 import styled from 'styled-components'
+import { palette } from '../Shared/palette'
 
 import { Main } from '../Shared/UI'
 import Greeting from './Greeting'
 import Ocean from './Ocean'
+
+const StyledMain = styled.View`
+  background: ${palette.mediumGray};
+`
 
 export const StyledView = styled.View`
   display: flex;
@@ -48,16 +53,11 @@ class HomeScreen extends PureComponent {
   render() {
     const { refreshing } = this.props
     return (
-      <Main
-        refreshControl={
-          <RefreshControl
-            refreshing={refreshing}
-            onRefresh={this.refreshView}
-          />
-        }>
-        <Greeting />
-        <Ocean />
-      </Main>
+      <StyledMain>
+        <Ocean
+          refreshing={refreshing}
+          refreshView={this.refreshView} />
+      </StyledMain>
     )
   }
 }
