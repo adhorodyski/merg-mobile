@@ -76,9 +76,9 @@ const MainNavigator = createMaterialTopTabNavigator({
       header: null,
       tabBarIcon: ({ tintColor }) => (
         <Ionicons
-          name="md-home"
-          size={25}
-          color="#000" />
+          name="ios-infinite"
+          size={26}
+          color={tintColor} />
       )
     }
   },
@@ -87,9 +87,9 @@ const MainNavigator = createMaterialTopTabNavigator({
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (
         <Ionicons
-          name="md-compass"
-          size={25}
-          color="#000" />
+          name="ios-search"
+          size={26}
+          color={tintColor} />
       )
     }
   },
@@ -98,9 +98,9 @@ const MainNavigator = createMaterialTopTabNavigator({
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (
         <Ionicons
-          name="md-contact"
-          size={25}
-          color="#000" />
+          name="ios-contact"
+          size={26}
+          color={tintColor} />
       )
     }
   }
@@ -117,6 +117,9 @@ const MainNavigator = createMaterialTopTabNavigator({
       indicatorStyle: {
         display: 'none'
       },
+      activeTintColor: '#333333',
+      inactiveTintColor: '#808080',
+      pressColor: '#F0F0F0',
       tabStyle: {
         backgroundColor: 'transparent'
       },

@@ -45,6 +45,7 @@ class About extends PureComponent {
           followers={followers}
           follows={follows} />
         <Actions
+          username={username}
           isFollowing={isFollowing} />
         <MergedWithGroup
           facebook={facebook}

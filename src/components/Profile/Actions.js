@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
 import { View, Text, TouchableHighlight } from 'react-native'
 import styled from 'styled-components'
 import { palette } from '../Shared/palette'
@@ -56,38 +57,50 @@ class Actions extends PureComponent {
       isMergePressed,
       isTalkPressed
     } = this.state
-    const { isFollowing } = this.props
-    
-    return (
-      <StyledWrapper>
-        <StyledPosedSelectButton
-          isPressed={isMergePressed}
-          isFollowing={isFollowing}
-          pose={isMergePressed ? 'press' : 'init'}
-          onPressIn={this.handleMergePressIn}
-          onPressOut={this.handleMergePressOut}
-          onPress={() => this.onFollow()}
-          activeOpacity={1}
-          underlayColor={palette.darkBlue}>
-          <BtnText>
-            merge
-          </BtnText>
-        </StyledPosedSelectButton>
-        <StyledButton
-          isPressed={isTalkPressed}
-          pose={isTalkPressed ? 'press' : 'init'}
-          onPressIn={this.handleTalkPressIn}
-          onPressOut={this.handleTalkPressOut}
-          onPress={() => console.log('talk')}
-          activeOpacity={1}
-          underlayColor={palette.darkBlue}>
-          <BtnText>
-            talk to
-          </BtnText>
-        </StyledButton>
-      </StyledWrapper>
-    )
+    const {
+      isFollowing,
+      username,
+      loggedUsername
+    } = this.props
+
+    if (loggedUsername !== username) {
+      return (
+        <StyledWrapper>
+          <StyledPosedSelectButton
+            isPressed={isMergePressed}
+            isFollowing={isFollowing}
+            pose={isMergePressed ? 'press' : 'init'}
+            onPressIn={this.handleMergePressIn}
+            onPressOut={this.handleMergePressOut}
+            onPress={() => this.onFollow()}
+            activeOpacity={1}
+            underlayColor={palette.darkBlue}>
+            <BtnText>
+              merge
+            </BtnText>
+          </StyledPosedSelectButton>
+          <StyledButton
+            isPressed={isTalkPressed}
+            pose={isTalkPressed ? 'press' : 'init'}
+            onPressIn={this.handleTalkPressIn}
+            onPressOut={this.handleTalkPressOut}
+            onPress={() => console.log('talk')}
+            activeOpacity={1}
+            underlayColor={palette.darkBlue}>
+            <BtnText>
+              talk to
+            </BtnText>
+          </StyledButton>
+        </StyledWrapper>
+      )
+    } else {
+      return null
+    }
   }
 }
 
-export default Actions
+const mapStateToProps = state => ({
+  loggedUsername: state.loggedUser.user.username
+})
+
+export default connect(mapStateToProps)(Actions)
