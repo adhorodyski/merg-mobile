@@ -28,8 +28,8 @@ class Personal extends PureComponent {
     this.state = { isPressed: false }
   }
 
-  componentDidMount = () => {
-    this.props.hydrateInitial()
+  componentDidMount = async () => {
+    await this.props.hydrateInitial()
   }
 
   handlePressIn = () => {

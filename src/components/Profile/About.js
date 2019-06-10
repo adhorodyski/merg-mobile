@@ -16,6 +16,7 @@ const StyledWrapper = styled.View`
 class About extends PureComponent {
   render() {
     const {
+      isFollowing,
       user: {
         firstName,
         username,
@@ -23,7 +24,6 @@ class About extends PureComponent {
         about,
         followers,
         follows,
-        isFollowing,
         facebook,
         twitter,
         instagram,

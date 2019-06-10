@@ -1,6 +1,9 @@
 import React, { PureComponent } from 'react'
 import { View, Text, Image } from 'react-native'
 import styled from 'styled-components/native'
+import { palette } from '../Shared/palette'
+
+import { Avatar } from '../Shared/UI'
 
 const StyledWrapper = styled.View`
   display: flex;
@@ -15,11 +18,9 @@ const NamesWrap = styled.View`
   margin: auto 0;
 `
 
-const Avatar = styled.Image`
+const StyledAvatar = styled(Avatar)`
   height: 50px;
   width: 50px;
-  display: flex;
-  background: #FFFFFF;
   margin: auto 10px auto auto;
   border-radius: 25px;
 `
@@ -31,7 +32,7 @@ const Name = styled.Text`
 
 const Username = styled.Text`
   font-size: 15px;
-  color: #808080;
+  color: ${palette.lightText};
 `
 
 const Sp = styled.Text`
@@ -48,7 +49,7 @@ class Basics extends PureComponent {
 
     return (
       <StyledWrapper>
-        <Avatar source={{uri: profilePic}} />
+        <StyledAvatar source={{uri: profilePic}} />
         <NamesWrap>
           <Name>
             {firstName}

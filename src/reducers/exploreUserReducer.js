@@ -1,14 +1,16 @@
 import {
   FETCH_EXPLORE_PATH_USER,
   FETCH_EXPLORE_FULL_RIVER,
-  LOAD_EXPLORE_RIVER_CHUNK
+  LOAD_EXPLORE_RIVER_CHUNK,
+  TRIGGER_REFRESH_EXPLORE_PROFILE
 } from '../actions/types'
 
 const initialState = {
   user: {},
   fullRiver: [],
   river: [],
-  isFollowing: false
+  isFollowing: false,
+  refreshing: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -30,6 +32,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         river: action.payload
+      }
+    case TRIGGER_REFRESH_EXPLORE_PROFILE:
+      return {
+        ...state,
+        refreshing: !state.refreshing
       }
     default: {
       return state

@@ -139,7 +139,7 @@ const AppStack = createStackNavigator({
       return {
         headerTitle: routeName,
         headerTitleStyle: {
-          fontSize: 20
+          fontSize: 16
         },
         headerStyle: {
           borderBottomWidth: 0,
@@ -155,12 +155,11 @@ const AppStack = createStackNavigator({
               source={MergeIcon} />
           </StyledTouchable>
         ),
+        headerBackTitle: null,
         headerRight: (
           <StyledTouchable
             onPress={() => {
-              const pushAction = StackActions.push({
-                routeName: 'Settings'
-              })
+              const pushAction = StackActions.push({ routeName: 'Settings' })
               navigation.dispatch(pushAction)
             }}>
             <HeaderButton
@@ -295,7 +294,7 @@ const Stacks = createAppContainer(createSwitchNavigator(
     App: AppStack
   },
   {
-    initialRouteName: 'Auth'
+    initialRouteName: 'App'
   }
 ))
 

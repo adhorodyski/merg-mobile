@@ -2,13 +2,15 @@ import {
   FETCH_LOGGED_USER,
   FETCH_LOGGED_PATH_USER,
   FETCH_LOGGED_FULL_RIVER,
-  LOAD_LOGGED_RIVER_CHUNK
+  LOAD_LOGGED_RIVER_CHUNK,
+  TRIGGER_REFRESH_LOGGED_PROFILE
 } from '../actions/types'
 
 const initialState = {
   user: {},
   fullRiver: [],
-  river: []
+  river: [],
+  refreshing: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -34,6 +36,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         river: action.payload
+      }
+    case TRIGGER_REFRESH_LOGGED_PROFILE:
+      return {
+        ...state,
+        refreshing: !state.refreshing
       }
     default: {
       return state

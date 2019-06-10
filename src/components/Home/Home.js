@@ -1,8 +1,13 @@
 import React, { PureComponent } from 'react'
+import { RefreshControl } from 'react-native'
 import { connect } from 'react-redux'
 import { fetchAuth } from '../../actions/authActions'
 import { fetchLoggedUser } from '../../actions/loggedUserActions'
-import { fetchFullOcean, loadOceanChunk } from '../../actions/userOceanActions'
+import {
+  fetchFullOcean,
+  loadOceanChunk,
+  refreshHome
+} from '../../actions/userOceanActions'
 import { Text, View, Image, ScrollView, FlatList } from 'react-native'
 import styled from 'styled-components'
 
@@ -31,9 +36,25 @@ class HomeScreen extends PureComponent {
     await this.props.loadOceanChunk()
   }
 
+  refreshView = async () => {
+    await this.props.refreshHome()
+    await this.props.fetchAuth()
+    await this.props.fetchLoggedUser()
+    await this.props.fetchFullOcean()
+    await this.props.loadOceanChunk()
+    await this.props.refreshHome()
+  }
+
   render() {
+    const { refreshing } = this.props
     return (
-      <Main>
+      <Main
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={this.refreshView}
+          />
+        }>
         <Greeting />
         <Ocean />
       </Main>
@@ -41,12 +62,17 @@ class HomeScreen extends PureComponent {
   }
 }
 
+const mapStateToProps = state => ({
+  refreshing: state.userOcean.refreshing
+})
+
 export default connect(
-  null,
+  mapStateToProps,
   {
     fetchAuth,
     fetchLoggedUser,
     fetchFullOcean,
-    loadOceanChunk
+    loadOceanChunk,
+    refreshHome
   }
 )(HomeScreen)

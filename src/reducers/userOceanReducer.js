@@ -1,12 +1,14 @@
 import {
   FETCH_FULL_OCEAN,
   LOAD_OCEAN_CHUNK,
-  CLEAR_OCEAN
+  CLEAR_OCEAN,
+  TRIGGER_REFRESH_HOME
 } from '../actions/types'
 
 const initialState = {
   fullOcean: [],
-  ocean: []
+  ocean: [],
+  refreshing: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -27,6 +29,11 @@ const reducer = (state = initialState, action) => {
        ...state,
        ocean: action.payload
      }
+    case TRIGGER_REFRESH_HOME:
+      return {
+        ...state,
+        refreshing: !state.refreshing
+      }
     default: {
       return state
     }

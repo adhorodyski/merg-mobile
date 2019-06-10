@@ -5,6 +5,8 @@ import {
   Image,
   Text
 } from 'react-native'
+import { connect } from 'react-redux'
+import { triggerFollow } from '../../actions/exploreActions'
 import { withNavigation, StackActions } from 'react-navigation'
 import styled from 'styled-components'
 import { palette } from '../Shared/palette'
@@ -127,7 +129,37 @@ class CreatorTile extends PureComponent {
 
   onFollow = () => {
     const { isFollowing } = this.state
-    this.setState({ isFollowing: !isFollowing })
+    const {
+      _id,
+      local: {
+        username,
+        nameDisplayed,
+        photo
+      },
+      facebook,
+      twitter,
+      instagram,
+      tumblr,
+      youtube,
+      spotify
+    } = this.props.result
+
+    const followInformations = {
+      isFollowing: !isFollowing,
+      creatorID: _id,
+      creatorUsername: username,
+      creatorName: nameDisplayed,
+      creatorPhoto: photo,
+      creatorFacebook: facebook,
+      creatorTwitter: twitter,
+      creatorInstagram: instagram,
+      creatorYoutube: youtube,
+      creatorTumblr: tumblr,
+      creatorSpotify: spotify
+    }
+
+    this.props.triggerFollow(followInformations)
+    this.setState({isFollowing: !isFollowing})
   }
 
   checkFollow = async () => {
@@ -222,4 +254,11 @@ class CreatorTile extends PureComponent {
   }
 }
 
-export default withNavigation(CreatorTile)
+export default withNavigation(
+  connect(
+    null,
+    {
+      triggerFollow
+    }
+  )(CreatorTile)
+)

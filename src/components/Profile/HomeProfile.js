@@ -1,10 +1,12 @@
 import React, { PureComponent } from 'react'
+import { RefreshControl } from 'react-native'
 import { connect } from 'react-redux'
 import { withNavigation } from 'react-navigation'
 import {
   fetchPathUser,
   fetchFullRiver,
-  loadRiverChunk
+  loadRiverChunk,
+  refreshHomeUser
 } from '../../actions/pathUserActions'
 
 import { Main } from '../Shared/UI'
@@ -20,11 +22,27 @@ class HomeProfileScreen extends PureComponent {
     await this.props.loadRiverChunk(mode)
   }
 
+  refreshView = async () => {
+    const { username } = this.props.navigation.state.params
+    const mode = 'HOME'
+    await this.props.refreshHomeUser()
+    await this.props.fetchPathUser(username, mode)
+    await this.props.fetchFullRiver(mode)
+    await this.props.loadRiverChunk(mode)
+    await this.props.refreshHomeUser()
+  }
+
   render() {
-    const { user, river } = this.props
+    const { user, isFollowing, river, refreshing } = this.props
     return (
-      <Main>
-        <About user={user} />
+      <Main
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={this.refreshView}
+          />
+        }>
+        <About user={user} isFollowing={isFollowing} />
         <River river={river} />
       </Main>
     )
@@ -33,7 +51,9 @@ class HomeProfileScreen extends PureComponent {
 
 mapStateToProps = state => ({
   user: state.homeUser.user,
-  river: state.homeUser.river
+  isFollowing: state.homeUser.isFollowing,
+  river: state.homeUser.river,
+  refreshing: state.homeUser.refreshing
 })
 
 export default withNavigation(connect(
@@ -41,6 +61,7 @@ export default withNavigation(connect(
   {
     fetchPathUser,
     fetchFullRiver,
-    loadRiverChunk
+    loadRiverChunk,
+    refreshHomeUser
   }
 )(HomeProfileScreen))

@@ -7,7 +7,10 @@ import {
   LOAD_EXPLORE_RIVER_CHUNK,
   FETCH_LOGGED_PATH_USER,
   FETCH_LOGGED_FULL_RIVER,
-  LOAD_LOGGED_RIVER_CHUNK
+  LOAD_LOGGED_RIVER_CHUNK,
+  TRIGGER_REFRESH_HOME_PROFILE,
+  TRIGGER_REFRESH_EXPLORE_PROFILE,
+  TRIGGER_REFRESH_LOGGED_PROFILE
 } from './types'
 import * as base from '../variables'
 import _ from 'underscore'
@@ -311,4 +314,16 @@ export const loadRiverChunk = mode => (dispatch, getState) => {
       payload: postsChunk
     })
   }
+}
+
+export const refreshHomeUser = () => dispatch => {
+  dispatch({ type: TRIGGER_REFRESH_HOME_PROFILE })
+}
+
+export const refreshExploreUser = () => dispatch => {
+  dispatch({ type: TRIGGER_REFRESH_EXPLORE_PROFILE })
+}
+
+export const refreshLoggedUser = () => dispatch => {
+  dispatch({ type: TRIGGER_REFRESH_LOGGED_PROFILE })
 }

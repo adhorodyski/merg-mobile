@@ -53,11 +53,11 @@ class Actions extends PureComponent {
 
   render() {
     const {
-      isFollowing,
       isMergePressed,
       isTalkPressed
     } = this.state
-
+    const { isFollowing } = this.props
+    
     return (
       <StyledWrapper>
         <StyledPosedSelectButton

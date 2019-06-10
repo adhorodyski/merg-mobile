@@ -1,7 +1,8 @@
 import {
   FETCH_FULL_OCEAN,
   LOAD_OCEAN_CHUNK,
-  CLEAR_OCEAN
+  CLEAR_OCEAN,
+  TRIGGER_REFRESH_HOME
 } from './types'
 import {
   getTwitterStream,
@@ -66,4 +67,8 @@ export const loadOceanChunk = () => (dispatch, getState) => {
   let postsChunk = ocean.slice()
   postsChunk = postsChunk.concat(getItems())
   dispatch({ type: LOAD_OCEAN_CHUNK, payload: postsChunk })
+}
+
+export const refreshHome = () => dispatch => {
+  dispatch({ type: TRIGGER_REFRESH_HOME })
 }
