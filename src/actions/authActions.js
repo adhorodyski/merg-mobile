@@ -1,4 +1,4 @@
-import { FETCH_AUTH } from './types'
+import { FETCH_AUTH, LOGOUT_USER } from './types'
 import * as base from '../variables'
 
 export const fetchAuth = () => async dispatch => {
@@ -13,4 +13,14 @@ export const fetchAuth = () => async dispatch => {
     })
   })
   .catch(err => console.log(err))
+}
+
+export const logoutUser = navigation => async dispatch => {
+  await fetch(`${base.API_URL}/api/user/logout`, {
+    method: 'post'
+  })
+  .then(res => {
+    navigation.navigate('PrimaryChoice')
+    dispatch({ type: LOGOUT_USER })
+  })
 }

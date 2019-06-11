@@ -1,4 +1,6 @@
 import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
+import { logoutUser } from '../../actions/authActions'
 import { Text, TouchableOpacity } from 'react-native'
 import { StackActions, withNavigation } from 'react-navigation'
 import styled from 'styled-components/native'
@@ -15,13 +17,15 @@ const Touch = styled.TouchableOpacity`
 `
 
 class Logout extends PureComponent {
-  render() {
+  proceedLogout = () => {
     const { navigation } = this.props
+    this.props.logoutUser(navigation)
+  }
+
+  render() {
     return (
       <StyledViewMargin2>
-        <Touch onPress={() => {
-          navigation.navigate('PrimaryChoice')
-        }}>
+        <Touch onPress={this.proceedLogout}>
           <DarkLabel>
             Sign out
           </DarkLabel>
@@ -31,4 +35,11 @@ class Logout extends PureComponent {
   }
 }
 
-export default withNavigation(Logout)
+export default withNavigation(
+  connect(
+    null,
+    {
+      logoutUser
+    }
+  )(Logout)
+)

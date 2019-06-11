@@ -16,6 +16,7 @@ import About from './About'
 class ExploreProfileScreen extends PureComponent {
   componentDidMount = async () => {
     const { username } = this.props.navigation.state.params
+    this.props.navigation.setParams({ title: username })
     const mode = 'EXPLORE'
     await this.props.fetchPathUser(username, mode)
     await this.props.fetchFullRiver(mode)

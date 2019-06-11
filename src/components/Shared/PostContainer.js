@@ -14,7 +14,7 @@ export const ResultTile = styled.View`
   min-height: 140px;
   background: ${palette.white};
   border-radius: 10px;
-  box-shadow: 0 4px 3px rgba(33, 33, 33, 0.03);
+  box-shadow: 0 4px 3px rgba(33, 33, 33, 0.05);
 `
 
 const Header = styled.TouchableWithoutFeedback`

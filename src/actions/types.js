@@ -5,6 +5,7 @@ export const FETCH_LOGGED_USER = 'FETCH_LOGGED_USER'
 export const LOGIN_USER = 'LOGIN_USER'
 export const GET_LOGIN_EMAIL = 'GET_LOGIN_EMAIL'
 export const GET_LOGIN_PASSWORD ='GET_LOGIN_PASSWORD'
+export const LOGOUT_USER = 'LOGOUT_USER'
 // follower's sign up
 export const REGISTER_USER = 'REGISTER_USER'
 export const GET_REGISTER_FIRSTNAME = 'GET_REGISTER_FIRSTNAME'

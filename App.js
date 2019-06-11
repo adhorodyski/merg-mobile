@@ -28,14 +28,18 @@ const MergeIcon = require('./assets/branding/logo-short-colors.png')
 const SettingsIcon = require('./assets/settings.png')
 
 const StyledTouchable = styled.TouchableOpacity`
-  width: 40px;
+  width: 30px;
   height: 40px;
   margin: 0 10px;
 `
 
+const HeaderIoniconsButton = styled(Ionicons)`
+  margin: auto;
+`
+
 const HeaderButton = styled.Image`
-  height: 30px;
-  width: 30px;
+  height: 25px;
+  width: 25px;
   margin: auto;
 `
 
@@ -73,7 +77,6 @@ const MainNavigator = createMaterialTopTabNavigator({
   Home: {
     screen: HomeStack,
     navigationOptions: {
-      header: null,
       tabBarIcon: ({ tintColor }) => (
         <Ionicons
           name="ios-infinite"
@@ -98,7 +101,7 @@ const MainNavigator = createMaterialTopTabNavigator({
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (
         <Ionicons
-          name="ios-contact"
+          name="ios-person"
           size={26}
           color={tintColor} />
       )
@@ -138,35 +141,32 @@ const AppStack = createStackNavigator({
   MainNavigator: {
     screen: MainNavigator,
     navigationOptions: ({ navigation }) => {
-      const { routeName } = navigation.state.routes[navigation.state.index]
+      console.log(navigation)
       return {
-        headerTitle: routeName,
         headerTitleStyle: {
           fontSize: 16
         },
         headerStyle: {
           borderBottomWidth: 0,
-          backgroundColor: '#FFFFFF',
-          shadowColor: '#000',
-          shadowOffset: { width: 0, height: 2 },
-          shadowOpacity: 0.03,
-          shadowRadius: 3
+          backgroundColor: '#F5F5F5'
         },
+        headerBackTitle: null,
         headerLeft: (
           <StyledTouchable>
             <HeaderButton
               source={MergeIcon} />
           </StyledTouchable>
         ),
-        headerBackTitle: null,
         headerRight: (
           <StyledTouchable
             onPress={() => {
               const pushAction = StackActions.push({ routeName: 'Settings' })
               navigation.dispatch(pushAction)
             }}>
-            <HeaderButton
-              source={SettingsIcon} />
+            <HeaderIoniconsButton
+              name="ios-more"
+              size={30}
+              color={'#808080'} />
           </StyledTouchable>
         )
       }
@@ -178,12 +178,20 @@ const AppStack = createStackNavigator({
       return {
         headerTitle: 'Settings',
         headerTitleStyle: {
-          fontSize: 20
+          fontSize: 16
         },
         headerStyle: {
-          borderBottomWidth: 1,
-          borderBottomColor: 'rgba(51, 51, 51, 0.1)'
-        }
+          borderBottomWidth: 0,
+          backgroundColor: '#F5F5F5'
+        },
+        headerBackImage: (
+          <StyledTouchable onPress={() => navigation.goBack() }>
+            <HeaderIoniconsButton
+              name="ios-arrow-round-back"
+              size={40}
+              color={'#808080'} />
+          </StyledTouchable>
+        )
       }
     }
   }
@@ -195,12 +203,21 @@ const AuthStack = createStackNavigator({
     navigationOptions: ({ navigation }) => {
       return {
         headerTitleStyle: {
-          fontSize: 20
+          fontSize: 16
         },
         headerStyle: {
-          borderBottomWidth: 1,
-          borderBottomColor: 'rgba(51, 51, 51, 0.1)'
+          borderBottomWidth: 0,
+          backgroundColor: '#F5F5F5'
         },
+        headerBackTitle: null,
+        headerBackImage: (
+          <StyledTouchable onPress={() => navigation.goBack() }>
+            <HeaderIoniconsButton
+              name="ios-arrow-round-back"
+              size={40}
+              color={'#808080'} />
+          </StyledTouchable>
+        ),
         headerLeft: (
           <StyledTouchable>
             <HeaderButton
@@ -216,12 +233,20 @@ const AuthStack = createStackNavigator({
       return {
         headerTitle: 'Sign in',
         headerTitleStyle: {
-          fontSize: 20
+          fontSize: 16
         },
         headerStyle: {
-          borderBottomWidth: 1,
-          borderBottomColor: 'rgba(51, 51, 51, 0.1)'
-        }
+          borderBottomWidth: 0,
+          backgroundColor: '#F5F5F5'
+        },
+        headerBackImage: (
+          <StyledTouchable onPress={() => navigation.goBack() }>
+            <HeaderIoniconsButton
+              name="ios-arrow-round-back"
+              size={40}
+              color={'#808080'} />
+          </StyledTouchable>
+        )
       }
     }
   },
@@ -231,12 +256,20 @@ const AuthStack = createStackNavigator({
       return {
         headerTitle: 'Follower',
         headerTitleStyle: {
-          fontSize: 20
+          fontSize: 16
         },
         headerStyle: {
-          borderBottomWidth: 1,
-          borderBottomColor: 'rgba(51, 51, 51, 0.1)'
-        }
+          borderBottomWidth: 0,
+          backgroundColor: '#F5F5F5'
+        },
+        headerBackImage: (
+          <StyledTouchable onPress={() => navigation.goBack() }>
+            <HeaderIoniconsButton
+              name="ios-arrow-round-back"
+              size={40}
+              color={'#808080'} />
+          </StyledTouchable>
+        )
       }
     }
   },
@@ -246,12 +279,20 @@ const AuthStack = createStackNavigator({
       return {
         headerTitle: 'Creator',
         headerTitleStyle: {
-          fontSize: 20
+          fontSize: 16
         },
         headerStyle: {
-          borderBottomWidth: 1,
-          borderBottomColor: 'rgba(51, 51, 51, 0.1)'
-        }
+          borderBottomWidth: 0,
+          backgroundColor: '#F5F5F5'
+        },
+        headerBackImage: (
+          <StyledTouchable onPress={() => navigation.goBack() }>
+            <HeaderIoniconsButton
+              name="ios-arrow-round-back"
+              size={40}
+              color={'#808080'} />
+          </StyledTouchable>
+        )
       }
     }
   }
@@ -264,12 +305,21 @@ const MergingStack = createStackNavigator({
       return {
         headerTitle: 'Merging',
         headerTitleStyle: {
-          fontSize: 20
+          fontSize: 16
         },
         headerStyle: {
-          borderBottomWidth: 1,
-          borderBottomColor: 'rgba(51, 51, 51, 0.1)'
-        }
+          borderBottomWidth: 0,
+          backgroundColor: '#F5F5F5'
+        },
+        headerBackTitle: null,
+        headerBackImage: (
+          <StyledTouchable onPress={() => navigation.goBack() }>
+            <HeaderIoniconsButton
+              name="ios-arrow-round-back"
+              size={40}
+              color={'#808080'} />
+          </StyledTouchable>
+        )
       }
     }
   },
@@ -279,12 +329,20 @@ const MergingStack = createStackNavigator({
       return {
         headerTitle: 'Welcome',
         headerTitleStyle: {
-          fontSize: 20
+          fontSize: 16
         },
         headerStyle: {
-          borderBottomWidth: 1,
-          borderBottomColor: 'rgba(51, 51, 51, 0.1)'
-        }
+          borderBottomWidth: 0,
+          backgroundColor: '#F5F5F5'
+        },
+        headerBackImage: (
+          <StyledTouchable onPress={() => navigation.goBack() }>
+            <HeaderIoniconsButton
+              name="ios-arrow-round-back"
+              size={40}
+              color={'#808080'} />
+          </StyledTouchable>
+        )
       }
     }
   }

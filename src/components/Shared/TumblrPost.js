@@ -9,7 +9,7 @@ const StyledWrapper = styled.View`
 
 const Picture = styled.Image`
   width: 100%;
-  min-height: 200px;
+  min-height: 300px;
   border-radius: 10px;
 `
 

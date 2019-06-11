@@ -1,4 +1,4 @@
-import { FETCH_AUTH } from '../actions/types'
+import { FETCH_AUTH, LOGOUT_USER } from '../actions/types'
 
 const initialState = {
   isAuth: false,
@@ -14,6 +14,13 @@ const reducer = (state = initialState, action) => {
         isAuth: action.payload.isAuth,
         isCreator: action.payload.isCreator,
         username: action.payload.username
+      }
+    case LOGOUT_USER:
+      return {
+        ...state,
+        isAuth: false,
+        isCreator: false,
+        username: ''
       }
     default: {
       return state

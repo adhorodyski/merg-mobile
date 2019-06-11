@@ -1,7 +1,11 @@
 import React, { PureComponent } from 'react'
 import { View, Image } from 'react-native'
 import styled from 'styled-components'
-import Video from 'react-native-video'
+import { Video } from 'expo'
+
+const StyledView = styled.View`
+  border-radius: 10px;
+`
 
 const StyledImage = styled(Image)`
   width: 100%;
@@ -13,15 +17,22 @@ const StyledImage = styled(Image)`
 const StyledVideo = styled(Video)`
   width: 100%;
   height: 400px;
-  display: flex;
   border-radius: 10px;
 `
 
 class InstagramPost extends PureComponent {
-  // renderVideo = () => {
-  //   const { url } = this.props.data.videos.standard_resolution
-  //   return <StyledVideo source={{uri: url}} />
-  // }
+  renderVideo = () => {
+    const { url } = this.props.data.videos.standard_resolution
+    return (
+      <StyledVideo
+        source={{uri: url}}
+        volume={1}
+        resizeMode="cover"
+        isMuted={true}
+        shouldPlay
+        isLooping />
+    )
+  }
 
   renderPhoto = () => {
     const { url } = this.props.data.images.standard_resolution
@@ -31,9 +42,10 @@ class InstagramPost extends PureComponent {
   render() {
     const { type } = this.props.data
     return (
-      <View>
+      <StyledView>
         { type === 'photo' && this.renderPhoto() }
-      </View>
+        { type === 'video' && this.renderVideo() }
+      </StyledView>
     )
   }
 }
