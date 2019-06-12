@@ -9,7 +9,7 @@ const StyledWrapper = styled.View`
 
 const Picture = styled.Image`
   width: 100%;
-  min-height: 300px;
+  min-height: 400px;
   border-radius: 10px;
 `
 
@@ -21,6 +21,7 @@ const TumblrText = styled.View`
 
 const Content = styled.Text`
   font-size: 16px;
+  line-height: 22px;
   margin: 20px auto 0 auto;
 `
 

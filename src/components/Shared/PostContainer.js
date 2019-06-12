@@ -10,11 +10,11 @@ import { AvatarSmall } from '../Shared/UI'
 export const ResultTile = styled.View`
   width: 95%;
   margin: 0 auto;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   min-height: 140px;
   background: ${palette.white};
   border-radius: 10px;
-  box-shadow: 0 4px 3px rgba(33, 33, 33, 0.05);
+  box-shadow: 0 10px 15px rgba(80, 80, 80, 0.15);
 `
 
 const Header = styled.TouchableWithoutFeedback`

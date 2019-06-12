@@ -12,13 +12,9 @@ import { Text, View, Image } from 'react-native'
 import styled from 'styled-components'
 import { palette } from '../Shared/palette'
 
-import { Main } from '../Shared/UI'
+import { MainView } from '../Shared/UI'
 import Greeting from './Greeting'
 import Ocean from './Ocean'
-
-const StyledMain = styled.View`
-  background: ${palette.mediumGray};
-`
 
 export const StyledView = styled.View`
   display: flex;
@@ -53,11 +49,11 @@ class HomeScreen extends PureComponent {
   render() {
     const { refreshing } = this.props
     return (
-      <StyledMain>
+      <MainView>
         <Ocean
           refreshing={refreshing}
           refreshView={this.refreshView} />
-      </StyledMain>
+      </MainView>
     )
   }
 }

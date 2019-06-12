@@ -68,6 +68,7 @@ const External = styled.Text`
 
 const Content = styled.Text`
   font-size: 16px;
+  line-height: 22px;
   font-weight: bold;
 `
 
@@ -87,7 +88,7 @@ const TwitterLogo = styled.Image`
 
 const Photo = styled.Image`
   width: 100%;
-  min-height: 200px;
+  min-height: 300px;
   margin: 0 auto 20px auto;
   border-radius: 10px;
 `

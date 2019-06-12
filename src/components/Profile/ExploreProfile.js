@@ -9,7 +9,7 @@ import {
   refreshExploreUser
 } from '../../actions/pathUserActions'
 
-import { Main } from '../Shared/UI'
+import { MainView } from '../Shared/UI'
 import River from './River'
 import About from './About'
 
@@ -17,35 +17,34 @@ class ExploreProfileScreen extends PureComponent {
   componentDidMount = async () => {
     const { username } = this.props.navigation.state.params
     this.props.navigation.setParams({ title: username })
-    const mode = 'EXPLORE'
-    await this.props.fetchPathUser(username, mode)
-    await this.props.fetchFullRiver(mode)
-    await this.props.loadRiverChunk(mode)
+    await this.props.fetchPathUser(username, this.mode)
+    await this.props.fetchFullRiver(this.mode)
+    await this.props.loadRiverChunk(this.mode)
   }
 
   refreshView = async () => {
     const { username } = this.props.navigation.state.params
-    const mode = 'EXPLORE'
     await this.props.refreshExploreUser()
-    await this.props.fetchPathUser(username, mode)
-    await this.props.fetchFullRiver(mode)
-    await this.props.loadRiverChunk(mode)
+    await this.props.fetchPathUser(username, this.mode)
+    await this.props.fetchFullRiver(this.mode)
+    await this.props.loadRiverChunk(this.mode)
     await this.props.refreshExploreUser()
   }
+
+  mode = 'EXPLORE'
 
   render() {
     const { user, isFollowing, river, refreshing } = this.props
     return (
-      <Main
-        refreshControl={
-          <RefreshControl
-            refreshing={refreshing}
-            onRefresh={this.refreshView}
-          />
-        }>
-        <About user={user} isFollowing={isFollowing} />
-        <River river={river} />
-      </Main>
+      <MainView>
+        <River
+          river={river}
+          mode={this.mode}
+          user={user}
+          isFollowing={isFollowing}
+          refreshing={refreshing}
+          refreshView={this.refreshView} />
+      </MainView>
     )
   }
 }

@@ -8,14 +8,22 @@ export const Main = styled.ScrollView`
   background: ${palette.mediumGray};
 `
 
+export const MainView = styled.View`
+  background: ${palette.mediumGray};
+`
+
 export const StyledView = styled.View`
   width: 95%;
   margin: 0 auto;
 `
 
-export const EmptyTemplate = styled.View`
+export const EmptyFlatlistTemplate = styled.View`
   background: ${palette.mediumGray};
   height: ${Dimensions.get('window').height};
+`
+
+export const ResultsFlatlist = styled.FlatList`
+  background: ${palette.mediumGray};
 `
 
 export const StyledViewMargin = styled(StyledView)`

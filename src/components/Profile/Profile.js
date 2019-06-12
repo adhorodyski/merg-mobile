@@ -10,44 +10,42 @@ import {
   refreshLoggedUser
 } from '../../actions/pathUserActions'
 
-import { Main } from '../Shared/UI'
+import { MainView } from '../Shared/UI'
 import River from './River'
 import About from './About'
 
 class ProfileScreen extends PureComponent {
   componentDidMount = async () => {
     const { username } = this.props.user
-    const mode = 'PROFILE'
     await this.props.fetchAuth()
-    await this.props.fetchPathUser(username, mode)
-    await this.props.fetchFullRiver(mode)
-    await this.props.loadRiverChunk(mode)
+    await this.props.fetchPathUser(username, this.mode)
+    await this.props.fetchFullRiver(this.mode)
+    await this.props.loadRiverChunk(this.mode)
   }
 
   refreshView = async () => {
     const { username } = this.props.user
-    const mode = 'PROFILE'
     await this.props.refreshLoggedUser()
     await this.props.fetchAuth()
-    await this.props.fetchPathUser(username, mode)
-    await this.props.fetchFullRiver(mode)
-    await this.props.loadRiverChunk(mode)
+    await this.props.fetchPathUser(username, this.mode)
+    await this.props.fetchFullRiver(this.mode)
+    await this.props.loadRiverChunk(this.mode)
     await this.props.refreshLoggedUser()
   }
+
+  mode = 'PROFILE'
 
   render() {
     const { user, river, refreshing } = this.props
     return (
-      <Main
-        refreshControl={
-          <RefreshControl
-            refreshing={refreshing}
-            onRefresh={this.refreshView}
-          />
-        }>
-        <About user={user} />
-        <River river={river} />
-      </Main>
+      <MainView>
+        <River
+          river={river}
+          mode={this.mode}
+          user={user}
+          refreshing={refreshing}
+          refreshView={this.refreshView} />
+      </MainView>
     )
   }
 }

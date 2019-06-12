@@ -141,7 +141,6 @@ const AppStack = createStackNavigator({
   MainNavigator: {
     screen: MainNavigator,
     navigationOptions: ({ navigation }) => {
-      console.log(navigation)
       return {
         headerTitleStyle: {
           fontSize: 16

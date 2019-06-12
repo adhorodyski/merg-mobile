@@ -8,19 +8,15 @@ import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
 
 import Greeting from './Greeting'
-import { EmptyTemplate } from '../Shared/UI'
+import { EmptyFlatlistTemplate, ResultsFlatlist } from '../Shared/UI'
 import TileHeader, { ResultTile } from '../Shared/PostContainer'
 import TwitterPost from '../Shared/TwitterPost'
 import TumblrPost from '../Shared/TumblrPost'
 import InstagramPost from '../Shared/InstagramPost'
 import YoutubePost from '../Shared/YoutubePost'
 
-const Results = styled.FlatList`
-  background: ${palette.mediumGray};
-`
-
 class Ocean extends PureComponent {
-  renderOcean = (res) => {
+  renderOcean = res => {
     TimeAgo.addLocale(en)
     const timeAgo = new TimeAgo('en-US')
 
@@ -92,12 +88,12 @@ class Ocean extends PureComponent {
   render() {
     const { ocean, refreshView, refreshing } = this.props
     return (
-      <Results
+      <ResultsFlatlist
         data={ocean}
         keyExtractor={(item, idx) => idx.toString()}
         renderItem={({ item, idx }) => this.renderOcean(item, idx)}
         ListHeaderComponent={Greeting}
-        ListEmptyComponent={EmptyTemplate}
+        ListEmptyComponent={EmptyFlatlistTemplate}
         onEndReachedThreshold={0.8}
         onEndReached={this.loadChunk}
         refreshControl={
