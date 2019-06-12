@@ -80,7 +80,8 @@ class River extends PureComponent {
     }
   }
 
-  loadChunk = async ({ mode }) => {
+  loadChunk = async () => {
+    const { mode } = this.props
     await this.props.loadRiverChunk(mode)
   }
 
