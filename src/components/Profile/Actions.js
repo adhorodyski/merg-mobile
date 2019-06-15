@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
+import { fetchLoggedUser } from '../../actions/loggedUserActions'
+import { triggerFollow } from '../../actions/exploreActions'
 import { View, Text, TouchableHighlight } from 'react-native'
 import styled from 'styled-components'
 import { palette } from '../Shared/palette'
@@ -25,7 +27,6 @@ class Actions extends PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      isFollowing: false,
       isMergePressed: false,
       isTalkPressed: false
     }
@@ -39,9 +40,40 @@ class Actions extends PureComponent {
     this.setState({ isMergePressed: false })
   }
 
-  onFollow = () => {
-    const { isFollowing } = this.state
-    this.setState({ isFollowing: !isFollowing })
+  onFollow = async () => {
+    const {
+      mode,
+      isFollowing,
+      user: {
+        _id,
+        firstName,
+        profilePic,
+        username,
+        facebook,
+        twitter,
+        instagram,
+        youtube,
+        spotify,
+        tumblr
+      }
+    } = this.props
+
+    const followInformations = {
+      isFollowing: !isFollowing,
+      creatorID: _id,
+      creatorUsername: username,
+      creatorName: firstName,
+      creatorPhoto: profilePic,
+      creatorFacebook: facebook,
+      creatorTwitter: twitter,
+      creatorInstagram: instagram,
+      creatorYoutube: youtube,
+      creatorTumblr: tumblr,
+      creatorSpotify: spotify
+    }
+
+    await this.props.triggerFollow(followInformations, mode)
+    await this.props.fetchLoggedUser()
   }
 
   handleTalkPressIn = () => {
@@ -58,9 +90,11 @@ class Actions extends PureComponent {
       isTalkPressed
     } = this.state
     const {
+      loggedUsername,
       isFollowing,
-      username,
-      loggedUsername
+      user: {
+        username
+      }
     } = this.props
 
     if (loggedUsername !== username) {
@@ -72,7 +106,7 @@ class Actions extends PureComponent {
             pose={isMergePressed ? 'press' : 'init'}
             onPressIn={this.handleMergePressIn}
             onPressOut={this.handleMergePressOut}
-            onPress={() => this.onFollow()}
+            onPress={this.onFollow}
             activeOpacity={1}
             underlayColor={palette.darkBlue}>
             <BtnText>
@@ -100,7 +134,14 @@ class Actions extends PureComponent {
 }
 
 const mapStateToProps = state => ({
-  loggedUsername: state.loggedUser.user.username
+  loggedUsername: state.loggedUser.user.username,
+  loggedFollows: state.loggedUser.user.follows
 })
 
-export default connect(mapStateToProps)(Actions)
+export default connect(
+  mapStateToProps,
+  {
+    fetchLoggedUser,
+    triggerFollow
+  }
+)(Actions)

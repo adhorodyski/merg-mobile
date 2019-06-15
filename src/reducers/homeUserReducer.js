@@ -2,6 +2,7 @@ import {
   FETCH_HOME_PATH_USER,
   FETCH_HOME_FULL_RIVER,
   LOAD_HOME_RIVER_CHUNK,
+  TRIGGER_HOME_USER_FOLLOW,
   TRIGGER_REFRESH_HOME_PROFILE
 } from '../actions/types'
 
@@ -32,6 +33,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         river: action.payload
+      }
+    case TRIGGER_HOME_USER_FOLLOW:
+      return {
+        ...state,
+        isFollowing: !state.isFollowing
       }
     case TRIGGER_REFRESH_HOME_PROFILE:
       return {

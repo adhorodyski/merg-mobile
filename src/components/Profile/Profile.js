@@ -25,8 +25,8 @@ class ProfileScreen extends PureComponent {
 
   refreshView = async () => {
     const { username } = this.props.user
-    await this.props.refreshLoggedUser()
     await this.props.fetchAuth()
+    await this.props.refreshLoggedUser()
     await this.props.fetchPathUser(username, this.mode)
     await this.props.fetchFullRiver(this.mode)
     await this.props.loadRiverChunk(this.mode)

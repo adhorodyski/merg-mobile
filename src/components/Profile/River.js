@@ -90,6 +90,7 @@ class River extends PureComponent {
       river,
       refreshing,
       refreshView,
+      mode,
       user,
       isFollowing
     } = this.props
@@ -103,6 +104,7 @@ class River extends PureComponent {
         ListHeaderComponent={
           <About
             user={user}
+            mode={mode}
             isFollowing={isFollowing} />
         }
         onEndReachedThreshold={0.8}

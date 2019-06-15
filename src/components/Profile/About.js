@@ -16,7 +16,9 @@ const StyledWrapper = styled.View`
 class About extends PureComponent {
   render() {
     const {
+      mode,
       isFollowing,
+      user,
       user: {
         firstName,
         username,
@@ -45,7 +47,9 @@ class About extends PureComponent {
           followers={followers}
           follows={follows} />
         <Actions
-          username={username}
+          user={user}
+          mode={mode}
+          follows={follows}
           isFollowing={isFollowing} />
         <MergedWithGroup
           facebook={facebook}

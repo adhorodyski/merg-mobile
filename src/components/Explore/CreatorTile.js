@@ -6,6 +6,7 @@ import {
   Text
 } from 'react-native'
 import { connect } from 'react-redux'
+import { fetchLoggedUser } from '../../actions/loggedUserActions'
 import { triggerFollow } from '../../actions/exploreActions'
 import { withNavigation, StackActions } from 'react-navigation'
 import styled from 'styled-components'
@@ -110,13 +111,17 @@ class CreatorTile extends PureComponent {
     }
   }
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
     const { loggedUsername, result: { local: { username } } } = this.props
 
-    this.setState(
+    await this.setState(
       { ownProfile: (loggedUsername === username) && true },
-      () => { this.checkFollow() }
+      async () => await this.checkFollow()
     )
+  }
+
+  componentDidUpdate = async () => {
+    await this.checkFollow()
   }
 
   handlePressIn = () => {
@@ -127,22 +132,24 @@ class CreatorTile extends PureComponent {
     this.setState({ isPressed: false })
   }
 
-  onFollow = () => {
+  onFollow = async () => {
     const { isFollowing } = this.state
     const {
-      _id,
-      local: {
-        username,
-        nameDisplayed,
-        photo
-      },
-      facebook,
-      twitter,
-      instagram,
-      tumblr,
-      youtube,
-      spotify
-    } = this.props.result
+      result: {
+        _id,
+        local: {
+          username,
+          nameDisplayed,
+          photo
+        },
+        facebook,
+        twitter,
+        instagram,
+        tumblr,
+        youtube,
+        spotify
+      }
+    } = this.props
 
     const followInformations = {
       isFollowing: !isFollowing,
@@ -158,19 +165,24 @@ class CreatorTile extends PureComponent {
       creatorSpotify: spotify
     }
 
-    this.props.triggerFollow(followInformations)
-    this.setState({isFollowing: !isFollowing})
+    await this.props.triggerFollow(followInformations)
+    await this.setState({ isFollowing: !isFollowing })
+    await this.props.fetchLoggedUser()
+    await this.checkFollow()
   }
 
-  checkFollow = async () => {
+  checkFollow = () => {
     const { isFollowing } = this.state
     const { follows, result: { _id } } = this.props
-
-    for await (const e of follows) {
-      if(e.creatorID === _id) {
-        this.setState({ isFollowing: !isFollowing })
+    // reset isFollowing value in the state and check for the update
+    this.setState({ isFollowing: false }, async () => {
+      for await (const e of follows) {
+        if(e.creatorID === _id) {
+          await this.setState({ isFollowing: e.isFollowing })
+        }
       }
-    }
+    })
+
   }
 
   render() {
@@ -258,7 +270,8 @@ export default withNavigation(
   connect(
     null,
     {
-      triggerFollow
+      triggerFollow,
+      fetchLoggedUser
     }
   )(CreatorTile)
 )
