@@ -1,8 +1,14 @@
 import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
+import { fetchAuth } from '../../actions/authActions'
+import { fetchLoggedUser } from '../../actions/loggedUserActions'
+import { fetchMerging, authTwitter } from '../../actions/mergingActions'
+import { WebBrowser } from 'expo'
 import { View, Image, TouchableOpacity } from 'react-native'
 import { StackActions, withNavigation } from 'react-navigation'
 import styled from 'styled-components/native'
 import { palette } from '../Shared/palette'
+import * as base from '../../variables'
 
 import {
   Main,
@@ -62,6 +68,12 @@ class MergingScreen extends PureComponent {
     }
   }
 
+  componentDidMount = async () => {
+    await this.props.fetchAuth()
+    await this.props.fetchLoggedUser()
+    await this.props.fetchMerging()
+  }
+
   onPress = e => {
     console.log(e)
   }
@@ -91,8 +103,22 @@ class MergingScreen extends PureComponent {
     this.setState({ isPressed: false })
   }
 
+  handleTwitter = async () => {
+    await this.props.authTwitter()
+  }
+
   render() {
-    const { navigation } = this.props
+    const {
+      navigation,
+      letContinue,
+      facebook,
+      twitter,
+      instagram,
+      spotify,
+      tumblr,
+      youtube,
+      isCreator
+    } = this.props
     const { isPressed } = this.state
 
     return (
@@ -104,7 +130,8 @@ class MergingScreen extends PureComponent {
           <Cell>
             <Img source={FacebookLogo} />
           </Cell>
-          <Cell>
+          <Cell
+            onPress={() => this.handleTwitter()}>
             <Img source={TwitterLogo} />
           </Cell>
           <Cell>
@@ -154,4 +181,23 @@ class MergingScreen extends PureComponent {
   }
 }
 
-export default withNavigation(MergingScreen)
+const mapStateToProps = state => ({
+  facebook: state.merging.facebook,
+  twitter: state.merging.twitter,
+  instagram: state.merging.instagram,
+  spotify: state.merging.spotify,
+  tumblr: state.merging.tumblr,
+  youtube: state.merging.youtube,
+  letContinue: state.merging.letContinue,
+  isCreator: state.auth.isCreator
+})
+
+export default withNavigation(connect(
+    mapStateToProps,
+    {
+      fetchAuth,
+      fetchLoggedUser,
+      fetchMerging,
+      authTwitter
+    }
+  )(MergingScreen))

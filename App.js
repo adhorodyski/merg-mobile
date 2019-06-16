@@ -354,7 +354,7 @@ const Stacks = createAppContainer(createSwitchNavigator(
     App: AppStack
   },
   {
-    initialRouteName: 'App'
+    initialRouteName: 'Merging'
   }
 ))
 

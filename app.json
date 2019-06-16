@@ -3,6 +3,7 @@
     "name": "Merge",
     "slug": "merge-app",
     "privacy": "public",
+    "scheme": "MergeApp",
     "sdkVersion": "32.0.0",
     "platforms": [
       "ios",
