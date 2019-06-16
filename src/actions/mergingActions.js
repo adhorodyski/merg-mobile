@@ -62,6 +62,28 @@ export const authTwitter = () => async dispatch => {
   .catch(err => console.log(err))
 }
 
+// authenticate with Youtube
+export const authYoutube = () => async dispatch => {
+  await fetch(`${base.API_URL}/api/auth/connect/youtube`, {
+    method: 'post'
+  })
+  .then(async res => {
+    // request for permission
+    let redirectUrl = AuthSession.getRedirectUrl()
+    let result = await AuthSession.startAsync({
+      authUrl: `${res.url}?redirect_uri=${encodeURIComponent(redirectUrl)}`
+    })
+
+    // save & check authentication result
+    const { code } = result.params
+    await fetch(`${base.API_URL}/api/auth/youtube/callback?code=${code}`)
+    .then(res => {
+      console.log(res)
+    })
+  })
+  .catch(err => console.log(err))
+}
+
 // authenticate with Tumblr
 export const authTumblr = () => async dispatch => {
   await fetch(`${base.API_URL}/api/auth/connect/tumblr`, {

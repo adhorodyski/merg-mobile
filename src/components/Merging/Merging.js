@@ -5,6 +5,7 @@ import { fetchLoggedUser } from '../../actions/loggedUserActions'
 import {
   fetchMerging,
   authTwitter,
+  authYoutube,
   authTumblr
 } from '../../actions/mergingActions'
 import { WebBrowser } from 'expo'
@@ -111,14 +112,29 @@ class MergingScreen extends PureComponent {
   }
 
   handleTwitter = async () => {
-    await this.props.authTwitter()
-    await this.props.fetchMerging()
+    const { twitter } = this.props
+    if (!twitter) {
+      await this.props.authTwitter()
+      await this.props.fetchMerging()
+    }
   }
 
   handleTumblr = async () => {
-    await this.props.authTumblr()
-    await this.props.fetchMerging()
+    const { tumblr } = this.props
+    if (!tumblr) {
+      await this.props.authTumblr()
+      await this.props.fetchMerging()
+    }
   }
+
+  handleYoutube = async () => {
+    const { youtube } = this.props
+    if (!youtube) {
+      await this.props.authYoutube()
+      await this.props.fetchMerging()
+    }
+  }
+
   render() {
     const {
       navigation,
@@ -153,7 +169,8 @@ class MergingScreen extends PureComponent {
             <Img source={InstagramLogo} />
           </Cell>
           <Cell
-            active={youtube}>
+            active={youtube}
+            onPress={() => this.handleYoutube()}>
             <Img source={YoutubeLogo} />
           </Cell>
           <Cell
@@ -218,6 +235,7 @@ export default withNavigation(connect(
       fetchLoggedUser,
       fetchMerging,
       authTwitter,
+      authYoutube,
       authTumblr
     }
   )(MergingScreen))
