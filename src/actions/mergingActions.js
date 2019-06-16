@@ -40,6 +40,7 @@ export const fetchMerging = () => async dispatch => {
   .catch(err => console.log((err)))
 }
 
+// authenticate with Twitter
 export const authTwitter = () => async dispatch => {
   await fetch(`${base.API_URL}/api/auth/connect/twitter`, {
     method: 'post'
@@ -54,6 +55,28 @@ export const authTwitter = () => async dispatch => {
     // save & check authentication result
     const { oauth_token, oauth_verifier } = result.params
     await fetch(`${base.API_URL}/api/auth/twitter/callback?oauth_token=${oauth_token}&oauth_verifier=${oauth_verifier}`)
+    .then(res => {
+      console.log(res)
+    })
+  })
+  .catch(err => console.log(err))
+}
+
+// authenticate with Tumblr
+export const authTumblr = () => async dispatch => {
+  await fetch(`${base.API_URL}/api/auth/connect/tumblr`, {
+    method: 'post'
+  })
+  .then(async res => {
+    // request for permission
+    let redirectUrl = AuthSession.getRedirectUrl()
+    let result = await AuthSession.startAsync({
+      authUrl: `${res.url}&redirect_uri=${encodeURIComponent(redirectUrl)}`
+    })
+
+    // save & check authentication result
+    const { oauth_token, oauth_verifier } = result.params
+    await fetch(`${base.API_URL}/api/auth/tumblr/callback?oauth_token=${oauth_token}&oauth_verifier=${oauth_verifier}`)
     .then(res => {
       console.log(res)
     })

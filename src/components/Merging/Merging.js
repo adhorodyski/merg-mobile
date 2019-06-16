@@ -2,7 +2,11 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { fetchAuth } from '../../actions/authActions'
 import { fetchLoggedUser } from '../../actions/loggedUserActions'
-import { fetchMerging, authTwitter } from '../../actions/mergingActions'
+import {
+  fetchMerging,
+  authTwitter,
+  authTumblr
+} from '../../actions/mergingActions'
 import { WebBrowser } from 'expo'
 import { View, Image, TouchableOpacity } from 'react-native'
 import { StackActions, withNavigation } from 'react-navigation'
@@ -42,8 +46,11 @@ const CenteredGrid = styled.View`
 const Cell = styled.TouchableOpacity`
   height: 90px;
   width: 90px;
-  background: #FAFAFA;
-  box-shadow: 0 4px 3px rgba(33, 33, 33, 0.03);
+  background: ${p => p.active ? '#2947F2' : '#FAFAFA'};
+  box-shadow: 0 2px 2px ${p =>
+    p.active
+    ? 'rgba(41, 71, 242, 0.4)'
+    : 'rgba(33, 33, 33, 0.03)'};
   border-radius: 10px;
   margin: 10px;
 `
@@ -105,8 +112,13 @@ class MergingScreen extends PureComponent {
 
   handleTwitter = async () => {
     await this.props.authTwitter()
+    await this.props.fetchMerging()
   }
 
+  handleTumblr = async () => {
+    await this.props.authTumblr()
+    await this.props.fetchMerging()
+  }
   render() {
     const {
       navigation,
@@ -127,23 +139,30 @@ class MergingScreen extends PureComponent {
           Choose streams to merge for your followers
         </DarkLabel>
         <CenteredGrid>
-          <Cell>
+          <Cell
+            active={facebook}>
             <Img source={FacebookLogo} />
           </Cell>
           <Cell
+            active={twitter}
             onPress={() => this.handleTwitter()}>
             <Img source={TwitterLogo} />
           </Cell>
-          <Cell>
+          <Cell
+            active={instagram}>
             <Img source={InstagramLogo} />
           </Cell>
-          <Cell>
+          <Cell
+            active={youtube}>
             <Img source={YoutubeLogo} />
           </Cell>
-          <Cell>
+          <Cell
+            active={spotify}>
             <Img source={SpotifyLogo} />
           </Cell>
-          <Cell>
+          <Cell
+            active={tumblr}
+            onPress={() => this.handleTumblr()}>
             <Img source={TumblrLogo} />
           </Cell>
         </CenteredGrid>
@@ -198,6 +217,7 @@ export default withNavigation(connect(
       fetchAuth,
       fetchLoggedUser,
       fetchMerging,
-      authTwitter
+      authTwitter,
+      authTumblr
     }
   )(MergingScreen))
