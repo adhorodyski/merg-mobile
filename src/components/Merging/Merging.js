@@ -6,6 +6,7 @@ import {
   fetchMerging,
   authTwitter,
   authYoutube,
+  authSpotify,
   authTumblr
 } from '../../actions/mergingActions'
 import { WebBrowser } from 'expo'
@@ -119,6 +120,22 @@ class MergingScreen extends PureComponent {
     }
   }
 
+  handleYoutube = async () => {
+    const { youtube } = this.props
+    if (!youtube) {
+      await this.props.authYoutube()
+      await this.props.fetchMerging()
+    }
+  }
+
+  handleSpotify = async () => {
+    const { spotify } = this.props
+    if (!spotify) {
+      await this.props.authSpotify()
+      await this.props.fetchMerging()
+    }
+  }
+
   handleTumblr = async () => {
     const { tumblr } = this.props
     if (!tumblr) {
@@ -127,13 +144,6 @@ class MergingScreen extends PureComponent {
     }
   }
 
-  handleYoutube = async () => {
-    const { youtube } = this.props
-    if (!youtube) {
-      await this.props.authYoutube()
-      await this.props.fetchMerging()
-    }
-  }
 
   render() {
     const {
@@ -174,7 +184,8 @@ class MergingScreen extends PureComponent {
             <Img source={YoutubeLogo} />
           </Cell>
           <Cell
-            active={spotify}>
+            active={spotify}
+            onPress={() => this.handleSpotify()}>
             <Img source={SpotifyLogo} />
           </Cell>
           <Cell
@@ -236,6 +247,7 @@ export default withNavigation(connect(
       fetchMerging,
       authTwitter,
       authYoutube,
+      authSpotify,
       authTumblr
     }
   )(MergingScreen))
