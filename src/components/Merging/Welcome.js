@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
 import { Text, View, Image } from 'react-native'
 import { withNavigation } from 'react-navigation'
 import styled from 'styled-components/native'
@@ -78,8 +79,16 @@ class WelcomeScreen extends PureComponent {
   }
 
   render() {
-    const { navigation } = this.props
-    const { isPressed } = this.props
+    const {
+      navigation,
+      isPressed,
+      facebook,
+      twitter,
+      instagram,
+      spotify,
+      tumblr,
+      youtube
+    } = this.props
 
     return (
       <StyledMain>
@@ -90,12 +99,12 @@ class WelcomeScreen extends PureComponent {
         </StyledDarkLabel>
         <CenteredGrid>
           <Cell>
-            <Img source={FacebookLogo} />
-            <Img source={TwitterLogo} />
-            <Img source={InstagramLogo} />
-            <Img source={YoutubeLogo} />
-            <Img source={TumblrLogo} />
-            <Img source={SpotifyLogo} />
+            { facebook && <Img source={FacebookLogo} /> }
+            { twitter && <Img source={TwitterLogo} /> }
+            { instagram && <Img source={InstagramLogo} /> }
+            { youtube && <Img source={YoutubeLogo} /> }
+            { spotify && <Img source={SpotifyLogo} /> }
+            { tumblr && <Img source={TumblrLogo} /> }
           </Cell>
         </CenteredGrid>
         <StyledDarkLabel>
@@ -132,4 +141,16 @@ class WelcomeScreen extends PureComponent {
   }
 }
 
-export default withNavigation(WelcomeScreen)
+const mapStateToProps = state => ({
+  facebook: state.merging.facebook,
+  twitter: state.merging.twitter,
+  instagram: state.merging.instagram,
+  spotify: state.merging.spotify,
+  tumblr: state.merging.tumblr,
+  youtube: state.merging.youtube
+})
+
+export default withNavigation(
+  connect(
+    mapStateToProps
+  )(WelcomeScreen))
