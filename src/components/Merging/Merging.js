@@ -4,6 +4,7 @@ import { fetchAuth } from '../../actions/authActions'
 import { fetchLoggedUser } from '../../actions/loggedUserActions'
 import {
   fetchMerging,
+  authFacebook,
   authTwitter,
   authInstagram,
   authYoutube,
@@ -113,6 +114,14 @@ class MergingScreen extends PureComponent {
     this.setState({ isPressed: false })
   }
 
+  handleFacebook = async () => {
+    const { facebook } = this.props
+    if (!facebook) {
+      await this.props.authFacebook()
+      await this.props.fetchMerging()
+    }
+  }
+
   handleTwitter = async () => {
     const { twitter } = this.props
     if (!twitter) {
@@ -175,7 +184,8 @@ class MergingScreen extends PureComponent {
         </DarkLabel>
         <CenteredGrid>
           <Cell
-            active={facebook}>
+            active={facebook}
+            onPress={() => this.handleFacebook()}>
             <Img source={FacebookLogo} />
           </Cell>
           <Cell
@@ -255,6 +265,7 @@ export default withNavigation(connect(
       fetchAuth,
       fetchLoggedUser,
       fetchMerging,
+      authFacebook,
       authTwitter,
       authInstagram,
       authYoutube,

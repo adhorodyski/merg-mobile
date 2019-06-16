@@ -40,6 +40,28 @@ export const fetchMerging = () => async dispatch => {
   .catch(err => console.log((err)))
 }
 
+// authenticate with Facebook
+export const authFacebook = () => async dispatch => {
+  await fetch(`${base.API_URL}/api/auth/connect/facebook`, {
+    method: 'post'
+  })
+  .then(async res => {
+    // request for permission
+    let redirectUrl = AuthSession.getRedirectUrl()
+    let result = await AuthSession.startAsync({
+      authUrl: `${res.url}&redirect_uri=${encodeURIComponent(redirectUrl)}`
+    })
+
+    // save & check authentication result
+    const { code } = result.params
+    await fetch(`${base.API_URL}/api/auth/facebook/callback?code=${code}`)
+    .then(res => {
+      console.log(res)
+    })
+  })
+  .catch(err => console.log(err))
+}
+
 // authenticate with Twitter
 export const authTwitter = () => async dispatch => {
   await fetch(`${base.API_URL}/api/auth/connect/twitter`, {
