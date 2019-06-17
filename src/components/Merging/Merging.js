@@ -11,22 +11,18 @@ import {
   authSpotify,
   authTumblr
 } from '../../actions/mergingActions'
-import { WebBrowser } from 'expo'
 import { View, Image, TouchableOpacity } from 'react-native'
 import { StackActions, withNavigation } from 'react-navigation'
 import styled from 'styled-components/native'
 import { palette } from '../Shared/palette'
-import * as base from '../../variables'
 
 import {
   Main,
   PosedButton,
   BtnText,
-  Scrollable,
-  ScrollTag,
-  ScrollWord,
   DarkLabel
 } from '../Shared/UI'
+import Tags from './Tags'
 const FacebookLogo = require('../../../assets/social-media/facebook.png')
 const TwitterLogo = require('../../../assets/social-media/twitter.png')
 const InstagramLogo = require('../../../assets/social-media/instagram.png')
@@ -50,7 +46,10 @@ const CenteredGrid = styled.View`
 const Cell = styled.TouchableOpacity`
   height: 90px;
   width: 90px;
-  background: ${p => p.active ? '#2947F2' : '#FAFAFA'};
+  background: ${p =>
+    p.active
+    ? `${palette.mediumBlue}`
+    : `${palette.lightGray}`};
   box-shadow: 0 2px 2px ${p =>
     p.active
     ? 'rgba(41, 71, 242, 0.4)'
@@ -65,45 +64,16 @@ const Img = styled.Image`
   margin: auto;
 `
 
-const StyledScrollable = styled(Scrollable)`
-  margin: 0 30px 20px 30px;
-  height: 80px;
-`
-
 class MergingScreen extends PureComponent {
   constructor(props) {
     super(props)
-    this.state = {
-      tags: ['Music', 'Sport', 'Technology', 'Food', 'Nature', 'Television', 'Lifestyle', 'Vlogs', 'Fashion', 'Travel', 'AI', 'Games'],
-      isPressed: false
-    }
+    this.state = { isPressed: false }
   }
 
   componentDidMount = async () => {
     await this.props.fetchAuth()
     await this.props.fetchLoggedUser()
     await this.props.fetchMerging()
-  }
-
-  onPress = e => {
-    console.log(e)
-  }
-
-  renderTags = () => {
-    const { tags } = this.state
-
-    return tags.map(tag => {
-      return (
-        <ScrollTag
-          key={tag}
-          onPress={() => this.onPress(tag)}
-          underlayColor={'transparent'}>
-          <ScrollWord>
-            {tag}
-          </ScrollWord>
-        </ScrollTag>
-      )
-    })
   }
 
   handlePressIn = () => {
@@ -172,8 +142,7 @@ class MergingScreen extends PureComponent {
       instagram,
       spotify,
       tumblr,
-      youtube,
-      isCreator
+      youtube
     } = this.props
     const { isPressed } = this.state
 
@@ -217,15 +186,7 @@ class MergingScreen extends PureComponent {
         <DarkLabel>
           Pick tags which fits your content
         </DarkLabel>
-        <StyledScrollable
-          ref={scrollView => { this.scrollView = scrollView }}
-          onContentSizeChange={() => {
-            this.scrollView.scrollTo({ x: 5 })
-          }}
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}>
-          { this.renderTags() }
-        </StyledScrollable>
+        <Tags />
         <PosedButton
           isPressed={isPressed}
           pose={isPressed ? 'press' : 'init'}
@@ -255,8 +216,7 @@ const mapStateToProps = state => ({
   spotify: state.merging.spotify,
   tumblr: state.merging.tumblr,
   youtube: state.merging.youtube,
-  letContinue: state.merging.letContinue,
-  isCreator: state.auth.isCreator
+  letContinue: state.merging.letContinue
 })
 
 export default withNavigation(connect(

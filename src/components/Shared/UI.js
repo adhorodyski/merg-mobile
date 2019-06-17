@@ -188,3 +188,7 @@ export const ScrollWord = styled.Text`
   font-size: 16px;
   font-weight: bold;
 `
+
+export const ScrollWordActive = styled(ScrollWord)`
+  color: ${palette.mediumBlue};
+`

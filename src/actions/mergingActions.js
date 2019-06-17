@@ -1,8 +1,9 @@
-import { FETCH_MERGING } from './types'
+import { FETCH_MERGING, UPDATE_TAG } from './types'
 import axios from 'axios'
 import { AuthSession } from 'expo'
 import * as base from '../variables'
 
+// fetch basic informations about user's merge
 export const fetchMerging = () => async dispatch => {
   await axios.get(`${base.API_URL}/api/merging`)
   .then(res => {
@@ -38,6 +39,33 @@ export const fetchMerging = () => async dispatch => {
     })
   })
   .catch(err => console.log((err)))
+}
+
+// update a tag
+export const updateTag = value => async (dispatch, getState) => {
+  const { creatorsTags } = getState().merging
+
+  const sendTags = async newTags => {
+    await axios.post(`${base.API_URL}/api/tags`,
+      {
+        headers: { 'Content-Type': 'application/json' },
+        newTags
+      }
+    )
+    .catch(err => console.log(err))
+  }
+
+  if(creatorsTags.indexOf(value) === -1) {
+    let tags = creatorsTags.concat(value)
+    sendTags(tags)
+    dispatch({ type: UPDATE_TAG, payload: tags })
+  } else {
+    let tags = creatorsTags
+    const index = creatorsTags.indexOf(value)
+    tags.splice(index, 1)
+    sendTags(tags)
+    dispatch({ type: UPDATE_TAG, payload: tags })
+  }
 }
 
 // authenticate with Facebook

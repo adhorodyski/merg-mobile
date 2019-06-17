@@ -1,4 +1,4 @@
-import { FETCH_MERGING } from '../actions/types'
+import { FETCH_MERGING, UPDATE_TAG } from '../actions/types'
 
 const initialState = {
   letContinue: false,
@@ -26,6 +26,11 @@ const reducer = (state = initialState, action) => {
         tumblr: action.payload.tumblr,
         youtube: action.payload.youtube,
         creatorsTags: action.payload.creatorsTags
+      }
+    case UPDATE_TAG:
+      return {
+        ...state,
+        creatorsTags: action.payload
       }
     default: {
       return state
