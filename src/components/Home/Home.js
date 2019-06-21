@@ -13,7 +13,6 @@ import styled from 'styled-components'
 import { palette } from '../Shared/palette'
 
 import { MainView } from '../Shared/UI'
-import Greeting from './Greeting'
 import Ocean from './Ocean'
 
 export const StyledView = styled.View`

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import store from './src/store'
-import { Provider } from 'react-redux'
+import { Provider, connect } from 'react-redux'
 import {
   createMaterialTopTabNavigator,
   createStackNavigator,
@@ -8,7 +8,7 @@ import {
   createAppContainer,
   StackActions
 } from 'react-navigation'
-import { Image, TouchableOpacity } from 'react-native'
+import { View, Image, TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import styled from 'styled-components/native'
 
@@ -24,6 +24,7 @@ import ProfileScreen from './src/components/Profile/Profile'
 import HomeProfileScreen from './src/components/Profile/HomeProfile'
 import ExploreProfileScreen from './src/components/Profile/ExploreProfile'
 import SettingsScreen from './src/components/Settings/Settings'
+import GreetingAvatar from './src/components/Shared/GreetingAvatar'
 const MergeIcon = require('./assets/branding/logo-short-colors.png')
 const SettingsIcon = require('./assets/settings.png')
 
@@ -41,6 +42,11 @@ const HeaderButton = styled.Image`
   height: 25px;
   width: 25px;
   margin: auto;
+`
+
+const FlexView = styled.View`
+  display: flex;
+  flex-direction: row;
 `
 
 const HomeStack = createStackNavigator({
@@ -157,16 +163,24 @@ const AppStack = createStackNavigator({
           </StyledTouchable>
         ),
         headerRight: (
-          <StyledTouchable
-            onPress={() => {
-              const pushAction = StackActions.push({ routeName: 'Settings' })
-              navigation.dispatch(pushAction)
-            }}>
-            <HeaderIoniconsButton
-              name="ios-more"
-              size={30}
-              color={'#808080'} />
-          </StyledTouchable>
+          <FlexView>
+            <StyledTouchable
+              onPress={() => {
+                const pushAction = StackActions.push({ routeName: 'Settings' })
+                navigation.dispatch(pushAction)
+              }}>
+              <HeaderIoniconsButton
+                name="ios-more"
+                size={30}
+                color={'#808080'} />
+            </StyledTouchable>
+            <StyledTouchable
+              onPress={() => {
+                navigation.navigate({ routeName: 'Profile' })
+              }}>
+              <GreetingAvatar />
+            </StyledTouchable>
+          </FlexView>
         )
       }
     }
@@ -354,7 +368,7 @@ const Stacks = createAppContainer(createSwitchNavigator(
     App: AppStack
   },
   {
-    initialRouteName: 'Merging'
+    initialRouteName: 'App'
   }
 ))
 
