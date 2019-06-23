@@ -153,7 +153,7 @@ const AppStack = createStackNavigator({
         },
         headerStyle: {
           borderBottomWidth: 0,
-          backgroundColor: '#F5F5F5'
+          backgroundColor: '#FFFFFF'
         },
         headerBackTitle: null,
         headerLeft: (
@@ -195,7 +195,7 @@ const AppStack = createStackNavigator({
         },
         headerStyle: {
           borderBottomWidth: 0,
-          backgroundColor: '#F5F5F5'
+          backgroundColor: '#FFFFFF'
         },
         headerBackImage: (
           <StyledTouchable onPress={() => navigation.goBack() }>
@@ -220,7 +220,7 @@ const AuthStack = createStackNavigator({
         },
         headerStyle: {
           borderBottomWidth: 0,
-          backgroundColor: '#F5F5F5'
+          backgroundColor: '#FFFFFF'
         },
         headerBackTitle: null,
         headerBackImage: (
@@ -250,7 +250,7 @@ const AuthStack = createStackNavigator({
         },
         headerStyle: {
           borderBottomWidth: 0,
-          backgroundColor: '#F5F5F5'
+          backgroundColor: '#FFFFFF'
         },
         headerBackImage: (
           <StyledTouchable onPress={() => navigation.goBack() }>
@@ -273,7 +273,7 @@ const AuthStack = createStackNavigator({
         },
         headerStyle: {
           borderBottomWidth: 0,
-          backgroundColor: '#F5F5F5'
+          backgroundColor: '#FFFFFF'
         },
         headerBackImage: (
           <StyledTouchable onPress={() => navigation.goBack() }>
@@ -296,7 +296,7 @@ const AuthStack = createStackNavigator({
         },
         headerStyle: {
           borderBottomWidth: 0,
-          backgroundColor: '#F5F5F5'
+          backgroundColor: '#FFFFFF'
         },
         headerBackImage: (
           <StyledTouchable onPress={() => navigation.goBack() }>
@@ -322,7 +322,7 @@ const MergingStack = createStackNavigator({
         },
         headerStyle: {
           borderBottomWidth: 0,
-          backgroundColor: '#F5F5F5'
+          backgroundColor: '#FFFFFF'
         },
         headerBackTitle: null,
         headerBackImage: (
@@ -346,7 +346,7 @@ const MergingStack = createStackNavigator({
         },
         headerStyle: {
           borderBottomWidth: 0,
-          backgroundColor: '#F5F5F5'
+          backgroundColor: '#FFFFFF'
         },
         headerBackImage: (
           <StyledTouchable onPress={() => navigation.goBack() }>

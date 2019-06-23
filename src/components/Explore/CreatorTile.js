@@ -26,10 +26,10 @@ const StyledResultTile = styled.View`
   margin: 0 auto;
   margin-bottom: 10px;
   min-height: 100px;
-  background: ${palette.lightGray};
+  background: ${palette.white};
   display: flex;
   border-radius: 10px;
-  box-shadow: 0 4px 3px rgba(33, 33, 33, 0.03);
+  box-shadow: 0 10px 15px rgba(80, 80, 80, 0.15);
 `
 
 const TopWrapper = styled.View`

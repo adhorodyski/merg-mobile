@@ -4,7 +4,8 @@ import styled from 'styled-components'
 
 const Input = styled.TextInput`
   height: 45px;
-  background: #ffffff;
+  background: #FFFFFF;
+  box-shadow: 0 10px 15px rgba(80, 80, 80, 0.15);
   display: flex;
   margin: 0 10px;
   padding: 5px 30px;
@@ -17,7 +18,7 @@ const Input = styled.TextInput`
 class Searchbox extends PureComponent {
   render() {
     return (
-      <Input placeholder='Whatever!' />
+      <Input placeholder='Search whatever!' />
     )
   }
 }

@@ -5,11 +5,13 @@ import posed from 'react-native-pose'
 import { palette } from './palette'
 
 export const Main = styled.ScrollView`
-  background: ${palette.mediumGray};
+  background: ${palette.white};
+  padding-top: 20px;
 `
 
 export const MainView = styled.View`
-  background: ${palette.mediumGray};
+  background: ${palette.white};
+  padding-top: 20px;
 `
 
 export const StyledView = styled.View`
@@ -18,12 +20,12 @@ export const StyledView = styled.View`
 `
 
 export const EmptyFlatlistTemplate = styled.View`
-  background: ${palette.mediumGray};
+  background: ${palette.white};
   height: ${Dimensions.get('window').height};
 `
 
 export const ResultsFlatlist = styled.FlatList`
-  background: ${palette.mediumGray};
+  background: ${palette.white};
 `
 
 export const StyledViewMargin = styled(StyledView)`
@@ -94,7 +96,7 @@ export const Tile = styled.View`
   flex-direction: row;
   justify-content: space-between;
   padding: 0 20px;
-  background: ${palette.lightGray};
+  background: ${palette.darkGray};
   border: none;
   border-radius: 10px;
   box-shadow: 0 4px 3px rgba(33, 33, 33, 0.03);

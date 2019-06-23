@@ -35,9 +35,6 @@ class Tags extends PureComponent {
     return (
       <Scrollable
         ref={scrollView => { this.scrollView = scrollView }}
-        onContentSizeChange={() => {
-          this.scrollView.scrollTo({ x: 5 })
-        }}
         horizontal={true}
         showsHorizontalScrollIndicator={false}>
         { this.renderTags() }
