@@ -11,6 +11,7 @@ import settingsReducer from './settingsReducer'
 import listsReducer from './listsReducer'
 import exploreReducer from './exploreReducer'
 import userOceanReducer from './userOceanReducer'
+import userStoriesReducer from './userStoriesReducer'
 
 export default combineReducers({
   auth: authReducer,
@@ -24,5 +25,6 @@ export default combineReducers({
   settings: settingsReducer,
   lists: listsReducer,
   explore: exploreReducer,
-  userOcean: userOceanReducer
+  userOcean: userOceanReducer,
+  userStories: userStoriesReducer
 })

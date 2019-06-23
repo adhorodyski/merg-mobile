@@ -7,6 +7,7 @@ import { palette } from '../Shared/palette'
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
 
+import Stories from './Stories'
 import { EmptyFlatlistTemplate, ResultsFlatlist } from '../Shared/UI'
 import TileHeader, { ResultTile } from '../Shared/PostContainer'
 import TwitterPost from '../Shared/TwitterPost'
@@ -92,6 +93,7 @@ class Ocean extends PureComponent {
         keyExtractor={(item, idx) => idx.toString()}
         renderItem={({ item, idx }) => this.renderOcean(item, idx)}
         ListEmptyComponent={EmptyFlatlistTemplate}
+        ListHeaderComponent={Stories}
         onEndReachedThreshold={0.8}
         onEndReached={this.loadChunk}
         refreshControl={

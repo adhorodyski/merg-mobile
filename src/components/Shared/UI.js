@@ -178,11 +178,26 @@ export const Scrollable = styled.ScrollView`
   display: flex;
 `
 
-export const ScrollTag = styled.TouchableHighlight`
+export const ScrollElemSmall = styled.TouchableHighlight`
   height: 100%;
   padding: 0 8px;
   display: flex;
   justify-content: center;
+`
+
+export const ScrollImgWrap = styled.View`
+  height: 40px;
+  width: 40px;
+  margin: auto;
+  border-radius: 20px;
+  box-shadow: 0 4px 3px rgba(80, 80, 80, 0.25);
+`
+
+export const ScrollImg = styled.Image`
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  border-radius: 20px;
 `
 
 export const ScrollWord = styled.Text`

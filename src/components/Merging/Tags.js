@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import {
   Scrollable,
-  ScrollTag,
+  ScrollElemSmall,
   ScrollWord,
   ScrollWordActive,
 } from '../Shared/UI'
@@ -26,7 +26,7 @@ class Tags extends PureComponent {
 
     return tags.map(tag => {
       return (
-        <ScrollTag
+        <ScrollElemSmall
           key={tag}
           onPress={() => this.onTagPress(tag)}
           underlayColor={'transparent'}>
@@ -35,7 +35,7 @@ class Tags extends PureComponent {
             ? <ScrollWordActive>{tag}</ScrollWordActive>
             : <ScrollWord>{tag}</ScrollWord>
           }
-        </ScrollTag>
+        </ScrollElemSmall>
       )
     })
   }
