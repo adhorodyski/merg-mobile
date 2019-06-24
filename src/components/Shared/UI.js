@@ -35,7 +35,7 @@ export const StyledViewMargin = styled(StyledView)`
 `
 
 export const StyledViewMargin2 = styled(StyledView)`
-  margin: 10px auto 30px auto;
+  margin: 10px auto 40px auto;
 `
 
 export const Tile = styled.View`
@@ -185,7 +185,7 @@ export const AvatarSmall = styled(Avatar)`
 // SCROLL ELEMENTS
 
 export const Scrollable = styled.ScrollView`
-  height: 50px;
+  height: 60px;
   margin: 0 10px;
   display: flex;
 `
