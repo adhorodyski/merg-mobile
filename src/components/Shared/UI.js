@@ -4,6 +4,9 @@ import styled from 'styled-components'
 import posed from 'react-native-pose'
 import { palette } from './palette'
 
+
+// WRAPPERS
+
 export const Main = styled.ScrollView`
   background: ${palette.white};
   padding-top: 20px;
@@ -11,7 +14,6 @@ export const Main = styled.ScrollView`
 
 export const MainView = styled.View`
   background: ${palette.white};
-  padding-top: 20px;
 `
 
 export const StyledView = styled.View`
@@ -35,6 +37,23 @@ export const StyledViewMargin = styled(StyledView)`
 export const StyledViewMargin2 = styled(StyledView)`
   margin: 10px auto 30px auto;
 `
+
+export const Tile = styled.View`
+  width: 100%;
+  min-height: 50px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 20px;
+  background: ${palette.darkGray};
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 3px rgba(33, 33, 33, 0.03);
+`
+
+// BUTTONS
 
 export const Button = styled.TouchableHighlight`
   width: 100px;
@@ -87,27 +106,7 @@ export const BtnText = styled.Text`
   line-height: 30px;
 `
 
-export const Tile = styled.View`
-  width: 100%;
-  min-height: 50px;
-  margin: 0 auto;
-  margin-bottom: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 0 20px;
-  background: ${palette.darkGray};
-  border: none;
-  border-radius: 10px;
-  box-shadow: 0 4px 3px rgba(33, 33, 33, 0.03);
-`
-
-export const Title = styled.Text`
-  font-size: 24px;
-  font-weight: bold;
-  color: ${palette.darkText};
-  margin: 10px;
-`
+// INPUTS
 
 export const Input = styled.TextInput`
   background: transparent;
@@ -125,6 +124,15 @@ export const InputHigh = styled(Input)`
 export const WideInput = styled(Input)`
   width: 100%;
   padding: 0 0 0 40px;
+`
+
+// LABELS
+
+export const Title = styled.Text`
+  font-size: 24px;
+  font-weight: bold;
+  color: ${palette.darkText};
+  margin: 10px;
 `
 
 export const SmallLabel = styled.Text`
@@ -156,6 +164,8 @@ export const DarkLabel = styled(SmallLabel)`
   padding: 10px 20px;
 `
 
+// AVATARS
+
 export const Avatar = styled.Image`
   height: 70px;
   width: 70px;
@@ -172,6 +182,8 @@ export const AvatarSmall = styled(Avatar)`
   border-radius: 15px;
 `
 
+// SCROLL ELEMENTS
+
 export const Scrollable = styled.ScrollView`
   height: 50px;
   margin: 0 10px;
@@ -186,18 +198,28 @@ export const ScrollElemSmall = styled.TouchableHighlight`
 `
 
 export const ScrollImgWrap = styled.View`
-  height: 40px;
-  width: 40px;
+  height: 60px;
+  width: 60px;
   margin: auto;
-  border-radius: 20px;
+  background: ${p =>
+    p.provider === 'Facebook' && palette.facebook
+    || p.provider === 'Twitter' && palette.twitter
+    || p.provider === 'Instagram' && palette.instagram
+    || p.provider === 'Youtube' && palette.youtube
+    || p.provider === 'Tumblr' && palette.tumblr
+    || p.provider === 'Spotify' && palette.spotify
+  };
+  border-radius: 30px;
   box-shadow: 0 4px 3px rgba(80, 80, 80, 0.25);
 `
 
 export const ScrollImg = styled.Image`
-  height: 100%;
-  width: 100%;
+  height: 54px;
+  width: 54px;
   margin: auto;
-  border-radius: 20px;
+  border-radius: 27px;
+  border-width: 1px;
+  border-color: white;
 `
 
 export const ScrollWord = styled.Text`

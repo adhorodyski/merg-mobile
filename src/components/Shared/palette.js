@@ -8,5 +8,11 @@ export const palette = {
   lightGray: '#FAFAFA',
   mediumGray: '#F5F5F5',
   darkGray: '#F0F0F0',
-  white: '#FFFFFF'
+  white: '#FFFFFF',
+  facebook: '#0078FF',
+  twitter: '#1DA1F2',
+  instagram: '#DD2A7B',
+  youtube: '#FF0000',
+  tumblr: '#35465C',
+  spotify: '#1ED761'
 }

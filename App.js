@@ -148,10 +148,12 @@ const AppStack = createStackNavigator({
     screen: MainNavigator,
     navigationOptions: ({ navigation }) => {
       return {
+        gesturesEnabled: true,
         headerTitleStyle: {
           fontSize: 16
         },
         headerStyle: {
+          height: 40,
           borderBottomWidth: 0,
           backgroundColor: '#FFFFFF'
         },
@@ -189,6 +191,7 @@ const AppStack = createStackNavigator({
     screen: SettingsScreen,
     navigationOptions: ({ navigation }) => {
       return {
+        gesturesEnabled: true,
         headerTitle: 'Settings',
         headerTitleStyle: {
           fontSize: 16
@@ -215,6 +218,7 @@ const AuthStack = createStackNavigator({
     screen: PrimaryChoiceScreen,
     navigationOptions: ({ navigation }) => {
       return {
+        gesturesEnabled: true,
         headerTitleStyle: {
           fontSize: 16
         },
@@ -244,6 +248,7 @@ const AuthStack = createStackNavigator({
     screen: SignInScreen,
     navigationOptions: ({ navigation }) => {
       return {
+        gesturesEnabled: true,
         headerTitle: 'Sign in',
         headerTitleStyle: {
           fontSize: 16
@@ -267,6 +272,7 @@ const AuthStack = createStackNavigator({
     screen: FollowerRegisterScreen,
     navigationOptions: ({ navigation }) => {
       return {
+        gesturesEnabled: true,
         headerTitle: 'Follower',
         headerTitleStyle: {
           fontSize: 16
@@ -290,6 +296,7 @@ const AuthStack = createStackNavigator({
     screen: CreatorRegisterScreen,
     navigationOptions: ({ navigation }) => {
       return {
+        gesturesEnabled: true,
         headerTitle: 'Creator',
         headerTitleStyle: {
           fontSize: 16
@@ -316,6 +323,7 @@ const MergingStack = createStackNavigator({
     screen: MergingScreen,
     navigationOptions: ({ navigation }) => {
       return {
+        gesturesEnabled: true,
         headerTitle: 'Merging',
         headerTitleStyle: {
           fontSize: 16
@@ -340,6 +348,7 @@ const MergingStack = createStackNavigator({
     screen: WelcomeScreen,
     navigationOptions: ({ navigation }) => {
       return {
+        gesturesEnabled: true,
         headerTitle: 'Welcome',
         headerTitleStyle: {
           fontSize: 16

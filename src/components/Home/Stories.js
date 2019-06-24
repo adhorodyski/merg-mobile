@@ -13,7 +13,7 @@ import {
 } from '../Shared/UI'
 
 const StyledScrollable = styled(Scrollable)`
-  height: 60px;
+  height: 80px;
   padding: 0 10px;
   margin: 0;
   margin-bottom: 10px;
@@ -33,10 +33,12 @@ class Stories extends PureComponent {
     const { stories, navigation } = this.props
 
     return stories.map((story, key) => {
-      const { authorUsername, authorPic } = story
+      const { authorUsername, authorPic, provider } = story
+
       return (
         <StyledScrollElemSmall
           key={key}
+          underlayColor={'transparent'}
           onPress={() => {
             const pushAction = StackActions.push({
               routeName: 'ProfileOverlay',
@@ -45,9 +47,8 @@ class Stories extends PureComponent {
               }
             })
             navigation.dispatch(pushAction)
-          }}
-          underlayColor={'transparent'}>
-          <ScrollImgWrap>
+          }}>
+          <ScrollImgWrap provider={provider}>
             <ScrollImg source={{ uri: authorPic }} />
           </ScrollImgWrap>
         </StyledScrollElemSmall>
