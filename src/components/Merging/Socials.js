@@ -7,7 +7,13 @@ import {
   authInstagram,
   authYoutube,
   authSpotify,
-  authTumblr
+  authTumblr,
+  unlinkFacebook,
+  unlinkTwitter,
+  unlinkInstagram,
+  unlinkYoutube,
+  unlinkTumblr,
+  unlinkSpotify
 } from '../../actions/mergingActions'
 import { View, Image, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
@@ -56,6 +62,9 @@ class Socials extends PureComponent {
     if (!facebook) {
       await this.props.authFacebook()
       await this.props.fetchMerging()
+    } else {
+      await this.props.unlinkFacebook()
+      await this.props.fetchMerging()
     }
   }
 
@@ -63,6 +72,9 @@ class Socials extends PureComponent {
     const { twitter } = this.props
     if (!twitter) {
       await this.props.authTwitter()
+      await this.props.fetchMerging()
+    } else {
+      await this.props.unlinkTwitter()
       await this.props.fetchMerging()
     }
   }
@@ -72,6 +84,9 @@ class Socials extends PureComponent {
     if (!instagram) {
       await this.props.authInstagram()
       await this.props.fetchMerging()
+    } else {
+      await this.props.unlinkInstagram()
+      await this.props.fetchMerging()
     }
   }
 
@@ -79,6 +94,9 @@ class Socials extends PureComponent {
     const { youtube } = this.props
     if (!youtube) {
       await this.props.authYoutube()
+      await this.props.fetchMerging()
+    } else {
+      await this.props.unlinkYoutube()
       await this.props.fetchMerging()
     }
   }
@@ -88,6 +106,9 @@ class Socials extends PureComponent {
     if (!spotify) {
       await this.props.authSpotify()
       await this.props.fetchMerging()
+    } else {
+      await this.props.unlinkSpotify()
+      await this.props.fetchMerging()
     }
   }
 
@@ -95,6 +116,9 @@ class Socials extends PureComponent {
     const { tumblr } = this.props
     if (!tumblr) {
       await this.props.authTumblr()
+      await this.props.fetchMerging()
+    } else {
+      await this.props.unlinkTumblr()
       await this.props.fetchMerging()
     }
   }
@@ -165,6 +189,12 @@ export default connect(
       authInstagram,
       authYoutube,
       authSpotify,
-      authTumblr
+      authTumblr,
+      unlinkFacebook,
+      unlinkTwitter,
+      unlinkInstagram,
+      unlinkYoutube,
+      unlinkTumblr,
+      unlinkSpotify
     }
   )(Socials)

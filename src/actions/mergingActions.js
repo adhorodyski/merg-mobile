@@ -199,3 +199,51 @@ export const authTumblr = () => async dispatch => {
   })
   .catch(err => console.log(err))
 }
+
+// unlink Facebook
+export const unlinkFacebook = () => async dispatch => {
+  await fetch(`${base.API_URL}/api/auth/unlink/facebook`, {
+    method: 'post'
+  })
+  .catch(err => console.log(err))
+}
+
+// unlink Twitter
+export const unlinkTwitter = () => async dispatch => {
+  await fetch(`${base.API_URL}/api/auth/unlink/twitter`, {
+    method: 'post'
+  })
+  .catch(err => console.log(err))
+}
+
+// unlink Instagram
+export const unlinkInstagram = () => async dispatch => {
+  await fetch(`${base.API_URL}/api/auth/unlink/instagram`, {
+    method: 'post'
+  })
+  .catch(err => console.log(err))
+}
+
+// unlink Youtube
+export const unlinkYoutube = () => async dispatch => {
+  await fetch(`${base.API_URL}/api/auth/unlink/youtube`, {
+    method: 'post'
+  })
+  .catch(err => console.log(err))
+}
+
+// unlink Tumblr
+export const unlinkTumblr = () => async dispatch => {
+  await fetch(`${base.API_URL}/api/auth/unlink/tumblr`, {
+    method: 'post'
+  })
+  .catch(err => console.log(err))
+}
+
+// unlink Spotify
+export const unlinkSpotify = () => async dispatch => {
+  await fetch(`${base.API_URL}/api/auth/unlink/spotify`, {
+    method: 'post'
+  })
+  .catch(err => console.log(err))
+}

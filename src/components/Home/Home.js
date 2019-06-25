@@ -9,8 +9,6 @@ import {
   loadOceanChunk,
   refreshHome
 } from '../../actions/userOceanActions'
-import styled from 'styled-components'
-import { palette } from '../Shared/palette'
 
 import { MainView } from '../Shared/UI'
 import Ocean from './Ocean'
