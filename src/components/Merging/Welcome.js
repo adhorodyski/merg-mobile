@@ -37,7 +37,7 @@ const Cell = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background: #FAFAFA;
+  background: ${palette.lightGray};
   box-shadow: 0 4px 3px rgba(33, 33, 33, 0.03);
   border-radius: 10px;
   margin: 10px auto 0 auto;

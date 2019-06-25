@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import { Text, View } from 'react-native'
 import styled from 'styled-components'
+import * as theme from '../Shared/themes'
 
 const StyledWrapper = styled.View`
   display: flex;
@@ -17,30 +18,25 @@ const CountWrap = styled.View`
 const NumSpan = styled.Text`
   font-size: 16px;
   font-weight: bold;
-  color: #333333;
+  color: ${theme.primaryTextColor};
   text-align: center;
 `
 
 const SmallSpan = styled.Text`
   font-size: 13px;
-  color: #818181;
+  color: ${theme.secondaryTextColor};
   text-align: center;
-`
-
-const S = styled.Text`
-  font-size: 13;
-  color: #818181;
 `
 
 class Counters extends PureComponent {
   render() {
     const { followers, follows } = this.props
-    
+
     return (
       <StyledWrapper>
         <CountWrap>
           <NumSpan>
-            {followers && followers.length} <S>M</S>
+            {followers && followers.length} M
           </NumSpan>
           <SmallSpan>
             followers
@@ -48,7 +44,7 @@ class Counters extends PureComponent {
         </CountWrap>
         <CountWrap>
           <NumSpan>
-            {follows && follows.length} <S>K</S>
+            {follows && follows.length} K
           </NumSpan>
           <SmallSpan>
             follows

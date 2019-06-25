@@ -63,6 +63,7 @@ class Personal extends PureComponent {
           <Input
             onChangeText={value => updateName(value)}
             placeholder='Mystery Guitar Man'
+            placeholderTextColor={`${palette.lightText}`}
             defaultValue={nameValue} />
         </Tile>
         <Tile>
@@ -70,6 +71,7 @@ class Personal extends PureComponent {
           <Input
             onChangeText={value => updateUsername(value)}
             placeholder='mgmflavor'
+            placeholderTextColor={`${palette.lightText}`}
             defaultValue={usernameValue} />
         </Tile>
         <Tile>
@@ -78,6 +80,7 @@ class Personal extends PureComponent {
             onChangeText={value => updateEmail(value)}
             keyboardType={'email-address'}
             placeholder='mgm@mail.com'
+            placeholderTextColor={`${palette.lightText}`}
             defaultValue={emailValue} />
         </Tile>
         <Tile>
@@ -86,6 +89,7 @@ class Personal extends PureComponent {
             onChangeText={value => updateAbout(value)}
             multiline={true}
             placeholder='My little note!'
+            placeholderTextColor={`${palette.lightText}`}
             defaultValue={aboutValue} />
         </Tile>
         <PosedButtonSuccess

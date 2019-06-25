@@ -11,6 +11,7 @@ import { triggerFollow } from '../../actions/exploreActions'
 import { withNavigation, StackActions } from 'react-navigation'
 import styled from 'styled-components'
 import { palette } from '../Shared/palette'
+import * as theme from '../Shared/themes'
 
 import { PosedSelectButton, BtnText } from '../Shared/UI'
 
@@ -26,10 +27,10 @@ const StyledResultTile = styled.View`
   margin: 0 auto;
   margin-bottom: 10px;
   min-height: 100px;
-  background: ${palette.white};
+  background: ${theme.secondaryOverlayBackgroundColor};
   display: flex;
   border-radius: 10px;
-  box-shadow: 0 10px 15px rgba(80, 80, 80, 0.15);
+  box-shadow: 0 10px 15px ${theme.mediumShadowColor};
 `
 
 const TopWrapper = styled.View`
@@ -41,7 +42,7 @@ const TopWrapper = styled.View`
 const Avatar = styled.Image`
   height: 35px;
   width: 35px;
-  background: ${palette.white};
+  background: ${theme.baseBackgroundColor};
   margin: auto 10px auto 0;
   border-radius: 18px;
 `
@@ -55,7 +56,7 @@ const InfoContainer = styled.View`
 const Name = styled.Text`
   font-size: 16px;
   font-weight: bold;
-  color: ${palette.darkText};
+  color: ${theme.primaryTextColor};
   margin: auto 0 0 0;
 `
 
@@ -66,7 +67,7 @@ const FollowersCounter = styled.Text`
 const CounterSpan = styled.Text`
   font-size: 13px;
   font-weight: normal;
-  color: ${palette.lightText};
+  color: ${theme.secondaryTextColor};
   margin: 0 0 auto 0;
 `
 

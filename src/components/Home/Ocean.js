@@ -94,7 +94,7 @@ class Ocean extends PureComponent {
         renderItem={({ item, idx }) => this.renderOcean(item, idx)}
         ListEmptyComponent={EmptyFlatlistTemplate}
         ListHeaderComponent={Stories}
-        onEndReachedThreshold={0.8}
+        onEndReachedThreshold={0.7}
         onEndReached={this.loadChunk}
         refreshControl={
           <RefreshControl

@@ -68,7 +68,7 @@ class SignInScreen extends PureComponent {
               <IconMail
                 name="ios-at"
                 size={20}
-                color="rgba(33, 33, 33, 0.4)" />
+                color={`${palette.lightText}`} />
               <WideInput
                 onChangeText={value => getLoginEmail(value)}
                 returnKeyType={'next'}
@@ -77,19 +77,21 @@ class SignInScreen extends PureComponent {
                 }}
                 keyboardType={'email-address'}
                 textContentType={'emailAddress'}
-                placeholder='doe@mail.com' />
+                placeholder='doe@mail.com'
+                placeholderTextColor={`${palette.lightText}`} />
             </Tile>
             <Tile>
               <IconLock
                 name="ios-lock"
                 size={20}
-                color="rgba(33, 33, 33, 0.4)" />
+                color={`${palette.lightText}`} />
               <WideInput
                 onChangeText={value => getLoginPassword(value)}
                 ref='password'
                 secureTextEntry={true}
                 textContentType={'password'}
-                placeholder='• • • • • • •|' />
+                placeholder='• • • • • • •|'
+                placeholderTextColor={`${palette.lightText}`} />
             </Tile>
             <PosedButton
               isPressed={isPressed}

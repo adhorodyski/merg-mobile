@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import { Text, View, Image, TouchableOpacity, ScrollView } from 'react-native'
 import { StackActions, withNavigation } from 'react-navigation'
 import styled from 'styled-components/native'
+import * as theme from '../Shared/themes'
 
 import { Main } from '../Shared/UI'
 const DescribeRegular = require('../../../assets/follower.png')
@@ -16,7 +17,7 @@ const Touch = styled.TouchableOpacity`
   display: flex;
   margin: 30px auto;
   border-radius: 10px;
-  background: white;
+  background: ${theme.secondaryOverlayBackgroundColor};
   padding: 10px;
   box-shadow: 0 4px 3px rgba(33, 33, 33, 0.03);
 `
@@ -42,7 +43,7 @@ const Img = styled.Image`
 `
 
 const StyledLabel = styled.Text`
-  color: #818181;
+  color: ${theme.secondaryTextColor};
   text-align: center;
   margin: 10px auto 0 auto;
   font-size: 13px;
@@ -57,7 +58,7 @@ export const StyledLabelWide = styled(StyledLabel)`
 const StyledSuperLabel = styled(StyledLabel)`
   font-size: 18px;
   font-weight: bold;
-  color: #333333;
+  color: ${theme.primaryTextColor};
 `
 
 class PrimaryChoiceScreen extends PureComponent {

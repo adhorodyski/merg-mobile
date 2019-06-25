@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import { View, TextInput } from 'react-native'
 import styled from 'styled-components'
 import { palette } from '../Shared/palette'
+import * as theme from '../Shared/themes'
 import { Ionicons } from '@expo/vector-icons'
 
 import { Tile } from '../Shared/UI'
@@ -12,7 +13,7 @@ const StyledTile = styled(Tile)`
   margin: 0 10px;
   padding: 0;
   box-shadow: 0 4px 3px rgba(33, 33, 33, 0.03);
-  background: ${palette.darkGray};
+  background: ${theme.overlayBackgroundColor};
 `
 
 export const IconSearch = styled(Ionicons)`
@@ -27,7 +28,7 @@ const Input = styled.TextInput`
   padding: 0 30px 0 50px;
   border-radius: 10px;
   background: transparent;
-  color: ${palette.darkText};
+  color: ${theme.primaryTextColor};
   font-weight: bold;
   font-size: 18px;
 `
@@ -39,8 +40,10 @@ class Searchbox extends PureComponent {
         <IconSearch
           name="ios-search"
           size={20}
-          color="rgba(33, 33, 33, 0.4)" />
-        <Input placeholder='Search whatever!' />
+          color={`${palette.lightText}`} />
+        <Input
+          placeholder='Search whatever!'
+          placeholderTextColor={`${palette.lightText}`} />
       </StyledTile>
     )
   }

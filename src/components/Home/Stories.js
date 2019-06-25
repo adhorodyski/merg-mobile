@@ -31,7 +31,7 @@ class Stories extends PureComponent {
 
   renderStories = () => {
     const { stories, navigation } = this.props
-
+    
     return stories.map((story, key) => {
       const { authorUsername, authorPic, provider } = story
 

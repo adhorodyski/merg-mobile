@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import { View, Text, TouchableWithoutFeedback } from 'react-native'
 import { withNavigation, StackActions } from 'react-navigation'
 import styled from 'styled-components'
+import * as theme from './themes'
 import { palette } from './palette'
 import { Ionicons } from '@expo/vector-icons'
 
@@ -12,9 +13,9 @@ export const ResultTile = styled.View`
   margin: 0 auto;
   margin-bottom: 30px;
   min-height: 140px;
-  background: ${palette.white};
+  background: ${theme.secondaryOverlayBackgroundColor};
   border-radius: 10px;
-  box-shadow: 0 10px 15px rgba(80, 80, 80, 0.15);
+  box-shadow: 0 10px 15px ${theme.mediumShadowColor};
 `
 
 const Header = styled.TouchableWithoutFeedback`
@@ -31,11 +32,11 @@ const H4 = styled.Text`
   font-size: 13px;
   font-weight: bold;
   margin: auto 0;
-  color: ${palette.darkText};
+  color: ${theme.primaryTextColor};
 `
 
 const TimeP = styled.Text`
-  color: ${palette.lightText};
+  color: ${theme.secondaryTextColor};
   font-size: 12px;
   margin: auto auto auto 10px;
 `
@@ -77,7 +78,7 @@ class TileHeader extends PureComponent {
           <Icon
             name="ios-arrow-dropright"
             size={20}
-            color="rgba(33, 33, 33, 0.4)" />
+            color={`${palette.lightText}`} />
         </StyledHeaderInsider>
       </Header>
     )

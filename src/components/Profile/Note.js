@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react'
 import { Text } from 'react-native'
 import styled from 'styled-components'
+import * as theme from '../Shared/themes'
 
 const StyledText = styled.Text`
   font-size: 14px;
-  color: #333333;
+  color: ${theme.primaryTextColor};
   padding: 0 20px;
   margin: 5px auto;
 `

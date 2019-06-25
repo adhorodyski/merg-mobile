@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components'
 import Youtube from 'react-native-youtube'
 

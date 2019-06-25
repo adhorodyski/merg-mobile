@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { View, Text, Image } from 'react-native'
 import styled from 'styled-components/native'
-import { palette } from '../Shared/palette'
+import * as theme from '../Shared/themes'
 
 import { Avatar } from '../Shared/UI'
 
@@ -28,11 +28,12 @@ const StyledAvatar = styled(Avatar)`
 const Name = styled.Text`
   font-weight: bold;
   font-size: 20px;
+  color: ${theme.primaryTextColor};
 `
 
 const Username = styled.Text`
   font-size: 15px;
-  color: ${palette.lightText};
+  color: ${theme.primaryTextColor};
 `
 
 const Sp = styled.Text`

@@ -1,19 +1,25 @@
 import React, { PureComponent } from 'react'
-import { View, Text, Image, TouchableHighlight, Dimensions } from 'react-native'
+import {
+  View,
+  Text,
+  Image,
+  TouchableHighlight,
+  Dimensions
+} from 'react-native'
 import styled from 'styled-components'
 import posed from 'react-native-pose'
 import { palette } from './palette'
-
+import * as theme from './themes'
 
 // WRAPPERS
 
 export const Main = styled.ScrollView`
-  background: ${palette.white};
-  padding-top: 20px;
+  background: ${theme.baseBackgroundColor};
+  padding-top: 10px;
 `
 
 export const MainView = styled.View`
-  background: ${palette.white};
+  background: ${theme.baseBackgroundColor};
 `
 
 export const StyledView = styled.View`
@@ -22,12 +28,12 @@ export const StyledView = styled.View`
 `
 
 export const EmptyFlatlistTemplate = styled.View`
-  background: ${palette.white};
+  background: ${theme.baseBackgroundColor};
   height: ${Dimensions.get('window').height};
 `
 
 export const ResultsFlatlist = styled.FlatList`
-  background: ${palette.white};
+  background: ${theme.baseBackgroundColor};
 `
 
 export const StyledViewMargin = styled(StyledView)`
@@ -47,10 +53,10 @@ export const Tile = styled.View`
   flex-direction: row;
   justify-content: space-between;
   padding: 0 20px;
-  background: ${palette.darkGray};
+  background: ${theme.overlayBackgroundColor};
   border: none;
   border-radius: 10px;
-  box-shadow: 0 4px 3px rgba(33, 33, 33, 0.03);
+  box-shadow: 0 4px 3px ${theme.smallShadowColor};
 `
 
 // BUTTONS
@@ -58,7 +64,11 @@ export const Tile = styled.View`
 export const Button = styled.TouchableHighlight`
   width: 100px;
   height: 30px;
-  background: ${p => p.isPressed ? palette.darkBlue : palette.mediumBlue};
+  background: ${p =>
+    p.isPressed
+    ? theme.secondaryBlueColor
+    : theme.primaryBlueColor
+  };
   border: none;
   border-radius: 10px;
   display: flex;
@@ -67,7 +77,11 @@ export const Button = styled.TouchableHighlight`
 `
 
 export const SelectButton = styled(Button)`
-  background: ${p => p.isFollowing ? palette.mediumBlue : palette.lightBlue};
+  background: ${p =>
+    p.isFollowing
+    ? theme.primaryBlueColor
+    : theme.lightBlueColor
+  };
   box-shadow: 0 2px 2px ${p =>
     p.isFollowing
     ? 'rgba(41, 71, 242, 0.4)'
@@ -75,10 +89,14 @@ export const SelectButton = styled(Button)`
 `
 
 export const ButtonSuccess = styled(Button)`
-  background: ${p => p.success ? palette.successGreen : palette.mediumBlue};
+  background: ${p =>
+    p.success
+    ? theme.successColor
+    : theme.primaryBlueColor
+  };
   box-shadow: 0 2px 2px ${p =>
     p.success
-    ? 'rgba(100, 232, 49, 0.4)'
+    ? 'rgba(0, 222, 96, 0.4)'
     : 'rgba(41, 71, 242, 0.4)'};
 `
 
@@ -100,7 +118,7 @@ export const PosedButtonSuccess = posed(ButtonSuccess)({
 export const BtnText = styled.Text`
   font-size: 14px;
   font-weight: bold;
-  color: ${palette.lightGray};
+  color: ${theme.buttonTextColor};
   text-align: center;
   margin: auto;
   line-height: 30px;
@@ -114,7 +132,7 @@ export const Input = styled.TextInput`
   width: 65%;
   font-weight: bold;
   font-size: 16px;
-  color: ${palette.darkText};
+  color: ${theme.primaryTextColor};
 `
 
 export const InputHigh = styled(Input)`
@@ -131,7 +149,7 @@ export const WideInput = styled(Input)`
 export const Title = styled.Text`
   font-size: 24px;
   font-weight: bold;
-  color: ${palette.darkText};
+  color: ${theme.primaryTextColor};
   margin: 10px;
 `
 
@@ -139,7 +157,7 @@ export const SmallLabel = styled.Text`
   font-size: 13px;
   line-height: 20px;
   font-weight: bold;
-  color: ${palette.lightText};
+  color: ${theme.secondaryTextColor};
   margin: auto 10px auto 0;
   max-width: 100px;
 `
@@ -149,7 +167,7 @@ export const FixedSmallLabel = styled(SmallLabel)`
 `
 
 export const BigLabel = styled(SmallLabel)`
-  color: ${palette.darkText};
+  color: ${theme.primaryTextColor};
   font-size: 16px;
   max-width: 100%;
 `
@@ -159,7 +177,7 @@ export const DarkLabel = styled(SmallLabel)`
   align-self: center;
   text-align: center;
   max-width: 95%;
-  color: ${palette.mediumBlue};
+  color: ${theme.primaryBlueColor};
   margin: 0;
   padding: 10px 20px;
 `
@@ -170,7 +188,7 @@ export const Avatar = styled.Image`
   height: 70px;
   width: 70px;
   display: flex;
-  background: ${palette.white};
+  background: ${theme.baseBackgroundColor};
   margin: 10px auto;
   border-radius: 35px;
 `
@@ -210,7 +228,7 @@ export const ScrollImgWrap = styled.View`
     || p.provider === 'Spotify' && palette.spotify
   };
   border-radius: 30px;
-  box-shadow: 0 4px 3px rgba(80, 80, 80, 0.25);
+  box-shadow: 0 4px 3px ${theme.bigShadowColor};
 `
 
 export const ScrollImg = styled.Image`
@@ -219,15 +237,15 @@ export const ScrollImg = styled.Image`
   margin: auto;
   border-radius: 27px;
   border-width: 1px;
-  border-color: white;
+  border-color: ${theme.baseBackgroundColor};
 `
 
 export const ScrollWord = styled.Text`
-  color: ${palette.lightText};
+  color: ${theme.secondaryTextColor};
   font-size: 16px;
   font-weight: bold;
 `
 
 export const ScrollWordActive = styled(ScrollWord)`
-  color: ${palette.mediumBlue};
+  color: ${theme.primaryBlueColor};
 `

@@ -72,7 +72,7 @@ class FollowerRegisterScreen extends PureComponent {
               <IconMail
                 name="ios-contact"
                 size={20}
-                color="rgba(33, 33, 33, 0.4)" />
+                color={`${palette.lightText}`} />
               <WideInput
                 returnKeyType={'next'}
                 onChangeText={value => getRegisterFirstName(value)}
@@ -81,13 +81,14 @@ class FollowerRegisterScreen extends PureComponent {
                 }}
                 blurOnSubmit={false}
                 textContentType={'givenName'}
-                placeholder='first name' />
+                placeholder='first name'
+                placeholderTextColor={`${palette.lightText}`} />
             </Tile>
             <Tile>
               <IconMail
                 name="ios-contact"
                 size={20}
-                color="rgba(33, 33, 33, 0.4)" />
+                color={`${palette.lightText}`} />
               <WideInput
                 ref='username'
                 returnKeyType={'next'}
@@ -97,13 +98,14 @@ class FollowerRegisterScreen extends PureComponent {
                 }}
                 blurOnSubmit={false}
                 textContentType={'username'}
-                placeholder='username' />
+                placeholder='username'
+                placeholderTextColor={`${palette.lightText}`} />
             </Tile>
             <Tile>
               <IconMail
                 name="ios-at"
                 size={20}
-                color="rgba(33, 33, 33, 0.4)" />
+                color={`${palette.lightText}`} />
               <WideInput
                 ref='email'
                 returnKeyType={'next'}
@@ -114,7 +116,8 @@ class FollowerRegisterScreen extends PureComponent {
                 blurOnSubmit={false}
                 keyboardType={'email-address'}
                 textContentType={'emailAddress'}
-                placeholder='e-mail' />
+                placeholder='e-mail'
+                placeholderTextColor={`${palette.lightText}`} />
             </Tile>
             <AdjustedLabel>
               Min. of 8 characters
@@ -125,7 +128,7 @@ class FollowerRegisterScreen extends PureComponent {
               <IconLock
                 name="ios-lock"
                 size={20}
-                color="rgba(33, 33, 33, 0.4)" />
+                color={`${palette.lightText}`} />
               <WideInput
                 ref='password'
                 returnKeyType={'next'}
@@ -136,19 +139,21 @@ class FollowerRegisterScreen extends PureComponent {
                 blurOnSubmit={false}
                 secureTextEntry={true}
                 textContentType={'password'}
-                placeholder='password' />
+                placeholder='password'
+                placeholderTextColor={`${palette.lightText}`} />
             </Tile>
             <Tile>
               <IconLock
                 name="ios-lock"
                 size={20}
-                color="rgba(33, 33, 33, 0.4)" />
+                color={`${palette.lightText}`} />
               <WideInput
                 ref='confirmPassword'
                 secureTextEntry={true}
                 onChangeText={value => getRegisterPasswordMatch(value)}
                 textContentType={'password'}
-                placeholder='confirm password' />
+                placeholder='confirm password'
+                placeholderTextColor={`${palette.lightText}`} />
             </Tile>
             <PosedButton
               isPressed={isPressed}

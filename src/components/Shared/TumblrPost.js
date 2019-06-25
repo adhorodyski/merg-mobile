@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, Image } from 'react-native'
 import styled from 'styled-components'
+import * as theme from './themes'
 
 const StyledWrapper = styled.View`
   width: 100%;
@@ -23,6 +24,7 @@ const Content = styled.Text`
   font-size: 16px;
   line-height: 22px;
   margin: 20px auto 0 auto;
+  color: ${theme.primaryTextColor};
 `
 
 const TumblrPost = props => {

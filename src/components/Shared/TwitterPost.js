@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Image, Text, WebView } from 'react-native'
 import styled from 'styled-components'
+import * as theme from './themes'
 
 const TwitterLogoBlue = require('../../../assets/social-media/twitter_logo_blue.png')
 
@@ -37,13 +38,14 @@ const NamesContainer = styled.View`
 const Name = styled.Text`
   font-size: 14px;
   font-weight: normal;
+  color: ${theme.primaryTextColor};
 `
 
 const Username = styled.Text`
   display: flex;
   flex-direction: row;
   font-size: 12px;
-  color: #808080;
+  color: ${theme.secondaryTextColor};
 `
 
 const Linked = styled.View`
@@ -54,11 +56,12 @@ const Linked = styled.View`
 const Permalink = styled.Text`
   font-size: 13px;
   margin-right: 20px;
+  color: ${theme.secondaryTextColor};
 `
 
 const Time = styled.Text`
   font-size: 13px;
-  color: #808080;
+  color: ${theme.secondaryTextColor};
 `
 
 const External = styled.Text`
@@ -70,12 +73,13 @@ const Content = styled.Text`
   font-size: 16px;
   line-height: 22px;
   font-weight: bold;
+  color: ${theme.primaryTextColor};
 `
 
 const TweetAvatar = styled.Image`
   height: 36px;
   width: 36px;
-  background: #FFFFFF;
+  background: ${theme.baseBackgroundColor};
   margin: auto 10px auto 0;
   border-radius: 18px;
 `

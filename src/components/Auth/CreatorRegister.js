@@ -72,7 +72,7 @@ class CreatorRegisterScreen extends PureComponent {
               <IconMail
                 name="ios-contact"
                 size={20}
-                color="rgba(33, 33, 33, 0.4)" />
+                color={`${palette.lightText}`} />
               <WideInput
                 returnKeyType={'next'}
                 onChangeText={value => getCreatorRegisterNameDisplayed(value)}
@@ -81,13 +81,14 @@ class CreatorRegisterScreen extends PureComponent {
                 }}
                 blurOnSubmit={false}
                 textContentType={'nickname'}
-                placeholder='your well-known name' />
+                placeholder='your well-known name'
+                placeholderTextColor={`${palette.lightText}`} />
             </Tile>
             <Tile>
               <IconMail
                 name="ios-contact"
                 size={20}
-                color="rgba(33, 33, 33, 0.4)" />
+                color={`${palette.lightText}`} />
               <WideInput
                 ref='username'
                 onChangeText={value => getCreatorRegisterUsername(value)}
@@ -97,13 +98,14 @@ class CreatorRegisterScreen extends PureComponent {
                 blurOnSubmit={false}
                 returnKeyType={'next'}
                 textContentType={'username'}
-                placeholder='username' />
+                placeholder='username'
+                placeholderTextColor={`${palette.lightText}`} />
             </Tile>
             <Tile>
               <IconMail
                 name="ios-at"
                 size={20}
-                color="rgba(33, 33, 33, 0.4)" />
+                color={`${palette.lightText}`} />
               <WideInput
                 ref='email'
                 onChangeText={value => getCreatorRegisterEmail(value)}
@@ -114,7 +116,8 @@ class CreatorRegisterScreen extends PureComponent {
                 returnKeyType={'next'}
                 keyboardType={'email-address'}
                 textContentType={'emailAddress'}
-                placeholder='e-mail' />
+                placeholder='e-mail'
+                placeholderTextColor={`${palette.lightText}`} />
             </Tile>
             <AdjustedLabel>
               Min. of 8 characters
@@ -125,7 +128,7 @@ class CreatorRegisterScreen extends PureComponent {
               <IconLock
                 name="ios-lock"
                 size={20}
-                color="rgba(33, 33, 33, 0.4)" />
+                color={`${palette.lightText}`} />
               <WideInput
                 ref='password'
                 onChangeText={value => getCreatorRegisterPassword(value)}
@@ -136,19 +139,21 @@ class CreatorRegisterScreen extends PureComponent {
                 returnKeyType={'next'}
                 secureTextEntry={true}
                 textContentType={'password'}
-                placeholder='password' />
+                placeholder='password'
+                placeholderTextColor={`${palette.lightText}`} />
             </Tile>
             <Tile>
               <IconLock
                 name="ios-lock"
                 size={20}
-                color="rgba(33, 33, 33, 0.4)" />
+                color={`${palette.lightText}`} />
               <WideInput
                 ref='confirmPassword'
                 onChangeText={value => getCreatorRegisterPasswordMatch(value)}
                 secureTextEntry={true}
                 textContentType={'password'}
-                placeholder='confirm password' />
+                placeholder='confirm password'
+                placeholderTextColor={`${palette.lightText}`} />
             </Tile>
             <PosedButton
               isPressed={isPressed}

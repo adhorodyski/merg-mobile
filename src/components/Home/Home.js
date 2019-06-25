@@ -8,25 +8,11 @@ import {
   loadOceanChunk,
   refreshHome
 } from '../../actions/userOceanActions'
-import { Text, View, Image } from 'react-native'
 import styled from 'styled-components'
 import { palette } from '../Shared/palette'
 
 import { MainView } from '../Shared/UI'
 import Ocean from './Ocean'
-
-export const StyledView = styled.View`
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  background: #ffffff;
-`
-
-export const StyledText = styled.Text`
-  text-align: center;
-  font-size: 50px;
-  font-weight: bold;
-`
 
 class HomeScreen extends PureComponent {
   componentDidMount = async () => {

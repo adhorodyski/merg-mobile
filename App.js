@@ -10,7 +10,8 @@ import {
 } from 'react-navigation'
 import { View, Image, TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
-import styled from 'styled-components/native'
+import styled, { ThemeProvider } from 'styled-components/native'
+import { palette } from './src/components/Shared/palette'
 
 import PrimaryChoiceScreen from './src/components/Auth/PrimaryChoice'
 import SignInScreen from './src/components/Auth/SignIn'
@@ -114,30 +115,44 @@ const MainNavigator = createMaterialTopTabNavigator({
     }
   }
 }, {
-  defaultNavigationOptions: {
-    swipeEnabled: true,
-    tabBarPosition: 'bottom',
-    animationEnabled: true,
-    optimizationsEnabled: true,
-    lazy: true,
-    tabBarOptions: {
-      showIcon: true,
-      showLabel: false,
-      indicatorStyle: {
-        display: 'none'
-      },
-      activeTintColor: '#333333',
-      inactiveTintColor: '#808080',
-      pressColor: '#F0F0F0',
-      tabStyle: {
-        backgroundColor: 'transparent'
-      },
-      style: {
-        backgroundColor: 'transparent',
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3
+  defaultNavigationOptions: ({ screenProps }) => {
+    return {
+      swipeEnabled: true,
+      tabBarPosition: 'bottom',
+      animationEnabled: true,
+      optimizationsEnabled: true,
+      lazy: true,
+      tabBarOptions: {
+        showIcon: true,
+        showLabel: false,
+        indicatorStyle: {
+          display: 'none'
+        },
+        activeTintColor:
+          screenProps === 'dark'
+          ? `${palette.lightGray}`
+          : `${palette.darkText}`,
+        inactiveTintColor:
+          screenProps === 'dark'
+          ? `${palette.lightText}`
+          : `${palette.lightText}`,
+        pressColor: '#F0F0F0',
+        tabStyle: {
+          backgroundColor: 'transparent'
+        },
+        style: {
+          backgroundColor:
+            screenProps === 'dark'
+            ? `${palette.black}`
+            : `${palette.white}`,
+          shadowColor:
+            screenProps === 'dark'
+            ? `${palette.white}`
+            : `${palette.black}`,
+          shadowOffset: { width: 0, height: 2 },
+          shadowOpacity: 0.1,
+          shadowRadius: 3
+        }
       }
     }
   }
@@ -146,16 +161,23 @@ const MainNavigator = createMaterialTopTabNavigator({
 const AppStack = createStackNavigator({
   MainNavigator: {
     screen: MainNavigator,
-    navigationOptions: ({ navigation }) => {
+    navigationOptions: ({ navigation, screenProps }) => {
       return {
         gesturesEnabled: true,
         headerTitleStyle: {
-          fontSize: 16
+          fontSize: 16,
+          color:
+          screenProps === 'dark'
+          ? `${palette.lightText}`
+          : `${palette.darkText}`
         },
         headerStyle: {
           height: 40,
           borderBottomWidth: 0,
-          backgroundColor: '#FFFFFF'
+          backgroundColor:
+            screenProps === 'dark'
+            ? `${palette.black}`
+            : `${palette.white}`
         },
         headerBackTitle: null,
         headerLeft: (
@@ -174,7 +196,7 @@ const AppStack = createStackNavigator({
               <HeaderIoniconsButton
                 name="ios-more"
                 size={30}
-                color={'#808080'} />
+                color={`${palette.lightText}`} />
             </StyledTouchable>
             <StyledTouchable
               onPress={() => {
@@ -189,23 +211,41 @@ const AppStack = createStackNavigator({
   },
   Settings: {
     screen: SettingsScreen,
-    navigationOptions: ({ navigation }) => {
+    navigationOptions: ({ navigation, screenProps }) => {
       return {
         gesturesEnabled: true,
         headerTitle: 'Settings',
         headerTitleStyle: {
-          fontSize: 16
+          fontSize: 16,
+          color:
+          screenProps === 'dark'
+          ? `${palette.lightText}`
+          : `${palette.darkText}`
         },
         headerStyle: {
           borderBottomWidth: 0,
-          backgroundColor: '#FFFFFF'
+          backgroundColor:
+            screenProps === 'dark'
+            ? `${palette.black}`
+            : `${palette.white}`
         },
         headerBackImage: (
           <StyledTouchable onPress={() => navigation.goBack() }>
             <HeaderIoniconsButton
               name="ios-arrow-round-back"
               size={40}
-              color={'#808080'} />
+              color={`${palette.lightText}`} />
+          </StyledTouchable>
+        ),
+        headerRight: (
+          <StyledTouchable
+            onPress={() => {
+              console.log('toggle')
+            }}>
+            <HeaderIoniconsButton
+              name="ios-moon"
+              size={30}
+              color={`${palette.lightText}`} />
           </StyledTouchable>
         )
       }
@@ -216,15 +256,22 @@ const AppStack = createStackNavigator({
 const AuthStack = createStackNavigator({
   PrimaryChoice: {
     screen: PrimaryChoiceScreen,
-    navigationOptions: ({ navigation }) => {
+    navigationOptions: ({ navigation, screenProps }) => {
       return {
         gesturesEnabled: true,
         headerTitleStyle: {
-          fontSize: 16
+          fontSize: 16,
+          color:
+          screenProps === 'dark'
+          ? `${palette.lightText}`
+          : `${palette.darkText}`
         },
         headerStyle: {
           borderBottomWidth: 0,
-          backgroundColor: '#FFFFFF'
+          backgroundColor:
+            screenProps === 'dark'
+            ? `${palette.black}`
+            : `${palette.white}`,
         },
         headerBackTitle: null,
         headerBackImage: (
@@ -232,7 +279,7 @@ const AuthStack = createStackNavigator({
             <HeaderIoniconsButton
               name="ios-arrow-round-back"
               size={40}
-              color={'#808080'} />
+              color={`${palette.lightText}`} />
           </StyledTouchable>
         ),
         headerLeft: (
@@ -246,23 +293,30 @@ const AuthStack = createStackNavigator({
   },
   SignIn: {
     screen: SignInScreen,
-    navigationOptions: ({ navigation }) => {
+    navigationOptions: ({ navigation, screenProps }) => {
       return {
         gesturesEnabled: true,
         headerTitle: 'Sign in',
         headerTitleStyle: {
-          fontSize: 16
+          fontSize: 16,
+          color:
+          screenProps === 'dark'
+          ? `${palette.lightText}`
+          : `${palette.darkText}`
         },
         headerStyle: {
           borderBottomWidth: 0,
-          backgroundColor: '#FFFFFF'
+          backgroundColor:
+            screenProps === 'dark'
+            ? `${palette.black}`
+            : `${palette.white}`,
         },
         headerBackImage: (
           <StyledTouchable onPress={() => navigation.goBack() }>
             <HeaderIoniconsButton
               name="ios-arrow-round-back"
               size={40}
-              color={'#808080'} />
+              color={`${palette.lightText}`} />
           </StyledTouchable>
         )
       }
@@ -270,23 +324,30 @@ const AuthStack = createStackNavigator({
   },
   FollowerRegister: {
     screen: FollowerRegisterScreen,
-    navigationOptions: ({ navigation }) => {
+    navigationOptions: ({ navigation, screenProps }) => {
       return {
         gesturesEnabled: true,
         headerTitle: 'Follower',
         headerTitleStyle: {
-          fontSize: 16
+          fontSize: 16,
+          color:
+          screenProps === 'dark'
+          ? `${palette.lightText}`
+          : `${palette.darkText}`
         },
         headerStyle: {
           borderBottomWidth: 0,
-          backgroundColor: '#FFFFFF'
+          backgroundColor:
+            screenProps === 'dark'
+            ? `${palette.black}`
+            : `${palette.white}`,
         },
         headerBackImage: (
           <StyledTouchable onPress={() => navigation.goBack() }>
             <HeaderIoniconsButton
               name="ios-arrow-round-back"
               size={40}
-              color={'#808080'} />
+              color={`${palette.lightText}`} />
           </StyledTouchable>
         )
       }
@@ -294,23 +355,30 @@ const AuthStack = createStackNavigator({
   },
   CreatorRegister: {
     screen: CreatorRegisterScreen,
-    navigationOptions: ({ navigation }) => {
+    navigationOptions: ({ navigation, screenProps }) => {
       return {
         gesturesEnabled: true,
         headerTitle: 'Creator',
         headerTitleStyle: {
-          fontSize: 16
+          fontSize: 16,
+          color:
+          screenProps === 'dark'
+          ? `${palette.lightText}`
+          : `${palette.darkText}`
         },
         headerStyle: {
           borderBottomWidth: 0,
-          backgroundColor: '#FFFFFF'
+          backgroundColor:
+            screenProps === 'dark'
+            ? `${palette.black}`
+            : `${palette.white}`,
         },
         headerBackImage: (
           <StyledTouchable onPress={() => navigation.goBack() }>
             <HeaderIoniconsButton
               name="ios-arrow-round-back"
               size={40}
-              color={'#808080'} />
+              color={`${palette.lightText}`} />
           </StyledTouchable>
         )
       }
@@ -321,16 +389,23 @@ const AuthStack = createStackNavigator({
 const MergingStack = createStackNavigator({
   Merging: {
     screen: MergingScreen,
-    navigationOptions: ({ navigation }) => {
+    navigationOptions: ({ navigation, screenProps }) => {
       return {
         gesturesEnabled: true,
         headerTitle: 'Merging',
         headerTitleStyle: {
-          fontSize: 16
+          fontSize: 16,
+          color:
+          screenProps === 'dark'
+          ? `${palette.lightText}`
+          : `${palette.darkText}`
         },
         headerStyle: {
           borderBottomWidth: 0,
-          backgroundColor: '#FFFFFF'
+          backgroundColor:
+            screenProps === 'dark'
+            ? `${palette.black}`
+            : `${palette.white}`,
         },
         headerBackTitle: null,
         headerBackImage: (
@@ -338,7 +413,7 @@ const MergingStack = createStackNavigator({
             <HeaderIoniconsButton
               name="ios-arrow-round-back"
               size={40}
-              color={'#808080'} />
+              color={`${palette.lightText}`} />
           </StyledTouchable>
         )
       }
@@ -346,23 +421,30 @@ const MergingStack = createStackNavigator({
   },
   Welcome: {
     screen: WelcomeScreen,
-    navigationOptions: ({ navigation }) => {
+    navigationOptions: ({ navigation, screenProps }) => {
       return {
         gesturesEnabled: true,
         headerTitle: 'Welcome',
         headerTitleStyle: {
-          fontSize: 16
+          fontSize: 16,
+          color:
+          screenProps === 'dark'
+          ? `${palette.lightText}`
+          : `${palette.darkText}`
         },
         headerStyle: {
           borderBottomWidth: 0,
-          backgroundColor: '#FFFFFF'
+          backgroundColor:
+            screenProps === 'dark'
+            ? `${palette.black}`
+            : `${palette.white}`,
         },
         headerBackImage: (
           <StyledTouchable onPress={() => navigation.goBack() }>
             <HeaderIoniconsButton
               name="ios-arrow-round-back"
               size={40}
-              color={'#808080'} />
+              color={`${palette.lightText}`} />
           </StyledTouchable>
         )
       }
@@ -385,7 +467,9 @@ class App extends PureComponent {
   render() {
     return (
       <Provider store={store}>
-        <Stacks />
+        <ThemeProvider theme={{ mode: 'dark' }}>
+          <Stacks screenProps={'dark'} />
+        </ThemeProvider>
       </Provider>
     )
   }
