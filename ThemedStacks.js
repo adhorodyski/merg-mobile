@@ -115,7 +115,7 @@ const MainNavigator = createMaterialTopTabNavigator({
       swipeEnabled: true,
       tabBarPosition: 'bottom',
       animationEnabled: true,
-      optimizationsEnabled: true,
+      optimizationsEnabled: false,
       lazy: true,
       tabBarOptions: {
         showIcon: true,
@@ -131,7 +131,7 @@ const MainNavigator = createMaterialTopTabNavigator({
           screenProps === 'dark'
           ? `${palette.lightText}`
           : `${palette.lightText}`,
-        pressColor: '#F0F0F0',
+        pressColor: `${palette.lightGray}`,
         tabStyle: {
           backgroundColor: 'transparent'
         },

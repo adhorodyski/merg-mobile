@@ -3,6 +3,7 @@ import { RefreshControl } from 'react-native'
 import { connect } from 'react-redux'
 import { fetchAuth } from '../../actions/authActions'
 import { fetchLoggedUser } from '../../actions/loggedUserActions'
+import { hydrateInitial } from '../../actions/settingsActions'
 import {
   fetchFullOcean,
   loadOceanChunk,
@@ -18,6 +19,7 @@ class HomeScreen extends PureComponent {
   componentDidMount = async () => {
     await this.props.fetchAuth()
     await this.props.fetchLoggedUser()
+    await this.props.hydrateInitial()
     await this.props.fetchFullOcean()
     await this.props.loadOceanChunk()
   }
@@ -26,6 +28,7 @@ class HomeScreen extends PureComponent {
     await this.props.refreshHome()
     await this.props.fetchAuth()
     await this.props.fetchLoggedUser()
+    await this.props.hydrateInitial()
     await this.props.fetchFullOcean()
     await this.props.loadOceanChunk()
     await this.props.refreshHome()
@@ -54,6 +57,7 @@ export default connect(
     fetchLoggedUser,
     fetchFullOcean,
     loadOceanChunk,
+    hydrateInitial,
     refreshHome
   }
 )(HomeScreen)

@@ -14,7 +14,7 @@ import {
 
 const StyledScrollable = styled(Scrollable)`
   height: 80px;
-  padding: 0 10px;
+  padding: 10px;
   margin: 0;
   margin-bottom: 10px;
 `
@@ -31,7 +31,7 @@ class Stories extends PureComponent {
 
   renderStories = () => {
     const { stories, navigation } = this.props
-    
+
     return stories.map((story, key) => {
       const { authorUsername, authorPic, provider } = story
 
