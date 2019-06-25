@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
-import { Text, View } from 'react-native'
+import { View, Image } from 'react-native'
 import styled from 'styled-components'
+import * as theme from '../Shared/themes'
 
 const FacebookLogo = require('../../../assets/social-media/facebook.png')
 const TwitterLogo = require('../../../assets/social-media/twitter.png')
@@ -13,12 +14,16 @@ const StyledWrapper = styled.View`
   display: flex;
   margin: 20px auto;
   flex-direction: row;
+  background: blue;
+  background: ${theme.overlayBackgroundColor};
+  border-radius: 10px;
+  box-shadow: 0 4px 3px ${theme.smallShadowColor};
 `
 
 const Provider = styled.Image`
   height: 25px;
   width: 25px;
-  margin: 0 10px;
+  margin: 10px;
 `
 
 class MergedWithGroup extends PureComponent {

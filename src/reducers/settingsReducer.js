@@ -1,5 +1,6 @@
 import {
   SETTINGS_HYDRATE_INITIAL,
+  SETTINGS_TRIGGER_DARK_MODE,
   SETTINGS_PERSONAL_UPDATE_NAME,
   SETTINGS_PERSONAL_UPDATE_USERNAME,
   SETTINGS_PERSONAL_UPDATE_EMAIL,
@@ -8,6 +9,9 @@ import {
 } from '../actions/types'
 
 const initialState = {
+  general: {
+    isDarkValue: false,
+  },
   personal: {
     nameValue: '',
     usernameValue: '',
@@ -27,7 +31,18 @@ const reducer = (state = initialState, action) => {
           nameValue: action.payload.name,
           usernameValue: action.payload.username,
           emailValue: action.payload.email,
-          aboutValue: action.payload.about
+          aboutValue: action.payload.about,
+        },
+        general: {
+          isDarkValue: action.payload.isDark
+        }
+      }
+    case SETTINGS_TRIGGER_DARK_MODE:
+      return {
+        ...state,
+        general: {
+          ...state.general,
+          isDarkValue: !state.general.isDarkValue
         }
       }
     case SETTINGS_PERSONAL_UPDATE_NAME:

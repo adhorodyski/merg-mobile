@@ -8,6 +8,7 @@ import {
 } from 'react-native'
 import styled from 'styled-components'
 import posed from 'react-native-pose'
+import { Ionicons } from '@expo/vector-icons'
 import { palette } from './palette'
 import * as theme from './themes'
 
@@ -122,6 +123,16 @@ export const BtnText = styled.Text`
   text-align: center;
   margin: auto;
   line-height: 30px;
+`
+
+export const HeaderIoniconsButton = styled(Ionicons)`
+  margin: auto;
+`
+
+export const StyledTouchable = styled.TouchableOpacity`
+  width: 30px;
+  height: 40px;
+  margin: 0 10px;
 `
 
 // INPUTS

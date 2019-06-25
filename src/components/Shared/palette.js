@@ -13,6 +13,7 @@ export const palette = {
   darkBlue: '#0B25BA',
   // additionals
   successGreen: '#00DE60',
+  lightYellow: '#F4C82D',
   // socials
   facebook: '#0078FF',
   twitter: '#1DA1F2',
