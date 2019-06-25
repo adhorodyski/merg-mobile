@@ -453,7 +453,7 @@ const Stacks = createAppContainer(createSwitchNavigator(
 class ThemedStacks extends PureComponent {
   render() {
     const { isDarkValue } = this.props
-    const themeMode = isDarkValue ? 'light' : 'dark'
+    const themeMode = isDarkValue ? 'dark' : 'light'
 
     return (
       <ThemeProvider theme={{ mode: themeMode }}>

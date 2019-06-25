@@ -18,7 +18,7 @@ class DarkModeSwitch extends PureComponent {
           <HeaderIoniconsButton
             name="ios-moon"
             size={30}
-            color={`${palette.lightText}`} />
+            color={`${palette.lightYellow}`} />
         </StyledTouchable>
       )
     } else {
@@ -27,7 +27,7 @@ class DarkModeSwitch extends PureComponent {
           <HeaderIoniconsButton
             name="ios-moon"
             size={30}
-            color={`${palette.lightYellow}`} />
+            color={`${palette.lightText}`} />
         </StyledTouchable>
       )
     }

@@ -34,6 +34,7 @@ const reducer = (state = initialState, action) => {
           aboutValue: action.payload.about,
         },
         general: {
+          ...state.general,
           isDarkValue: action.payload.isDark
         }
       }
