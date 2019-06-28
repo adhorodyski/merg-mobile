@@ -1,7 +1,9 @@
 import {
   LOAD_CREATORS_CHUNK,
   TRIGGER_USER_FOLLOW,
-  TRIGGER_REFRESH_EXPLORE
+  TRIGGER_REFRESH_EXPLORE,
+  ASK_NEW_EXPLORE_QUERY,
+  UPDATE_EXPLORE_RESULTS
 } from '../actions/types'
 
 const initialState = {
@@ -24,6 +26,16 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         refreshing: !state.refreshing
+      }
+    case ASK_NEW_EXPLORE_QUERY:
+      return {
+        ...state,
+        exploreQuery: action.payload
+      }
+    case UPDATE_EXPLORE_RESULTS:
+      return {
+        ...state,
+        results: action.payload
       }
     default: {
       return state

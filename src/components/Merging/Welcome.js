@@ -25,15 +25,15 @@ const StyledMain = styled(Main)`
 `
 
 const CenteredGrid = styled.View`
-  width: 100%;
-  margin: 0 auto 50px auto;
   display: flex;
+  width: auto;
+  margin: 0 auto 50px auto;
   flex-wrap: wrap;
 `
 
 const Cell = styled.View`
   height: 60px;
-  width: 100%;
+  width: auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -46,7 +46,7 @@ const Cell = styled.View`
 const Img = styled.Image`
   height: 40px;
   width: 40px;
-  margin: auto;
+  margin: auto 10px;
 `
 
 const StyledDarkLabel = styled(DarkLabel)`

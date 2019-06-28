@@ -1,5 +1,10 @@
 import React, { PureComponent } from 'react'
 import { View, TextInput } from 'react-native'
+import { connect } from 'react-redux'
+import {
+  newExploreQuery,
+  updateExploreResults
+} from '../../actions/exploreActions'
 import styled from 'styled-components'
 import { palette } from '../Shared/palette'
 import * as theme from '../Shared/themes'
@@ -10,9 +15,9 @@ import { Tile } from '../Shared/UI'
 const StyledTile = styled(Tile)`
   position: relative;
   width: auto;
-  margin: 0 10px;
+  margin: 10px 10px 0 10px;
   padding: 0;
-  box-shadow: 0 4px 3px rgba(33, 33, 33, 0.03);
+  box-shadow: 0 4px 3px ${theme.smallShadowColor};
   background: ${theme.overlayBackgroundColor};
 `
 
@@ -34,7 +39,14 @@ const Input = styled.TextInput`
 `
 
 class Searchbox extends PureComponent {
+  askQuery = async queryValue => {
+    await this.props.newExploreQuery(queryValue)
+    await this.props.updateExploreResults()
+  }
+
   render() {
+    const { exploreQuery } = this.props
+
     return (
       <StyledTile>
         <IconSearch
@@ -42,6 +54,8 @@ class Searchbox extends PureComponent {
           size={20}
           color={`${palette.lightText}`} />
         <Input
+          value={exploreQuery}
+          onChangeText={value => this.askQuery(value)}
           placeholder='Search whatever!'
           placeholderTextColor={`${palette.lightText}`} />
       </StyledTile>
@@ -49,4 +63,14 @@ class Searchbox extends PureComponent {
   }
 }
 
-export default Searchbox
+const mapStateToProps = state => ({
+  exploreQuery: state.explore.exploreQuery
+})
+
+export default connect(
+  mapStateToProps,
+  {
+    newExploreQuery,
+    updateExploreResults
+  }
+)(Searchbox)

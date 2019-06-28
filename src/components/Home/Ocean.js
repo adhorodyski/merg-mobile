@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { RefreshControl, FlatList, View } from 'react-native'
+import { RefreshControl, View } from 'react-native'
 import { loadOceanChunk } from '../../actions/userOceanActions'
 import styled from 'styled-components'
 import { palette } from '../Shared/palette'

@@ -3,7 +3,9 @@ import {
   TRIGGER_USER_FOLLOW,
   TRIGGER_HOME_USER_FOLLOW,
   TRIGGER_EXPLORE_USER_FOLLOW,
-  TRIGGER_REFRESH_EXPLORE
+  TRIGGER_REFRESH_EXPLORE,
+  ASK_NEW_EXPLORE_QUERY,
+  UPDATE_EXPLORE_RESULTS
 } from './types'
 import * as base from '../variables'
 import axios from 'axios'
@@ -51,4 +53,22 @@ export const triggerFollow = (followInformations, mode) => (dispatch, getState) 
 
 export const refreshExplore = () => dispatch => {
   dispatch({ type: TRIGGER_REFRESH_EXPLORE })
+}
+
+export const newExploreQuery = newValue => dispatch => {
+  dispatch({ type: ASK_NEW_EXPLORE_QUERY, payload: newValue })
+}
+
+export const updateExploreResults = () => async (dispatch, getState) => {
+  const { allCreators } = getState().lists
+  const { exploreQuery } = getState().explore
+
+  const filteredResults = await allCreators.filter(creator => {
+    const { nameDisplayed, username } = creator.local
+    const creatorData = `${nameDisplayed} ${username}`
+
+    return creatorData.includes(exploreQuery)
+  })
+
+  dispatch({ type: UPDATE_EXPLORE_RESULTS, payload: filteredResults })
 }

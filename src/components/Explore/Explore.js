@@ -6,10 +6,10 @@ import { fetchLoggedUser } from '../../actions/loggedUserActions'
 import { fetchCreators } from '../../actions/listsActions'
 import { loadCreatorsChunk, refreshExplore } from '../../actions/exploreActions'
 
-import { Main } from '../Shared/UI'
+import { MainView } from '../Shared/UI'
+import SearchResults from './SearchResults'
 import Searchbox from './Searchbox'
 import Tags from './Tags'
-import SearchResults from './SearchResults'
 
 class ExploreScreen extends PureComponent {
   constructor(props) {
@@ -38,17 +38,13 @@ class ExploreScreen extends PureComponent {
   render() {
     const { refreshing } = this.props
     return (
-      <Main
-        refreshControl={
-          <RefreshControl
-            refreshing={refreshing}
-            onRefresh={this.refreshView}
-          />
-        }>
+      <MainView>
         <Searchbox />
         <Tags />
-        <SearchResults />
-      </Main>
+        <SearchResults
+          refreshing={refreshing}
+          refreshView={this.refreshView} />
+      </MainView>
     )
   }
 }
