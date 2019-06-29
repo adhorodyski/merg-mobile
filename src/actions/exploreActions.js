@@ -64,28 +64,17 @@ export const applyExploreTag = newTag => dispatch => {
   dispatch({ type: APPLY_NEW_EXPLORE_TAG, payload: newTag })
 }
 
-export const searchWithQuery = () => async (dispatch, getState) => {
+export const searchExploreQuery = () => async (dispatch, getState) => {
   const { allCreators } = getState().lists
   const { exploreQuery } = getState().explore
 
   const filteredResults = await allCreators.filter(creator => {
-    const { nameDisplayed, username } = creator.local
-    const creatorData = `${nameDisplayed} ${username}`
+    const { nameDisplayed, username, tags } = creator.local
 
-    return creatorData.includes(exploreQuery)
-  })
+    // compose list
+    const creatorData = `${nameDisplayed.toLowerCase()}, ${username.toLowerCase()}, ${tags.map(tag => ` ${tag.toLowerCase()}`)}`
 
-  dispatch({ type: UPDATE_EXPLORE_RESULTS, payload: filteredResults })
-}
-
-export const searchWithTag = () => async (dispatch, getState) => {
-  const { allCreators } = getState().lists
-  const { exploreQuery } = getState().explore
-
-  const filteredResults = await allCreators.filter(creator => {
-    const { tags } = creator.local
-    const creatorData = `${tags.map(tag => `${tag.toLowerCase()} `)}`
-
+    //search the list
     return creatorData.includes(exploreQuery.toLowerCase())
   })
 

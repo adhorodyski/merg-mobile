@@ -1,6 +1,9 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { applyExploreTag, searchWithTag } from '../../actions/exploreActions'
+import {
+  applyExploreTag,
+  searchExploreQuery
+} from '../../actions/exploreActions'
 import { View, Text, TouchableHighlight } from 'react-native'
 import styled from 'styled-components'
 
@@ -14,7 +17,7 @@ import {
 class Tags extends PureComponent {
   askTag = async value => {
     await this.props.applyExploreTag(value)
-    await this.props.searchWithTag()
+    await this.props.searchExploreQuery()
   }
 
   renderTags = () => {
@@ -57,6 +60,6 @@ export default connect(
   mapStateToProps,
   {
     applyExploreTag,
-    searchWithTag
+    searchExploreQuery
   }
 )(Tags)

@@ -3,7 +3,7 @@ import { View, TextInput } from 'react-native'
 import { connect } from 'react-redux'
 import {
   newExploreQuery,
-  searchWithQuery
+  searchExploreQuery
 } from '../../actions/exploreActions'
 import styled from 'styled-components'
 import { palette } from '../Shared/palette'
@@ -50,7 +50,7 @@ const Input = styled.TextInput`
 class Searchbox extends PureComponent {
   askQuery = async queryValue => {
     await this.props.newExploreQuery(queryValue)
-    await this.props.searchWithQuery()
+    await this.props.searchExploreQuery()
   }
 
   render() {
@@ -88,6 +88,6 @@ export default connect(
   mapStateToProps,
   {
     newExploreQuery,
-    searchWithQuery
+    searchExploreQuery
   }
 )(Searchbox)

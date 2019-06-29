@@ -8,7 +8,7 @@ import { EmptyFlatlistTemplate, ResultsFlatlist } from '../Shared/UI'
 
 const StyledResultsFlatlist = styled(ResultsFlatlist)`
   height: ${Dimensions.get('window').height};
-  padding-top: 20px;
+  padding-top: 15px;
 `
 
 class SearchResults extends PureComponent {
