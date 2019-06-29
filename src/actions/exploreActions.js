@@ -5,6 +5,7 @@ import {
   TRIGGER_EXPLORE_USER_FOLLOW,
   TRIGGER_REFRESH_EXPLORE,
   ASK_NEW_EXPLORE_QUERY,
+  APPLY_NEW_EXPLORE_TAG,
   UPDATE_EXPLORE_RESULTS
 } from './types'
 import * as base from '../variables'
@@ -59,7 +60,11 @@ export const newExploreQuery = newValue => dispatch => {
   dispatch({ type: ASK_NEW_EXPLORE_QUERY, payload: newValue })
 }
 
-export const updateExploreResults = () => async (dispatch, getState) => {
+export const applyExploreTag = newTag => dispatch => {
+  dispatch({ type: APPLY_NEW_EXPLORE_TAG, payload: newTag })
+}
+
+export const searchWithQuery = () => async (dispatch, getState) => {
   const { allCreators } = getState().lists
   const { exploreQuery } = getState().explore
 
@@ -68,6 +73,20 @@ export const updateExploreResults = () => async (dispatch, getState) => {
     const creatorData = `${nameDisplayed} ${username}`
 
     return creatorData.includes(exploreQuery)
+  })
+
+  dispatch({ type: UPDATE_EXPLORE_RESULTS, payload: filteredResults })
+}
+
+export const searchWithTag = () => async (dispatch, getState) => {
+  const { allCreators } = getState().lists
+  const { exploreQuery } = getState().explore
+
+  const filteredResults = await allCreators.filter(creator => {
+    const { tags } = creator.local
+    const creatorData = `${tags.map(tag => `${tag.toLowerCase()} `)}`
+
+    return creatorData.includes(exploreQuery.toLowerCase())
   })
 
   dispatch({ type: UPDATE_EXPLORE_RESULTS, payload: filteredResults })

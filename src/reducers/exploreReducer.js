@@ -3,6 +3,7 @@ import {
   TRIGGER_USER_FOLLOW,
   TRIGGER_REFRESH_EXPLORE,
   ASK_NEW_EXPLORE_QUERY,
+  APPLY_NEW_EXPLORE_TAG,
   UPDATE_EXPLORE_RESULTS
 } from '../actions/types'
 
@@ -28,6 +29,11 @@ const reducer = (state = initialState, action) => {
         refreshing: !state.refreshing
       }
     case ASK_NEW_EXPLORE_QUERY:
+      return {
+        ...state,
+        exploreQuery: action.payload
+      }
+    case APPLY_NEW_EXPLORE_TAG:
       return {
         ...state,
         exploreQuery: action.payload

@@ -1,31 +1,36 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
+import { applyExploreTag, searchWithTag } from '../../actions/exploreActions'
 import { View, Text, TouchableHighlight } from 'react-native'
 import styled from 'styled-components'
 
 import {
   Scrollable,
   ScrollElemSmall,
-  ScrollWord
+  ScrollWord,
+  ScrollWordActive
 } from '../Shared/UI'
 
 class Tags extends PureComponent {
-  onPress = e => {
-    console.log(e)
+  askTag = async value => {
+    await this.props.applyExploreTag(value)
+    await this.props.searchWithTag()
   }
 
   renderTags = () => {
-    const { tags } = this.props
+    const { tags, exploreQuery } = this.props
 
     return tags.map(tag => {
       return (
         <ScrollElemSmall
           key={tag}
-          onPress={() => this.onPress(tag)}
+          onPress={() => this.askTag(tag)}
           underlayColor={'transparent'}>
-          <ScrollWord>
-            {tag}
-          </ScrollWord>
+          {
+            exploreQuery === tag
+            ? <ScrollWordActive>{tag}</ScrollWordActive>
+            : <ScrollWord>{tag}</ScrollWord>
+          }
         </ScrollElemSmall>
       )
     })
@@ -44,7 +49,14 @@ class Tags extends PureComponent {
 }
 
 const mapStateToProps = state => ({
-  tags: state.explore.tags
+  tags: state.explore.tags,
+  exploreQuery: state.explore.exploreQuery
 })
 
-export default connect(mapStateToProps)(Tags)
+export default connect(
+  mapStateToProps,
+  {
+    applyExploreTag,
+    searchWithTag
+  }
+)(Tags)
