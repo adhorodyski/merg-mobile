@@ -15,7 +15,7 @@ export const loadCreatorsChunk = () => (dispatch, getState) => {
   dispatch({ type: LOAD_CREATORS_CHUNK, payload: allCreators })
 }
 
-export const triggerFollow = (followInformations, mode) => (dispatch, getState) => {
+export const triggerFollow = (followInformations, mode) => dispatch => {
   if (mode === 'HOME') {
     axios.post(`${base.API_URL}/api/follow`,
       {

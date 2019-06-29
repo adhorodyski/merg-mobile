@@ -27,15 +27,24 @@ export const IconSearch = styled(Ionicons)`
   left: 18px;
 `
 
+export const IconClear = styled(Ionicons)`
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  padding: 5px 10px;
+  z-index: 10;
+`
+
 const Input = styled.TextInput`
   width: 100%;
   height: 100%;
-  padding: 0 30px 0 50px;
+  padding: 0 50px;
   border-radius: 10px;
   background: transparent;
   color: ${theme.primaryTextColor};
   font-weight: bold;
   font-size: 18px;
+  z-index: 1;
 `
 
 class Searchbox extends PureComponent {
@@ -45,7 +54,7 @@ class Searchbox extends PureComponent {
   }
 
   render() {
-    const { exploreQuery } = this.props
+    const { exploreQuery, newExploreQuery } = this.props
 
     return (
       <StyledTile>
@@ -53,6 +62,14 @@ class Searchbox extends PureComponent {
           name="ios-search"
           size={20}
           color={`${palette.lightText}`} />
+        {
+          exploreQuery !== '' &&
+          <IconClear
+            name="ios-close-circle-outline"
+            size={25}
+            onPress={() => this.askQuery('')}
+            color={`${palette.lightText}`} />
+        }
         <Input
           value={exploreQuery}
           onChangeText={value => this.askQuery(value)}
