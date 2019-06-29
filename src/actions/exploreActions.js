@@ -68,12 +68,12 @@ export const searchExploreQuery = () => async (dispatch, getState) => {
   const { allCreators } = getState().lists
   const { exploreQuery } = getState().explore
 
+  // filter all creators
   const filteredResults = await allCreators.filter(creator => {
     const { nameDisplayed, username, tags } = creator.local
 
     // compose list
     const creatorData = `${nameDisplayed.toLowerCase()}, ${username.toLowerCase()}, ${tags.map(tag => ` ${tag.toLowerCase()}`)}`
-
     //search the list
     return creatorData.includes(exploreQuery.toLowerCase())
   })

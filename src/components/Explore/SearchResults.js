@@ -4,12 +4,22 @@ import { RefreshControl, View, Dimensions } from 'react-native'
 import styled from 'styled-components'
 
 import CreatorTile from './CreatorTile'
+import Searchbox from './Searchbox'
+import Tags from './Tags'
 import { EmptyFlatlistTemplate, ResultsFlatlist } from '../Shared/UI'
 
 const StyledResultsFlatlist = styled(ResultsFlatlist)`
-  height: ${Dimensions.get('window').height};
-  padding-top: 15px;
+  height: 100%;
 `
+
+const Search = () => {
+  return (
+    <>
+      <Searchbox />
+      <Tags />
+    </>
+  )
+}
 
 class SearchResults extends PureComponent {
   renderResults = res => {
@@ -30,6 +40,7 @@ class SearchResults extends PureComponent {
         keyExtractor={(item, idx) => idx.toString()}
         renderItem={({ item, idx }) => this.renderResults(item, idx)}
         ListEmptyComponent={EmptyFlatlistTemplate}
+        ListHeaderComponent={Search}
         refreshControl={
           <RefreshControl
             refreshing={refreshing}

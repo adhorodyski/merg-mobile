@@ -21,7 +21,6 @@ export const Main = styled.ScrollView`
 
 export const MainView = styled.View`
   background: ${theme.baseBackgroundColor};
-  height: ${Dimensions.get('window').height};
 `
 
 export const StyledView = styled.View`

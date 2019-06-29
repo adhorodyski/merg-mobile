@@ -8,8 +8,6 @@ import { loadCreatorsChunk, refreshExplore } from '../../actions/exploreActions'
 
 import { MainView } from '../Shared/UI'
 import SearchResults from './SearchResults'
-import Searchbox from './Searchbox'
-import Tags from './Tags'
 
 class ExploreScreen extends PureComponent {
   constructor(props) {
@@ -39,8 +37,6 @@ class ExploreScreen extends PureComponent {
     const { refreshing } = this.props
     return (
       <MainView>
-        <Searchbox />
-        <Tags />
         <SearchResults
           refreshing={refreshing}
           refreshView={this.refreshView} />

@@ -110,7 +110,7 @@ class Actions extends PureComponent {
             activeOpacity={1}
             underlayColor={palette.darkBlue}>
             <BtnText>
-              merge
+              { isFollowing ? 'merged' : 'merge' }
             </BtnText>
           </StyledPosedSelectButton>
           <StyledButton
