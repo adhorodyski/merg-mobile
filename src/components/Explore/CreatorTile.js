@@ -5,15 +5,10 @@ import {
   Image,
   Text
 } from 'react-native'
-import { connect } from 'react-redux'
-import { fetchLoggedUser } from '../../actions/loggedUserActions'
-import { triggerFollow } from '../../actions/exploreActions'
 import { withNavigation, StackActions } from 'react-navigation'
 import styled from 'styled-components'
 import { palette } from '../Shared/palette'
 import * as theme from '../Shared/themes'
-
-import { PosedSelectButton, BtnText } from '../Shared/UI'
 
 const FacebookLogo = require('../../../assets/social-media/facebook.png')
 const TwitterLogo = require('../../../assets/social-media/twitter.png')
@@ -29,35 +24,39 @@ const StyledResultTile = styled.View`
   min-height: 100px;
   background: ${theme.secondaryOverlayBackgroundColor};
   display: flex;
+  flex-direction: row;
   border-radius: 10px;
   box-shadow: 0 10px 15px ${theme.mediumShadowColor};
 `
 
-const TopWrapper = styled.View`
+const AvatarWrapper = styled.View`
   height: 60px;
-  padding: 0 10px;
-  display: flex;
+  width: 60px;
+  margin: auto 10px;
+  border-radius: 30px;
+  box-shadow: 0 4px 3px ${theme.smallShadowColor};
 `
 
 const Avatar = styled.Image`
-  height: 35px;
-  width: 35px;
+  height: 100%;
+  width: 100%;
   background: ${theme.baseBackgroundColor};
-  margin: auto 10px auto 0;
-  border-radius: 18px;
+  border-radius: 30px;
 `
 
 const InfoContainer = styled.View`
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: row;
-  height: 100%;
 `
 
 const Name = styled.Text`
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
   color: ${theme.primaryTextColor};
   margin: auto 0 0 0;
+  width: 250px;
 `
 
 const FollowersCounter = styled.Text`
@@ -79,7 +78,7 @@ const FlexView = styled.View`
 const MergedGroup = styled.View`
   display: flex;
   flex-direction: row;
-  margin-left: 45px;
+  margin-top: 5px;
 `
 
 const Provider = styled.Image`
@@ -89,109 +88,8 @@ const Provider = styled.Image`
   margin-right: 10px;
 `
 
-const BottomWrapper = styled.View`
-  height: 40px;
-  padding: 0 10px;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-`
-
-const StyledButton = styled(PosedSelectButton)`
-  width: 75px;
-  margin: auto 0;
-`
-
 class CreatorTile extends PureComponent {
-  constructor(props) {
-    super(props)
-    this.state = {
-      isFollowing: false,
-      ownProfile: false,
-      isPressed: false
-    }
-  }
-
-  componentDidMount = async () => {
-    const { loggedUsername, result: { local: { username } } } = this.props
-
-    await this.setState(
-      { ownProfile: (loggedUsername === username) && true },
-      async () => await this.checkFollow()
-    )
-  }
-
-  componentDidUpdate = async () => {
-    await this.checkFollow()
-  }
-
-  handlePressIn = () => {
-    this.setState({ isPressed: true })
-  }
-
-  handlePressOut = () => {
-    this.setState({ isPressed: false })
-  }
-
-  onFollow = async () => {
-    const { isFollowing } = this.state
-    const {
-      result: {
-        _id,
-        local: {
-          username,
-          nameDisplayed,
-          photo
-        },
-        facebook,
-        twitter,
-        instagram,
-        tumblr,
-        youtube,
-        spotify
-      }
-    } = this.props
-
-    const followInformations = {
-      isFollowing: !isFollowing,
-      creatorID: _id,
-      creatorUsername: username,
-      creatorName: nameDisplayed,
-      creatorPhoto: photo,
-      creatorFacebook: facebook,
-      creatorTwitter: twitter,
-      creatorInstagram: instagram,
-      creatorYoutube: youtube,
-      creatorTumblr: tumblr,
-      creatorSpotify: spotify
-    }
-
-    await this.props.triggerFollow(followInformations)
-    await this.setState({ isFollowing: !isFollowing })
-    await this.props.fetchLoggedUser()
-    await this.checkFollow()
-  }
-
-  checkFollow = () => {
-    const { isFollowing } = this.state
-    const { follows, result: { _id } } = this.props
-    // reset isFollowing value in the state and check for the update
-    this.setState({ isFollowing: false }, async () => {
-      for await (const e of follows) {
-        if(e.creatorID === _id) {
-          await this.setState({ isFollowing: e.isFollowing })
-        }
-      }
-    })
-
-  }
-
   render() {
-    const {
-      isFollowing,
-      ownProfile,
-      isPressed
-    } = this.state
     const {
       navigation,
       result: {
@@ -212,7 +110,6 @@ class CreatorTile extends PureComponent {
 
     return (
       <StyledResultTile>
-        <TopWrapper>
           <TouchableWithoutFeedback
             onPress={() => {
               const pushAction = StackActions.push({
@@ -224,55 +121,30 @@ class CreatorTile extends PureComponent {
               navigation.dispatch(pushAction)
           }}>
             <InfoContainer>
-              <Avatar source={{uri: photo}} />
+              <AvatarWrapper>
+                <Avatar source={{uri: photo}} />
+              </AvatarWrapper>
               <FlexView>
-                <Name>{nameDisplayed}</Name>
-                <FollowersCounter ownProfile={ownProfile}>
+                <Name numberOfLines={1}>{nameDisplayed}</Name>
+                <FollowersCounter>
                   <CounterSpan>
                     {followers.length} followers
                   </CounterSpan>
                 </FollowersCounter>
+                <MergedGroup>
+                  {facebook && <Provider source={FacebookLogo} />}
+                  {twitter && <Provider source={TwitterLogo} />}
+                  {instagram && <Provider source={InstagramLogo} />}
+                  {youtube && <Provider source={YoutubeLogo} />}
+                  {spotify && <Provider source={SpotifyLogo} />}
+                  {tumblr && <Provider source={TumblrLogo} />}
+                </MergedGroup>
               </FlexView>
             </InfoContainer>
           </TouchableWithoutFeedback>
-        </TopWrapper>
-        <BottomWrapper>
-          <MergedGroup>
-            {facebook && <Provider source={FacebookLogo} />}
-            {twitter && <Provider source={TwitterLogo} />}
-            {instagram && <Provider source={InstagramLogo} />}
-            {youtube && <Provider source={YoutubeLogo} />}
-            {spotify && <Provider source={SpotifyLogo} />}
-            {tumblr && <Provider source={TumblrLogo} />}
-          </MergedGroup>
-          {
-            !ownProfile &&
-            <StyledButton
-              isPressed={isPressed}
-              isFollowing={isFollowing}
-              pose={isPressed ? 'press' : 'init'}
-              onPressIn={this.handlePressIn}
-              onPressOut={this.handlePressOut}
-              onPress={() => this.onFollow()}
-              activeOpacity={1}
-              underlayColor={palette.darkBlue}>
-              <BtnText>
-                { isFollowing ? 'merged' : 'merge' }
-              </BtnText>
-            </StyledButton>
-          }
-        </BottomWrapper>
       </StyledResultTile>
     )
   }
 }
 
-export default withNavigation(
-  connect(
-    null,
-    {
-      triggerFollow,
-      fetchLoggedUser
-    }
-  )(CreatorTile)
-)
+export default withNavigation(CreatorTile)

@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react'
-import { View } from 'react-native'
+import { View, WebView } from 'react-native'
 import styled from 'styled-components'
+import { Video } from 'expo'
 import Youtube from 'react-native-youtube'
 
-const StyledVideo = styled(Youtube)`
+const StyledVideo = styled(WebView)`
   width: 100%;
   height: 300px;
   display: flex;
@@ -12,13 +13,19 @@ const StyledVideo = styled(Youtube)`
 
 class YoutubePost extends PureComponent {
   renderVideo = () => {
+    const { videoId } = this.props.data.contentDetails
     const { url } = this.props.data
     console.log(this.props.data)
-    return <StyledVideo videoId={''} />
+
+    return (
+        <StyledVideo
+          source={{uri: `https://www.youtube.com/embed/${videoId}?rel=1&autoplay=0&showinfo=1&controls=1`}}
+          javaScriptEnabled={true} />
+    )
+
   }
 
   render() {
-    const { type } = this.props.data
     return (
       <View>
         { this.renderVideo() }
