@@ -14,7 +14,7 @@ const AuthorInfo = styled.View`
   justify-content: space-between;
 `
 
-const TweetText = styled.View`
+const Content = styled.View`
   display: flex;
   width: 100%;
   min-height: 50px;
@@ -69,7 +69,7 @@ const External = styled.Text`
   color: #1B95E0;
 `
 
-const Content = styled.Text`
+const ContentText = styled.Text`
   font-size: 16px;
   line-height: 22px;
   font-weight: bold;
@@ -84,7 +84,7 @@ const TweetAvatar = styled.Image`
   border-radius: 18px;
 `
 
-const TwitterLogo = styled.Image`
+const ProviderLogo = styled.Image`
   height: 36px;
   width: 36px;
   margin: auto 0 auto auto;
@@ -206,14 +206,14 @@ const TwitterPost = props => {
             <Username>@{screen_name}</Username>
           </NamesContainer>
         </Linked>
-        <TwitterLogo source={TwitterLogoBlue} />
+        <ProviderLogo source={TwitterLogoBlue} />
       </AuthorInfo>
-      <TweetText>
+      <Content>
         {
           media &&
           <Photo source={{uri: media[0].media_url_https}} />
         }
-        <Content>
+        <ContentText>
           {
             hashtags.length > 0
             || user_mentions.length > 0
@@ -221,8 +221,8 @@ const TwitterPost = props => {
             ? transform(hashtags, user_mentions, media)
             : text
           }
-        </Content>
-      </TweetText>
+        </ContentText>
+      </Content>
       <Actions>
         <Permalink>
           View on Twitter

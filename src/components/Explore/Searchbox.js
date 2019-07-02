@@ -67,6 +67,7 @@ class Searchbox extends PureComponent {
           <IconClear
             name="ios-close-circle-outline"
             size={25}
+            suppressHighlighting={true}
             onPress={() => this.askQuery('')}
             color={`${palette.lightText}`} />
         }

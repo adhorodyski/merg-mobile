@@ -31,8 +31,6 @@ import SettingsScreen from './src/components/Settings/Settings'
 import GreetingAvatar from './src/components/Shared/GreetingAvatar'
 import DarkModeSwitch from './src/components/Shared/DarkModeSwitch'
 const MergeIcon = require('./assets/branding/logo-short-colors.png')
-const SettingsIcon = require('./assets/settings.png')
-
 
 const HeaderButton = styled.Image`
   height: 25px;
