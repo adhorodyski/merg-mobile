@@ -15,7 +15,6 @@ class YoutubePost extends PureComponent {
   renderVideo = () => {
     const { videoId } = this.props.data.contentDetails
     const { url } = this.props.data
-    console.log(this.props.data)
 
     return (
         <StyledVideo

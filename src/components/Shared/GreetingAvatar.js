@@ -6,9 +6,9 @@ import { AvatarSmall } from '../Shared/UI'
 
 const StyledAvatarSmall = styled(AvatarSmall)`
   margin: auto 0;
-  height: 30px;
-  width: 30px;
-  border-radius: 15px;
+  height: 25px;
+  width: 25px;
+  border-radius: 12.5px;
 `
 
 class GreetingAvatar extends PureComponent {

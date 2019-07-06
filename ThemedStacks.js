@@ -30,7 +30,8 @@ import ExploreProfileScreen from './src/components/Profile/ExploreProfile'
 import SettingsScreen from './src/components/Settings/Settings'
 import GreetingAvatar from './src/components/Shared/GreetingAvatar'
 import DarkModeSwitch from './src/components/Shared/DarkModeSwitch'
-const MergeIcon = require('./assets/branding/logo-short-colors.png')
+const MergeIconBlack = require('./assets/branding/logo-short-black.png')
+const MergeIconWhite = require('./assets/branding/logo-short-white.png')
 
 const HeaderButton = styled.Image`
   height: 25px;
@@ -176,7 +177,11 @@ const AppStack = createStackNavigator({
         headerLeft: (
           <StyledTouchable>
             <HeaderButton
-              source={MergeIcon} />
+              source={
+                screenProps === 'dark'
+                ? MergeIconWhite
+                : MergeIconBlack
+              } />
           </StyledTouchable>
         ),
         headerRight: (
@@ -270,7 +275,11 @@ const AuthStack = createStackNavigator({
         headerLeft: (
           <StyledTouchable>
             <HeaderButton
-              source={MergeIcon} />
+              source={
+                screenProps === 'dark'
+                ? MergeIconWhite
+                : MergeIconBlack
+              } />
           </StyledTouchable>
         ),
       }

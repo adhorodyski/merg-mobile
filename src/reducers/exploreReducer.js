@@ -10,7 +10,7 @@ import {
 const initialState = {
   results: [],
   exploreQuery: '',
-  tags: ['Music', 'Sport', 'Technology', 'Food', 'Nature', 'Television', 'Lifestyle', 'Vlogs', 'Fashion', 'Travel', 'AI', 'Games'],
+  tags: ['Music', 'Lifestyle', 'Vlogs', 'Fashion', 'Games', 'Comedy', 'Art', 'Beauty', 'Technology', 'Sport', 'Automotive', 'Finances', 'Science', 'Nature', 'Food'],
   refreshing: false
 }
 
