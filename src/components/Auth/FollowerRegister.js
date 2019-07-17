@@ -63,7 +63,7 @@ class FollowerRegisterScreen extends PureComponent {
     } = this.props
 
     return (
-      <Main>
+      <Main keyboardShouldPersistTaps='handled'>
         <KeyboardAvoidingView
           behavior="position"
           enabled>

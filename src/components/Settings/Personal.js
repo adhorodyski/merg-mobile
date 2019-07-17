@@ -75,7 +75,7 @@ class Personal extends PureComponent {
             defaultValue={usernameValue} />
         </Tile>
         <Tile>
-          <SmallLabel>E-mail</SmallLabel>
+          <SmallLabel>Email</SmallLabel>
           <Input
             onChangeText={value => updateEmail(value)}
             keyboardType={'email-address'}

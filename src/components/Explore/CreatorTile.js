@@ -20,13 +20,9 @@ const YoutubeLogo = require('../../../assets/social-media/youtube.png')
 const StyledResultTile = styled.View`
   width: 95%;
   margin: 0 auto;
-  margin-bottom: 10px;
   min-height: 100px;
-  background: ${theme.secondaryOverlayBackgroundColor};
   display: flex;
   flex-direction: row;
-  border-radius: 10px;
-  box-shadow: 0 10px 15px ${theme.mediumShadowColor};
 `
 
 const AvatarWrapper = styled.View`
@@ -34,7 +30,7 @@ const AvatarWrapper = styled.View`
   width: 60px;
   margin: auto 10px;
   border-radius: 30px;
-  box-shadow: 0 4px 3px ${theme.smallShadowColor};
+  box-shadow: 0 4px 5px ${theme.mediumShadowColor};
 `
 
 const Avatar = styled.Image`

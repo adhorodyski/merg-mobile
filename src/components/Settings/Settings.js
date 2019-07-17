@@ -18,7 +18,7 @@ class Settings extends PureComponent {
 
   render() {
     return (
-      <Main>
+      <Main keyboardShouldPersistTaps='handled'>
         <Picture />
         <Personal />
         <General />

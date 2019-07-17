@@ -80,7 +80,7 @@ const MainNavigator = createMaterialTopTabNavigator({
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (
         <Ionicons
-          name="ios-infinite"
+          name="md-infinite"
           size={26}
           color={tintColor} />
       )
@@ -91,7 +91,7 @@ const MainNavigator = createMaterialTopTabNavigator({
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (
         <Ionicons
-          name="ios-search"
+          name="md-search"
           size={26}
           color={tintColor} />
       )
@@ -102,7 +102,7 @@ const MainNavigator = createMaterialTopTabNavigator({
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (
         <Ionicons
-          name="ios-person"
+          name="md-person"
           size={26}
           color={tintColor} />
       )

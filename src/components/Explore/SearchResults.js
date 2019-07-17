@@ -36,6 +36,7 @@ class SearchResults extends PureComponent {
 
     return (
       <StyledResultsFlatlist
+        keyboardShouldPersistTaps='handled'
         data={results}
         keyExtractor={(item, idx) => idx.toString()}
         renderItem={({ item, idx }) => this.renderResults(item, idx)}
