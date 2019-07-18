@@ -12,7 +12,7 @@ const TumblrLogo = require('../../../assets/social-media/tumblr.png')
 
 const StyledWrapper = styled.View`
   display: flex;
-  margin: 20px auto;
+  margin: 20px auto 10px auto;
   flex-direction: row;
   background: blue;
   background: ${theme.overlayBackgroundColor};

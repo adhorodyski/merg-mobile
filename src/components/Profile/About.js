@@ -14,6 +14,21 @@ const StyledWrapper = styled.View`
 `
 
 class About extends PureComponent {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isStreamcountExpanded: false
+    }
+  }
+
+  expandStreamcount = () => {
+    const { isStreamcountExpanded } = this.state
+    this.setState(
+      { isStreamcountExpanded: !isStreamcountExpanded },
+      () => { console.log(this.state.isStreamcountExpanded) }
+    )
+  }
+
   render() {
     const {
       mode,
@@ -34,6 +49,11 @@ class About extends PureComponent {
         tumblr
       }
     } = this.props
+    const { isStreamcountExpanded } = this.state
+
+    const streamsArray = [
+      facebook, twitter, instagram, youtube, spotify, tumblr
+    ]
 
     return (
       <StyledWrapper>
@@ -41,23 +61,32 @@ class About extends PureComponent {
           firstName={firstName}
           username={username}
           profilePic={profilePic} />
-        <Note
-          about={about} />
+        {
+          about !== '' &&
+          <Note
+            about={about} />
+        }
         <Counters
           followers={followers}
-          follows={follows} />
+          follows={follows}
+          streamsArray={streamsArray}
+          isStreamcountExpanded={isStreamcountExpanded}
+          expandStreamcount={this.expandStreamcount} />
+        {
+          isStreamcountExpanded &&
+          <MergedWithGroup
+            facebook={facebook}
+            twitter={twitter}
+            instagram={instagram}
+            youtube={youtube}
+            spotify={spotify}
+            tumblr={tumblr} />
+        }
         <Actions
           user={user}
           mode={mode}
           follows={follows}
           isFollowing={isFollowing} />
-        <MergedWithGroup
-          facebook={facebook}
-          twitter={twitter}
-          instagram={instagram}
-          youtube={youtube}
-          spotify={spotify}
-          tumblr={tumblr} />
       </StyledWrapper>
     )
   }

@@ -1,7 +1,9 @@
 import React, { PureComponent } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, TouchableWithoutFeedback } from 'react-native'
 import styled from 'styled-components'
 import * as theme from '../Shared/themes'
+import { palette } from '../Shared/palette'
+import { Ionicons } from '@expo/vector-icons'
 
 const StyledWrapper = styled.View`
   display: flex;
@@ -12,7 +14,7 @@ const StyledWrapper = styled.View`
 const CountWrap = styled.View`
   display: flex;
   margin: 10px 20px;
-  width: 100px;
+  width: 70px;
 `
 
 const NumSpan = styled.Text`
@@ -28,15 +30,33 @@ const SmallSpan = styled.Text`
   text-align: center;
 `
 
+const IconWrapper = styled.TouchableWithoutFeedback``
+
+const FlexWrap = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`
+
+const Icon = styled(Ionicons)`
+  margin: auto 10px;
+`
+
 class Counters extends PureComponent {
   render() {
-    const { followers, follows } = this.props
+    const {
+      followers,
+      follows,
+      streamsArray,
+      isStreamcountExpanded,
+      expandStreamcount
+    } = this.props
 
     return (
       <StyledWrapper>
         <CountWrap>
           <NumSpan>
-            {followers && followers.length} M
+            {followers && followers.length} K
           </NumSpan>
           <SmallSpan>
             followers
@@ -50,6 +70,29 @@ class Counters extends PureComponent {
             follows
           </SmallSpan>
         </CountWrap>
+        <IconWrapper onPress={() => expandStreamcount()}>
+          <CountWrap>
+            <FlexWrap>
+              <NumSpan>
+                {
+                  streamsArray &&
+                  streamsArray.filter(e => e === true).length
+                }
+              </NumSpan>
+              <Icon
+                name={
+                  isStreamcountExpanded
+                  ? "ios-arrow-down"
+                  : "ios-arrow-up"
+                }
+                size={16}
+                color={`${palette.lightText}`} />
+            </FlexWrap>
+            <SmallSpan>
+              streams
+            </SmallSpan>
+          </CountWrap>
+        </IconWrapper>
       </StyledWrapper>
     )
   }

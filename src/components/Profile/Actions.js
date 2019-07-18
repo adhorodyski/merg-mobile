@@ -5,6 +5,7 @@ import { triggerFollow } from '../../actions/exploreActions'
 import { View, Text, TouchableHighlight } from 'react-native'
 import styled from 'styled-components'
 import { palette } from '../Shared/palette'
+import { Ionicons } from '@expo/vector-icons'
 
 import { PosedButton, PosedSelectButton, BtnText } from '../Shared/UI'
 
@@ -12,7 +13,7 @@ const StyledWrapper = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 5px auto;
+  margin: 20px auto;
 `
 
 const StyledButton = styled(PosedButton)`
@@ -21,6 +22,10 @@ const StyledButton = styled(PosedButton)`
 
 const StyledPosedSelectButton = styled(PosedSelectButton)`
   margin: auto 20px;
+`
+
+const Icon = styled(Ionicons)`
+  margin: auto 10px;
 `
 
 class Actions extends PureComponent {
@@ -113,18 +118,10 @@ class Actions extends PureComponent {
               { isFollowing ? 'merged' : 'merge' }
             </BtnText>
           </StyledPosedSelectButton>
-          <StyledButton
-            isPressed={isTalkPressed}
-            pose={isTalkPressed ? 'press' : 'init'}
-            onPressIn={this.handleTalkPressIn}
-            onPressOut={this.handleTalkPressOut}
-            onPress={() => console.log('talk')}
-            activeOpacity={1}
-            underlayColor={palette.darkBlue}>
-            <BtnText>
-              talk to
-            </BtnText>
-          </StyledButton>
+          <Icon
+            name="ios-send"
+            size={30}
+            color={`${palette.mediumBlue}`} />
         </StyledWrapper>
       )
     } else {
