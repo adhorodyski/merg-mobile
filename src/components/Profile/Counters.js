@@ -39,7 +39,7 @@ const FlexWrap = styled.View`
 `
 
 const Icon = styled(Ionicons)`
-  margin: auto 10px;
+  margin: auto 0 auto 10px;
 `
 
 class Counters extends PureComponent {
@@ -82,8 +82,8 @@ class Counters extends PureComponent {
               <Icon
                 name={
                   isStreamcountExpanded
-                  ? "ios-arrow-down"
-                  : "ios-arrow-up"
+                  ? "ios-arrow-up"
+                  : "ios-arrow-down"
                 }
                 size={16}
                 color={`${palette.lightText}`} />

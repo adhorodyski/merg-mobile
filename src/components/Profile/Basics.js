@@ -18,16 +18,24 @@ const NamesWrap = styled.View`
   margin: auto 0;
 `
 
+const AvatarWrapper = styled.View`
+  height: 80px;
+  width: 80px;
+  margin: auto 10px;
+  border-radius: 40px;
+  box-shadow: 0 4px 5px ${theme.mediumShadowColor};
+`
+
 const StyledAvatar = styled(Avatar)`
-  height: 50px;
-  width: 50px;
+  height: 100%;
+  width: 100%;
   margin: auto 10px auto auto;
-  border-radius: 25px;
+  border-radius: 40px;
 `
 
 const Name = styled.Text`
   font-weight: bold;
-  font-size: 20px;
+  font-size: 15px;
   color: ${theme.primaryTextColor};
 `
 
@@ -50,7 +58,9 @@ class Basics extends PureComponent {
 
     return (
       <StyledWrapper>
-        <StyledAvatar source={{uri: profilePic}} />
+        <AvatarWrapper>
+          <StyledAvatar source={{uri: profilePic}} />
+        </AvatarWrapper>
         <NamesWrap>
           <Name>
             {firstName}

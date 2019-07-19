@@ -22,18 +22,25 @@ const StyledButton = styled(PosedButton)`
 
 const StyledPosedSelectButton = styled(PosedSelectButton)`
   margin: auto 20px;
+  padding: 0 10px;
 `
 
 const Icon = styled(Ionicons)`
-  margin: auto 10px;
+  margin: auto;
+`
+
+const FlexWrap = styled.View`
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
 `
 
 class Actions extends PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      isMergePressed: false,
-      isTalkPressed: false
+      isMergePressed: false
     }
   }
 
@@ -81,19 +88,8 @@ class Actions extends PureComponent {
     await this.props.fetchLoggedUser()
   }
 
-  handleTalkPressIn = () => {
-    this.setState({ isTalkPressed: true })
-  }
-
-  handleTalkPressOut = () => {
-    this.setState({ isTalkPressed: false })
-  }
-
   render() {
-    const {
-      isMergePressed,
-      isTalkPressed
-    } = this.state
+    const { isMergePressed } = this.state
     const {
       loggedUsername,
       isFollowing,
@@ -114,14 +110,20 @@ class Actions extends PureComponent {
             onPress={this.onFollow}
             activeOpacity={1}
             underlayColor={palette.darkBlue}>
-            <BtnText>
-              { isFollowing ? 'merged' : 'merge' }
-            </BtnText>
+            <FlexWrap>
+              <Icon
+                name={
+                  isFollowing
+                  ? "ios-checkmark-circle-outline"
+                  : "ios-add-circle-outline"
+                }
+                size={20}
+                color={`${palette.lightGray}`} />
+              <BtnText>
+                { isFollowing ? 'merged' : 'merge' }
+              </BtnText>
+            </FlexWrap>
           </StyledPosedSelectButton>
-          <Icon
-            name="ios-send"
-            size={30}
-            color={`${palette.mediumBlue}`} />
         </StyledWrapper>
       )
     } else {

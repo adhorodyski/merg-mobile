@@ -76,7 +76,7 @@ class TileHeader extends PureComponent {
           <H4>{firstName}</H4>
           <TimeP>{time}</TimeP>
           <Icon
-            name="ios-arrow-dropright"
+            name="ios-arrow-forward"
             size={20}
             color={`${palette.lightText}`} />
         </StyledHeaderInsider>
