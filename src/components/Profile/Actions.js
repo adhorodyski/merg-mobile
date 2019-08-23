@@ -26,11 +26,14 @@ const StyledPosedSelectButton = styled(PosedSelectButton)`
 `
 
 const Icon = styled(Ionicons)`
-  margin: auto;
+  position: absolute;
+  top: 5px;
+  left: 10px;
 `
 
 const FlexWrap = styled.View`
   display: flex;
+  position: relative;
   width: 100%;
   flex-direction: row;
   justify-content: center;

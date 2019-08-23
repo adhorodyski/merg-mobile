@@ -63,8 +63,8 @@ export const Tile = styled.View`
 // BUTTONS
 
 export const Button = styled.TouchableHighlight`
-  width: 100px;
-  height: 30px;
+  width: 300px;
+  height: 50px;
   background: ${p =>
     p.isPressed
     ? theme.secondaryBlueColor
@@ -73,6 +73,7 @@ export const Button = styled.TouchableHighlight`
   border: none;
   border-radius: 10px;
   display: flex;
+  justify-content: center;
   margin: 10px auto;
   box-shadow: 0 2px 2px rgba(41, 71, 242, 0.4);
 `
@@ -103,21 +104,21 @@ export const ButtonSuccess = styled(Button)`
 
 export const PosedButton = posed(Button)({
   init: { scale: 1 },
-  press: { scale: 0.9 }
+  press: { scale: 0.97 }
 })
 
 export const PosedSelectButton = posed(SelectButton)({
   init: { scale: 1 },
-  press: { scale: 0.9 }
+  press: { scale: 0.97 }
 })
 
 export const PosedButtonSuccess = posed(ButtonSuccess)({
   init: { scale: 1 },
-  press: { scale: 0.9 }
+  press: { scale: 0.97 }
 })
 
 export const BtnText = styled.Text`
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   color: ${theme.buttonTextColor};
   text-align: center;
