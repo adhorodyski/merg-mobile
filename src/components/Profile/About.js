@@ -23,10 +23,7 @@ class About extends PureComponent {
 
   expandStreamcount = () => {
     const { isStreamcountExpanded } = this.state
-    this.setState(
-      { isStreamcountExpanded: !isStreamcountExpanded },
-      () => { console.log(this.state.isStreamcountExpanded) }
-    )
+    this.setState({ isStreamcountExpanded: !isStreamcountExpanded })
   }
 
   render() {

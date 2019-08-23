@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { View, Image } from 'react-native'
 import styled from 'styled-components'
 import * as theme from './themes'
-import { Video } from 'expo'
+import { Video } from 'expo-av'
 
 const InstagramLogo = require('../../../assets/social-media/instagram.png')
 

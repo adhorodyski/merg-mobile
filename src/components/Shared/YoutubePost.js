@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { View, WebView } from 'react-native'
 import styled from 'styled-components'
-import { Video } from 'expo'
+import { Video } from 'expo-av'
 import Youtube from 'react-native-youtube'
 
 const StyledVideo = styled(WebView)`
