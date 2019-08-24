@@ -443,8 +443,8 @@ const Stacks = createAppContainer(createSwitchNavigator(
 
 class ThemedStacks extends PureComponent {
   render() {
-    const { isDarkValue } = this.props
-    const themeMode = isDarkValue ? 'dark' : 'light'
+    const { isDark } = this.props
+    const themeMode = isDark ? 'dark' : 'light'
 
     return (
       <ThemeProvider theme={{ mode: themeMode }}>
@@ -455,7 +455,7 @@ class ThemedStacks extends PureComponent {
 }
 
 const mapStateToProps = state => ({
-  isDarkValue: state.settings.general.isDarkValue
+  isDark: state.loggedUser.user.isDark
 })
 
 export default connect(mapStateToProps)(ThemedStacks)
