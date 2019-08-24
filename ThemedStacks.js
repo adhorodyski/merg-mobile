@@ -39,11 +39,6 @@ const HeaderButton = styled.Image`
   margin: auto;
 `
 
-const FlexView = styled.View`
-  display: flex;
-  flex-direction: row;
-`
-
 const HomeStack = createStackNavigator({
   Home: {
     screen: HomeScreen,
@@ -80,7 +75,7 @@ const MainNavigator = createMaterialTopTabNavigator({
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (
         <Ionicons
-          name="md-infinite"
+          name="ios-infinite"
           size={26}
           color={tintColor} />
       )
@@ -91,7 +86,7 @@ const MainNavigator = createMaterialTopTabNavigator({
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (
         <Ionicons
-          name="md-search"
+          name="ios-search"
           size={26}
           color={tintColor} />
       )
@@ -101,10 +96,7 @@ const MainNavigator = createMaterialTopTabNavigator({
     screen: ProfileScreen,
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (
-        <Ionicons
-          name="md-person"
-          size={26}
-          color={tintColor} />
+        <GreetingAvatar />
       )
     }
   }
@@ -185,24 +177,16 @@ const AppStack = createStackNavigator({
           </StyledTouchable>
         ),
         headerRight: (
-          <FlexView>
-            <StyledTouchable
-              onPress={() => {
-                const pushAction = StackActions.push({ routeName: 'Settings' })
-                navigation.dispatch(pushAction)
-              }}>
-              <HeaderIoniconsButton
-                name="ios-more"
-                size={30}
-                color={`${palette.lightText}`} />
-            </StyledTouchable>
-            <StyledTouchable
-              onPress={() => {
-                navigation.navigate({ routeName: 'Profile' })
-              }}>
-              <GreetingAvatar />
-            </StyledTouchable>
-          </FlexView>
+          <StyledTouchable
+            onPress={() => {
+              const pushAction = StackActions.push({ routeName: 'Settings' })
+              navigation.dispatch(pushAction)
+            }}>
+            <HeaderIoniconsButton
+              name="ios-more"
+              size={30}
+              color={`${palette.lightText}`} />
+          </StyledTouchable>
         )
       }
     }
