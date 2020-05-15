@@ -1,0 +1,8 @@
+.idea
+dist
+.expo
+.expo-shared
+node_modules
+App_Resources
+yarn.lock
+README.md
