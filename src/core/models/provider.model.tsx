@@ -1,5 +1,4 @@
-import { PROVIDERS } from 'src/app/core/models/providers.enum';
-import { IProviderDetails } from 'src/app/core/models/provider-details.model';
+import { PROVIDERS, IProviderDetails } from '@core/models';
 
 export interface IProvider {
     name: PROVIDERS;

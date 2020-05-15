@@ -1,5 +1,5 @@
-import { IPost, PROVIDERS } from '../models';
-import { mockedPostAuthor } from './post-author.mockup';
+import { IPost, PROVIDERS } from '@core/models';
+import { mockedPostAuthor } from '@core/mocks';
 
 export const mockedStories: IPost[] = [
     {

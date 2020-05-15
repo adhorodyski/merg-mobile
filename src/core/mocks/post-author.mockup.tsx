@@ -1,4 +1,4 @@
-import { ACCOUNTS, PROVIDERS, IPostAuthor } from '../models';
+import { ACCOUNTS, PROVIDERS, IPostAuthor } from '@core/models';
 
 export const mockedPostAuthor: IPostAuthor = {
     accountType: ACCOUNTS.CREATOR,

@@ -3,10 +3,18 @@
         "allowSyntheticDefaultImports": true,
         "jsx": "react-native",
         "lib": ["dom", "esnext"],
+        "target": "ESNext",
         "moduleResolution": "node",
         "noEmit": true,
         "skipLibCheck": true,
         "resolveJsonModule": true,
-        "strict": true
+        "strict": true,
+        "baseUrl": ".",
+        "paths": {
+            "*": ["src/*"],
+            "@views/*": ["src/views/*"],
+            "@core/*": ["src/core/*"],
+            "@shared/*": ["src/shared/*"]
+        }
     }
 }

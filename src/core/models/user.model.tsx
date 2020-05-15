@@ -1,5 +1,4 @@
-import { ACCOUNTS } from 'src/app/core/models/accounts.enum';
-import { IProvider } from 'src/app/core/models/provider.model';
+import { ACCOUNTS, IProvider } from '@core/models';
 
 export interface IUser {
     username: string;
