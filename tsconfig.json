@@ -3,7 +3,7 @@
         "allowSyntheticDefaultImports": true,
         "jsx": "react-native",
         "lib": ["dom", "esnext"],
-        "target": "ESNext",
+        "target": "esnext",
         "moduleResolution": "node",
         "noEmit": true,
         "skipLibCheck": true,
@@ -12,9 +12,9 @@
         "baseUrl": ".",
         "paths": {
             "*": ["src/*"],
-            "@views/*": ["src/views/*"],
-            "@core/*": ["src/core/*"],
-            "@shared/*": ["src/shared/*"]
+            "views/*": ["src/views/*"],
+            "core/*": ["src/core/*"],
+            "shared/*": ["src/shared/*"]
         }
     }
 }

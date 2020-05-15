@@ -7,12 +7,12 @@ module.exports = function (api) {
                 'module-resolver',
                 {
                     root: ['./src'],
-                    extensions: ['.ios.js', '.android.js', '.js', '.ts', '.tsx', '.json'],
+                    extensions: ['.ios.js', '.android.js', '.js', '.jsx', '.ts', '.tsx', '.json'],
                     alias: {
-                        '*': ['src/*'],
-                        '@views/*': ['src/views/*'],
-                        '@core/*': ['src/core/*'],
-                        '@shared/*': ['src/shared/*'],
+                        'src/*': 'src/*',
+                        'views/*': 'src/views/*',
+                        'core/*': 'src/core/*',
+                        'shared/*': 'src/shared/*',
                     },
                 },
             ],

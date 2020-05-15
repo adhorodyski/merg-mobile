@@ -1,14 +1,12 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-import { Button } from './src/styles/ui-kit/buttons';
+import { Stacks } from 'views/Stacks';
+import { NavigationContainer } from '@react-navigation/native';
 
 const App: React.FC = () => {
     return (
-        <View>
-            <Button>
-                <Text>Test</Text>
-            </Button>
-        </View>
+        <NavigationContainer>
+            <Stacks />
+        </NavigationContainer>
     );
 };
 

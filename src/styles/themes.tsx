@@ -5,3 +5,5 @@ export const baseBackgroundColor = theme('mode', {
     light: `${palette.merg_white}`,
     dark: `${palette.merg_black}`,
 });
+
+console.log(baseBackgroundColor);
