@@ -26,5 +26,6 @@ module.exports = {
                 prefixWithI: 'always',
             },
         ],
+        'react/display-name': 'off',
     },
 };

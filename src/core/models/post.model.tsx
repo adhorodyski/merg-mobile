@@ -1,4 +1,4 @@
-import { PROVIDERS, IPostAuthor } from '@core/models';
+import { PROVIDERS, IPostAuthor } from 'core/models';
 
 export interface IPost {
     author: IPostAuthor;

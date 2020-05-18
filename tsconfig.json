@@ -12,6 +12,7 @@
         "baseUrl": ".",
         "paths": {
             "*": ["src/*"],
+            "navigation/*": ["src/navigation/*"],
             "views/*": ["src/views/*"],
             "core/*": ["src/core/*"],
             "shared/*": ["src/shared/*"]

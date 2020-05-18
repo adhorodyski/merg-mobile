@@ -1,4 +1,4 @@
-import { ACCOUNTS, IProvider } from '@core/models';
+import { ACCOUNTS, IProvider } from 'core/models';
 
 export interface IPostAuthor {
     username: string;

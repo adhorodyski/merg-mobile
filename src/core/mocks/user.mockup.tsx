@@ -1,4 +1,4 @@
-import { ACCOUNTS, PROVIDERS, IUser } from '@core/models';
+import { ACCOUNTS, PROVIDERS, IUser } from 'core/models';
 
 export const mockedUser: IUser = {
     accountType: ACCOUNTS.CREATOR,

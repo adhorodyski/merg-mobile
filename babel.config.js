@@ -10,6 +10,7 @@ module.exports = function (api) {
                     extensions: ['.ios.js', '.android.js', '.js', '.jsx', '.ts', '.tsx', '.json'],
                     alias: {
                         'src/*': 'src/*',
+                        'navigation/*': 'src/navigation/*',
                         'views/*': 'src/views/*',
                         'core/*': 'src/core/*',
                         'shared/*': 'src/shared/*',
